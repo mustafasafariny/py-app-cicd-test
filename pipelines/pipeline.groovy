@@ -1,8 +1,11 @@
 pipeline {
     agent any
-
+    environment {
+       DISABLE_AUTH = 'true'
     stages {
         stage('Build') {
+            environment {
+                   ENABLE_AUTH = ‘false’
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
@@ -14,10 +17,13 @@ pipeline {
                         env.ENVIRONMENT = 'DEV'
                         env.DB_CONNECTION_STRING = 'development-db.example.com'
                     }
-
+                    
+                    echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
                     echo "Database connection: ${env.DB_CONNECTION_STRING}"
-                  
+                    echo env.DISABLE_AUTH
+                    echo env.ENABLE_AUTH
+                    
                     // Build or generate binary artifacts (e.g., compiled binaries)
                     sh 'make'  // Replace with your build commands
 
