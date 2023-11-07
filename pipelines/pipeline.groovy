@@ -1,8 +1,11 @@
 pipeline {
     agent any
-    environment {
-       DISABLE_AUTH = 'true'
+    sh 'python -m venv myenv'
+    sh 'source myenv/bin/activate'
+   // environment {
+   //    DISABLE_AUTH = 'true'
     stages {
+        
         stage('Build') {
             environment {
                    ENABLE_AUTH = ‘false’
@@ -17,19 +20,17 @@ pipeline {
                         env.ENVIRONMENT = 'DEV'
                         env.DB_CONNECTION_STRING = 'development-db.example.com'
                     }
-                    
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
-                    echo "Database connection: ${env.DB_CONNECTION_STRING}"
-                    echo env.DISABLE_AUTH
-                    echo env.ENABLE_AUTH
-                    
+                    // echo "Database connection: ${env.DB_CONNECTION_STRING}"
+                    // echo env.DISABLE_AUTH
+                                       
                     // Build or generate binary artifacts (e.g., compiled binaries)
-                    sh 'make'  // Replace with your build commands
+                    sh 'python /src/pyApp.py sdist bdist_wheel'
 
                     // Move the binary artifacts to a specific directory
                     sh 'mkdir -p binary_artifacts'
-                    sh 'mv binary/* binary_artifacts/'
+                    sh 'mv dist/* binary_artifacts/'
                 }
             }
         }
