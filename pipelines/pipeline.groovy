@@ -6,11 +6,8 @@ pipeline {
     
     // Install the Python dependencies
     sh 'pip install -r requirements.txt'
-    
-   // environment {
-   //    DISABLE_AUTH = 'true'
+
     stages {
-        
         stage('Build') {
             when {
                expression {
@@ -18,16 +15,18 @@ pipeline {
                }
             }
             steps {
-                script {
+                    script {
+
+                    }    
                     if (env.BRANCH_NAME == 'main') {
                         // Configure production environment
                         env.ENVIRONMENT = 'PROD'
-                    //    env.DB_CONNECTION_STRING = 'production-db.example.com'
-                    } else {
+                        }
+                    else {
                         // Configure development environment
                         env.ENVIRONMENT = 'DEV'
-                    //    env.DB_CONNECTION_STRING = 'development-db.example.com'
-                    }
+                        }
+                
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
 
@@ -39,7 +38,6 @@ pipeline {
                     checkout([$class: 'GitSCM', 
                               branches: [[name: '*/main']],  
                               userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
-                }                   
                     // Build or generate binary artifacts (e.g., compiled binaries)
                     pip install setuptools
 
