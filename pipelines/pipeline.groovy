@@ -32,8 +32,8 @@ pipeline {
 
                     // Checkout the Python application code from the Git repository
 
-                    def gitRepoURL = 'https://github.com/mustafasafariny/py-app-cicd-test/blob/main/src/PyApp'
-                    def gitCredentialsId = 'your-git-credentials-id' // You should set up credentials in Jenkins
+                    def gitRepoURL = 'git@github.com:mustafasafariny/py-app-cicd-test.git'
+                    def gitCredentialsId = 'ubuntu (cdk test new)' // You should set up credentials in Jenkins
 
                     checkout([$class: 'GitSCM', 
                               branches: [[name: '*/main']],  
