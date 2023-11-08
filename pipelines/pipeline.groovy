@@ -12,16 +12,21 @@ pipeline {
     stages {
         
         stage('Build') {
+            when {
+               expression {
+                   if env.ENVIRONMENT = 'DEV' || CODE_CHANGES == true
+               }
+            }
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
                         // Configure production environment
                         env.ENVIRONMENT = 'PROD'
-                        env.DB_CONNECTION_STRING = 'production-db.example.com'
+                    //    env.DB_CONNECTION_STRING = 'production-db.example.com'
                     } else {
                         // Configure development environment
                         env.ENVIRONMENT = 'DEV'
-                        env.DB_CONNECTION_STRING = 'development-db.example.com'
+                    //    env.DB_CONNECTION_STRING = 'development-db.example.com'
                     }
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
@@ -61,6 +66,11 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+               expression {
+                   if env.ENVIRONMENT = 'DEV' || BRANCH_NAME == 'main'
+               }
+            }
             steps {
                 script {
                     // Use the environment-specific configuration for testing
@@ -93,6 +103,12 @@ pipeline {
         always {
             // Archive build artifacts or perform other post-build tasks
             archiveArtifacts artifacts: 'build/*', allowEmptyArchive: true
+        }
+        success {
+            
+        }
+        failure {
+            
         }
     }
 }
