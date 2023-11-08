@@ -3,15 +3,15 @@ pipeline {
     // Create a Virtual Env
     sh 'python -m venv venv'
     sh 'source venv/bin/activate'
+    
     // Install the Python dependencies
     sh 'pip install -r requirements.txt'
+    
    // environment {
    //    DISABLE_AUTH = 'true'
     stages {
         
         stage('Build') {
-           // environment {
-           //        ENABLE_AUTH = ‘false’
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
@@ -25,8 +25,6 @@ pipeline {
                     }
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
-                    // echo "Database connection: ${env.DB_CONNECTION_STRING}"
-                    // echo env.DISABLE_AUTH
 
                     // Checkout the Python application code from the Git repository
 
@@ -38,6 +36,8 @@ pipeline {
                               userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
                 }                   
                     // Build or generate binary artifacts (e.g., compiled binaries)
+                    pip install setuptools
+
                     from setuptools import setup, find_packages
                     setup(
                         name="pyApp",
@@ -49,9 +49,7 @@ pipeline {
                         )
                     
                     // create a source distribution
-                    python setup.py sdist
-                    // create a binary wheel distribution
-                    python setup.py bdist_wheel
+                    python setup.py sdist bdist_wheel
                     
                     // Move the binary artifacts to a specific directory
                     sh 'mkdir -p binary_artifacts'
@@ -80,6 +78,9 @@ pipeline {
                         // Deployment to development or other non-production environments
                         echo "Deploying to DEV environment"
                         // Add deployment steps for development
+                        // copying the application files to a production server
+                        // setting up a virtual environment
+                        // Running the Python application
                     }
                 }
             }
