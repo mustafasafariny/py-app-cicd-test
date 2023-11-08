@@ -1,7 +1,10 @@
 pipeline {
     agent any
-    sh 'python -m venv myenv'
-    sh 'source myenv/bin/activate'
+    // Create a Virtual Env
+    sh 'python -m venv venv'
+    sh 'source venv/bin/activate'
+    // Install the Python dependencies
+    sh 'pip install -r requirements.txt'
    // environment {
    //    DISABLE_AUTH = 'true'
     stages {
@@ -26,8 +29,21 @@ pipeline {
                     // echo env.DISABLE_AUTH
                                        
                     // Build or generate binary artifacts (e.g., compiled binaries)
-                    sh 'python /src/pyApp.py sdist bdist_wheel'
-
+                    from setuptools import setup, find_packages
+                    setup(
+                        name="pyApp",
+                        version="1.0.0",
+                        packages=find_packages(),
+                        install_requires=[
+                        # List your project dependencies here
+                        ],
+                        )
+                    
+                    // create a source distribution
+                    python setup.py sdist
+                    // create a binary wheel distribution
+                    python setup.py bdist_wheel
+                    
                     // Move the binary artifacts to a specific directory
                     sh 'mkdir -p binary_artifacts'
                     sh 'mv dist/* binary_artifacts/'
