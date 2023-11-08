@@ -7,8 +7,8 @@ pipeline {
     stages {
         
         stage('Build') {
-            environment {
-                   ENABLE_AUTH = ‘false’
+           // environment {
+           //        ENABLE_AUTH = ‘false’
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
