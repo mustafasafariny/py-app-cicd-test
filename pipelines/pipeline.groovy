@@ -42,6 +42,8 @@ pipeline {
                     setup(
                         name="pyApp",
                         version="1.0.0",
+                        description="Sample CI/CD Python Application",
+                        author="Mustafa",
                         packages=find_packages(),
                         install_requires=[
                         # List your project dependencies here
