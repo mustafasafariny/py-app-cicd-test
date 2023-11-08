@@ -27,7 +27,16 @@ pipeline {
                     echo "Running in ${env.ENVIRONMENT} environment"
                     // echo "Database connection: ${env.DB_CONNECTION_STRING}"
                     // echo env.DISABLE_AUTH
-                                       
+
+                    // Checkout the Python application code from the Git repository
+
+                    def gitRepoURL = 'https://github.com/yourusername/pyApp.git'
+                    def gitCredentialsId = 'your-git-credentials-id' // You should set up credentials in Jenkins
+
+                    checkout([$class: 'GitSCM', 
+                              branches: [[name: '*/main']],  
+                              userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
+                }                   
                     // Build or generate binary artifacts (e.g., compiled binaries)
                     from setuptools import setup, find_packages
                     setup(
