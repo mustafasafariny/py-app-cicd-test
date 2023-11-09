@@ -7,10 +7,32 @@ pipeline {
     // Install the Python dependencies
     sh 'pip install -r requirements.txt'
 
-    stages {
-        stage('Build') {
+    stages {      
+        stage('Checkout') {
+            // get python app code from Git Repo
+            steps {
+                   def gitRepoURL = 'git@github.com:mustafasafariny/py-app-cicd-test.git'
+                   def gitCredentialsId = 'ubuntu (cdk test new)'  
+
+                   checkout([$class: 'GitSCM', 
+                             branches: [[name: '*/main']],  
+                             userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
+                }
+         }
+
+         stage('Build') {
+            // generate artifacts 
+            if (env.BRANCH_NAME == 'main') {
+                // Configure production environment
+                env.ENVIRONMENT = 'PROD'
+                }
+            else {
+                // Configure development environment
+                 env.ENVIRONMENT = 'DEV'
+                 }
+                
             when {
-               expression {
+                expression {
                    if env.ENVIRONMENT = 'DEV' || CODE_CHANGES == true
                }
             }
@@ -18,26 +40,10 @@ pipeline {
                     script {
 
                     }    
-                    if (env.BRANCH_NAME == 'main') {
-                        // Configure production environment
-                        env.ENVIRONMENT = 'PROD'
-                        }
-                    else {
-                        // Configure development environment
-                        env.ENVIRONMENT = 'DEV'
-                        }
-                
+
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
 
-                    // Checkout the Python application code from the Git repository
-
-                    def gitRepoURL = 'git@github.com:mustafasafariny/py-app-cicd-test.git'
-                    def gitCredentialsId = 'ubuntu (cdk test new)' // You should set up credentials in Jenkins
-
-                    checkout([$class: 'GitSCM', 
-                              branches: [[name: '*/main']],  
-                              userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
                     // Build or generate binary artifacts (e.g., compiled binaries)
                     pip install setuptools
 
