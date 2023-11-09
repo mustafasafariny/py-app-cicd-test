@@ -45,26 +45,7 @@ pipeline {
                     echo "Running in ${env.ENVIRONMENT} environment"
 
                     // Build or generate binary artifacts (e.g., compiled binaries)
-                    pip install setuptools
 
-                    from setuptools import setup, find_packages
-                    setup(
-                        name="pyApp",
-                        version="1.0.0",
-                        description="Sample CI/CD Python Application",
-                        author="Mustafa",
-                        packages=find_packages(),
-                        install_requires=[
-                        # List your project dependencies here
-                        ],
-                        )
-                    
-                    // create a source distribution
-                    python setup.py sdist bdist_wheel
-                    
-                    // Move the binary artifacts to a specific directory
-                    sh 'mkdir -p binary_artifacts'
-                    sh 'mv dist/* binary_artifacts/'
                 }
             }
         }
@@ -85,7 +66,26 @@ pipeline {
 
         stage('Package') {
             steps {
-
+                script {
+                    pip install setuptools
+                    from setuptools import setup, find_packages
+                    
+                    setup(
+                        name="pyApp",
+                        version="1.0.0",
+                        description="A sample Python cicd app",
+                        author="Mustafa",
+                        author_email="mustafa.mustafa@domain.com.au",
+                        url="https://github.com/yourusername/my_package",
+                        packages=find_packages(),
+                        install_requires=["dependency1", "dependency2"],
+                )
+                // create a source distribution
+                    python setup.py sdist bdist_wheel
+                    
+                    // Move the binary artifacts to a specific directory
+                    sh 'mkdir -p binary_artifacts'
+                    sh 'mv dist/* binary_artifacts/'
             }
         }
 
