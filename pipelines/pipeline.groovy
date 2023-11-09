@@ -1,10 +1,23 @@
 pipeline {
     agent any
-    environment {
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+
     }
-    stages {      
+    stages {
+        stage('Setup') {
+            steps {
+                  // Create a Virtual Env
+                  sh 'python -m venv venv'
+                  sh 'source venv/bin/activate'
+    
+                 // Install the Python dependencies
+                  sh 'pip install -r requirements.txt'
+                
+                environment {
+                    AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+                    AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+                }
+             }
+        }    
         stage('Checkout') {
             // get python app code from Git Repo
             steps {
@@ -35,13 +48,7 @@ pipeline {
                }
             }
             steps {
-                // Create a Virtual Env
-                    sh 'python -m venv venv'
-                    sh 'source venv/bin/activate'
-    
-                // Install the Python dependencies
-                    sh 'pip install -r requirements.txt'
-                
+
                 // Print Jenkins Variables on Console
                     echo "The build number is ${env.BUILD_NUMBER}"    // or echo "The build Id is ${env.BUILD_ID}"                
                     echo "The build URL is ${env.BUILD_URL}"
