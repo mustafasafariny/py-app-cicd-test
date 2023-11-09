@@ -41,11 +41,13 @@ pipeline {
     
                 // Install the Python dependencies
                     sh 'pip install -r requirements.txt'
-
-                    echo "The build number is ${env.BUILD_NUMBER}"
+                
+                // Print Jenkins Variables on Console
+                    echo "The build number is ${env.BUILD_NUMBER}"    // or echo "The build Id is ${env.BUILD_ID}"                
+                    echo "The build URL is ${env.BUILD_URL}"
                     echo "Running in ${env.ENVIRONMENT} environment"
 
-                 // Build or generate binary artifacts (e.g., compiled binaries)
+                // Build or generate binary artifacts (e.g., compiled binaries)
 
                 }
             }
