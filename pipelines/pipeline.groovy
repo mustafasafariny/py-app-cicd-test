@@ -33,6 +33,8 @@ pipeline {
          }
 
          stage('Build') {
+
+             
             if (env.BRANCH_NAME == 'main') {
                 // Configure production environment
                 env.ENVIRONMENT = 'PROD'
@@ -48,11 +50,14 @@ pipeline {
                }
             }
             steps {
-
+                echo 'building the application....'
+                // sh 'npm install'
+                // sh 'npm build'
+                
                 // Print Jenkins Variables on Console
-                    echo "The build number is ${env.BUILD_NUMBER}"    // or echo "The build Id is ${env.BUILD_ID}"                
-                    echo "The build URL is ${env.BUILD_URL}"
-                    echo "Running in ${env.ENVIRONMENT} environment"
+                echo "The build number is ${env.BUILD_NUMBER}"    // or echo "The build Id is ${env.BUILD_ID}"                
+                echo "The build URL is ${env.BUILD_URL}"
+                echo "Running in ${env.ENVIRONMENT} environment"
                 
                 // sh 'Python3 /src/pyApp.py'
                 
@@ -69,6 +74,7 @@ pipeline {
                }
             }
             steps {
+                echo 'testing the application....'
                 script {
                     // Use the environment-specific configuration for testing
                     // sh 'run_tests.sh'
@@ -109,6 +115,7 @@ pipeline {
             // Running the Python application
             
             steps {
+                echo 'deploying the application....'
                 script {
                     if (env.BRANCH_NAME == 'main') {
                         // Deployment to production
