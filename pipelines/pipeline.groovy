@@ -76,7 +76,7 @@ pipeline {
                         description="A sample Python cicd app",
                         author="Mustafa",
                         author_email="mustafa.mustafa@domain.com.au",
-                        url="https://github.com/yourusername/my_package",
+                        url="https://github.com/mustafasafariny/py-app-cicd-test/blob/main/src/PyApp",
                         packages=find_packages(),
                         install_requires=["dependency1", "dependency2"],
                 )
