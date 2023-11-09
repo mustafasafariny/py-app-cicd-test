@@ -12,7 +12,7 @@ pipeline {
                  // Install the Python dependencies
                   sh 'pip install -r requirements.txt'
                 
-                environment {
+                  environment {
                     AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
                     AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
                 }
@@ -53,7 +53,9 @@ pipeline {
                     echo "The build number is ${env.BUILD_NUMBER}"    // or echo "The build Id is ${env.BUILD_ID}"                
                     echo "The build URL is ${env.BUILD_URL}"
                     echo "Running in ${env.ENVIRONMENT} environment"
-
+                
+                // sh 'Python3 /src/pyApp.py'
+                
                 // Build or generate binary artifacts (e.g., compiled binaries)
 
                 }
