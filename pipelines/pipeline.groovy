@@ -1,12 +1,5 @@
 pipeline {
     agent any
-    // Create a Virtual Env
-    sh 'python -m venv venv'
-    sh 'source venv/bin/activate'
-    
-    // Install the Python dependencies
-    sh 'pip install -r requirements.txt'
-
     stages {      
         stage('Checkout') {
             // get python app code from Git Repo
@@ -39,14 +32,17 @@ pipeline {
                }
             }
             steps {
-                    script {
-
-                    }    
+                // Create a Virtual Env
+                    sh 'python -m venv venv'
+                    sh 'source venv/bin/activate'
+    
+                // Install the Python dependencies
+                    sh 'pip install -r requirements.txt'
 
                     echo "The build number is ${env.BUILD_NUMBER}"
                     echo "Running in ${env.ENVIRONMENT} environment"
 
-                    // Build or generate binary artifacts (e.g., compiled binaries)
+                 // Build or generate binary artifacts (e.g., compiled binaries)
 
                 }
             }
@@ -61,7 +57,8 @@ pipeline {
             steps {
                 script {
                     // Use the environment-specific configuration for testing
-                    sh 'run_tests.sh'
+                    // sh 'run_tests.sh'
+                    sh 'python manage.py test'
                 }
             }
         }
@@ -92,6 +89,11 @@ pipeline {
         }
 
         stage('Deploy') {
+            // For example, you might copy your application to a server using SSH or other deployment methods
+            // copying the application files to a production server
+            // setting up a virtual environment
+            // Running the Python application
+            
             steps {
                 script {
                     if (env.BRANCH_NAME == 'main') {
@@ -103,9 +105,6 @@ pipeline {
                         // Deployment to development or other non-production environments
                         echo "Deploying to DEV environment"
                         // Add deployment steps for development
-                        // copying the application files to a production server
-                        // setting up a virtual environment
-                        // Running the Python application
                     }
                 }
             }
