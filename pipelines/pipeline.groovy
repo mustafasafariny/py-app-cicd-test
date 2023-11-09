@@ -11,12 +11,14 @@ pipeline {
         stage('Checkout') {
             // get python app code from Git Repo
             steps {
+                script {
                    def gitRepoURL = 'git@github.com:mustafasafariny/py-app-cicd-test.git'
                    def gitCredentialsId = 'ubuntu (cdk test new)'  
 
                    checkout([$class: 'GitSCM', 
                              branches: [[name: '*/main']],  
                              userRemoteConfigs: [[url: gitRepoURL, credentialsId: gitCredentialsId]]])
+                    }
                 }
          }
 
