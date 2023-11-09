@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+    }
     stages {      
         stage('Checkout') {
             // get python app code from Git Repo
@@ -16,7 +20,6 @@ pipeline {
          }
 
          stage('Build') {
-            // generate artifacts 
             if (env.BRANCH_NAME == 'main') {
                 // Configure production environment
                 env.ENVIRONMENT = 'PROD'
