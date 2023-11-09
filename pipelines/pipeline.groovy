@@ -83,6 +83,12 @@ pipeline {
             }
         }
 
+        stage('Package') {
+            steps {
+
+            }
+        }
+
         stage('Deploy') {
             steps {
                 script {
@@ -90,7 +96,8 @@ pipeline {
                         // Deployment to production
                         echo "Deploying to PROD environment"
                         // Add deployment steps for production
-                    } else {
+                    } 
+                    else {
                         // Deployment to development or other non-production environments
                         echo "Deploying to DEV environment"
                         // Add deployment steps for development
