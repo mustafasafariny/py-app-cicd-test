@@ -2,12 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                git 'your_repository_url'
-            }
-        }
-        
+
         stage('Build') {
             steps {
                 // Run commands to install dependencies and build the Python app
