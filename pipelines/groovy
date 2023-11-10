@@ -1,32 +1,41 @@
 pipeline {
     agent any
-
+    
     stages {
+        stage('Checkout') {
+            steps {
+                git 'your_repository_url'
+            }
+        }
+        
         stage('Build') {
             steps {
-                script {
-                    echo 'Building the Python application'
-                    sh 'python -m venv venv'
-                    sh 'source venv/bin/activate && pip install -r requirements.txt'
-                }
+                // Run commands to install dependencies and build the Python app
+                sh 'pip install -r requirements.txt'
+                sh 'python setup.py build'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    echo 'Running tests'
-                    sh 'source venv/bin/activate && python -m unittest discover'
-                }
+                // Run tests for Python app
+                sh 'python -m unittest discover'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                // Create a distribution package (e.g., a tarball or a wheel)
+                sh 'python setup.py sdist bdist_wheel'
+                // Archive the generated artifacts
+                archiveArtifacts artifacts: 'dist/*', fingerprint: true
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    echo 'Deploying the application'
-                    // Add deployment steps here
-                }
+                // Deploy your Python app (e.g., to a server or a cloud platform)
+                sh 'python deploy.py'
             }
         }
     }
