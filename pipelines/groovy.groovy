@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo 'Building...'              
                 // Run commands to install dependencies and build the Python app
                 sh 'python -m venv venv'
                 sh 'source venv/bin/activate'
@@ -19,8 +19,8 @@ pipeline {
                 sh 'python setup.py sdist bdist_wheel'
 
                 // Move the artifacts to a designated directory
-                    sh 'mkdir -p artifacts'
-                    sh 'mv dist/* artifacts/
+                sh 'mkdir -p artifacts'
+                sh 'mv dist/* artifacts/
                     
                 // Archive the generated artifacts
                 archiveArtifacts artifacts: 'dist/*', fingerprint: true
