@@ -61,5 +61,6 @@ pipeline {
                 echo 'Build failed! Not deploying...'
                 // Add failure handling steps here
             }
-        }      
+        }
+    }      
 }
