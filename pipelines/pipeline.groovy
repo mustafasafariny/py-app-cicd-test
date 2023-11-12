@@ -33,7 +33,7 @@ pipeline {
                 echo "Build URL: ${env.BUILD_URL}"
 
                 script {
-                    buildscript = load "build.sh"
+                //  buildscript = load "build.sh"
                     sh './build.sh'
                 }   
             }
@@ -49,7 +49,8 @@ pipeline {
                 echo 'Testing...'
                 // Run tests for Python app
                 script {
-                    testscript = load "test.sh"
+                //  testscript = load "test.sh"
+                    sh './test.sh'
                 }   
 
             }
@@ -64,7 +65,8 @@ pipeline {
 
             // Deploy your Python app (e.g., to a server or a cloud platform)
                 script {
-                    deploycript = load "deploy.sh"
+                //  deploycript = load "deploy.sh"
+                    sh './deploy.sh'
                 }   
             }
         }
