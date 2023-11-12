@@ -1,8 +1,11 @@
-// Run commands to install dependencies and build the Python app
+// Build Virtual Environment
 sh 'python -m venv venv'
 sh 'source venv/bin/activate'
+
+// Install dependencies 
 sh 'pip install -r requirements.txt'
 
+// build Python app
 // Configuring and installing Python packages or libraries.
     //sh 'python setup.py build'
 

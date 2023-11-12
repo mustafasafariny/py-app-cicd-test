@@ -1,6 +1,15 @@
 # app.py
-def main():
-    print("Hello, CI/CD Jenkins Pipeline Testing!")
+from flask import Flask
 
-if __name__ == "__main__":
-    main()
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+# def main():
+#    print("Hello, CI/CD Jenkins Pipeline Testing!")
+
+# if __name__ == "__main__":
+#    main()
+
