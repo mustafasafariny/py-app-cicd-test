@@ -1,4 +1,8 @@
-// Build Virtual Environment
+#!/bin/bash
+# Create a virtual environment
+#sh 'python -m venv venv'
+#sh 'source venv/bin/activate'
+
 sh 'python3 -m venv venv'
 sh '. .venv/bin/activate'
 sh 'pip install Flask'
