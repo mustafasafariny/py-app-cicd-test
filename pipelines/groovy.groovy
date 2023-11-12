@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+
                 // Run commands to install dependencies and build the Python app
+                sh 'python -m venv venv'
+                sh 'source venv/bin/activate'
                 sh 'pip install -r requirements.txt'
                 sh 'python setup.py build'
 
