@@ -7,12 +7,12 @@ pipeline {
     stages {
         stage('Build') {
             
-            when {
-                expression {
-                    env.BRANCH_NAME == 'main'
-                    // && CODE_CHANGES == true
-                }
-            }
+            //when {
+            //    expression {
+            //        env.BRANCH_NAME == 'main'
+            //        // && CODE_CHANGES == true
+            //    }
+            //}
             steps {
                 sh 'printenv'
                 echo "Building....."
