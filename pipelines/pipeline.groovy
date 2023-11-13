@@ -55,6 +55,9 @@ pipeline {
             always {
                 echo 'Send email...'
                 // Add deployment steps here
+                script {
+                    sh 'deactivate'
+                }
             }
             success {
                 echo 'Build successful! Deploying...'

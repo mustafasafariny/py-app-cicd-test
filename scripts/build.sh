@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+
 set -e
 
 # Create a virtual environment
-sh 'python -m venv venv'
+sh 'python3 -m venv venv'
 sh 'source venv/bin/activate'
+
 sh 'pip install Flask'
 
-# Install dependencies 
+# Install python pacakges and dependencies 
 sh 'pip install -r requirements.txt'
 
 # Build a distribution package for a Python project that can be easily shared and installed by others.
