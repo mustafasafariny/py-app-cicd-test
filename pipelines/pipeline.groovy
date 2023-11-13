@@ -19,16 +19,16 @@ pipeline {
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
-                def currentBranch = env.BRANCH_NAME
+            //    def currentBranch = env.BRANCH_NAME
 
                 // Set environment variable based on branch name
-                if (currentBranch == 'main') {
-                        env.BRANCH_ENV_VAR = 'Prod'
-                  } else if (currentBranch.startsWith('feature/')) {
-                        env.BRANCH_ENV_VAR = 'Dev'
-                }
+            //    if (currentBranch == 'main') {
+            //            env.BRANCH_ENV_VAR = 'Prod'
+            //      } else if (currentBranch.startsWith('feature/')) {
+            //            env.BRANCH_ENV_VAR = 'Dev'
+            //    }
 
-                echo "I am in ${env.BRANCH_ENV_VAR} and it works!"
+                echo "I am in ${env.BRANCH_NAME} and it works!"
 
                 script {
                     sh 'chmod +x ./scripts/build.sh'
