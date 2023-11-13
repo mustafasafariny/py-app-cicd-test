@@ -1,23 +1,34 @@
+//CODE_CHANGES = getGitChanges()
 pipeline {
     agent any
-
+    environment {
+        BRANCH_ENV_VAR = 'default_value'
+    }
     stages {
         stage('Build') {
-            //when {
-            //    expression {
-            //        env.BRANCH_NAME == 'main'
-            //    }
-            //}
+            when {
+                expression {
+                    env.BRANCH_NAME == 'main'
+                    // && CODE_CHANGES == true
+                }
+            }
             steps {
                 echo "Building....."
-
-                // Print the build number and build URL
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
+                 
+                def currentBranch = env.BRANCH_NAME
+
+                // Set environment variable based on branch name
+                if (currentBranch == 'main') {
+                        env.BRANCH_ENV_VAR = 'Prod'
+                  } else if (currentBranch.startsWith('feature/')) {
+                        env.BRANCH_ENV_VAR = 'Dev'
+                }
+
+                echo "I am in ${env.BRANCH_ENV_VAR} and it works!"
 
                 script {
-                    sh 'python3 --version'
-
                     sh 'chmod +x ./scripts/build.sh'
                     sh './scripts/build.sh'
                 }   
@@ -26,11 +37,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                //when {
-                //    expression {
-                //        env.BRANCH_NAME == 'main'
-                //    }
-                //}
                 echo 'Testing....'
                 // Run tests for Python app
                 script {
@@ -42,6 +48,12 @@ pipeline {
         }
 
         stage('Deploy') {
+            when {
+              expression {
+                   currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
+
             steps {
                 echo 'Deploying...'
             // Deploy your Python app (e.g., to a server or a cloud platform)
