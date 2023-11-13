@@ -13,9 +13,7 @@ set -e
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms.
 
-sudo apt-get install python3-pip
-sudo pip install setuptools
-
+sh 'sudo apt-get update && sudo apt-get install -y python3'
 sh 'pip install setuptools'
 sh 'python setup.py sdist bdist_wheel'
 
