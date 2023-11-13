@@ -1,4 +1,6 @@
-#!/bin/sh
+sh '''#!/bin/bash
+    echo "hello world" 
+'''
 
 set -e
 
