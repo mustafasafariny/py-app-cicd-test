@@ -16,8 +16,7 @@ pipeline {
                 echo "Build URL: ${env.BUILD_URL}"
 
                 script {
-                    #!/bin/bash
-                //    sh 'chmod +x ./scripts/build.sh'
+                    sh 'chmod +x ./scripts/build.sh'
                     sh './scripts/build.sh'
                 }   
             }
