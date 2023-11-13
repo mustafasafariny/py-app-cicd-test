@@ -16,7 +16,7 @@ pipeline {
                 echo "Build URL: ${env.BUILD_URL}"
 
                 script {
-                    sh 'python --version'
+                    sh 'python3 --version'
 
                     sh 'chmod +x ./scripts/build.sh'
                     sh './scripts/build.sh'
