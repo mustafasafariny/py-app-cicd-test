@@ -6,6 +6,7 @@ pipeline {
     }
     stages {
         stage('Build') {
+            sh 'printenv'
             when {
                 expression {
                     env.BRANCH_NAME == 'main'
@@ -13,6 +14,7 @@ pipeline {
                 }
             }
             steps {
+
                 echo "Building....."
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
