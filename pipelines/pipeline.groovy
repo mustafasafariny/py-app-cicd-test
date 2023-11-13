@@ -16,7 +16,7 @@ pipeline {
                 echo "Build URL: ${env.BUILD_URL}"
 
                 script {
-                    def pythonHome = tool 'Python3.8'
+                    def pythonHome = tool 'Python3'
                     env.PATH = "${pythonHome}/bin:${env.PATH}"
                     sh 'python --version'
 
