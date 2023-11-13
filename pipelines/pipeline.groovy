@@ -25,7 +25,7 @@ pipeline {
             steps {
                 when {
                     expression {
-                        BRANCH_NAME == 'main'
+                        env.BRANCH_NAME == 'main'
                     }
                 }
                 echo 'Testing....'
