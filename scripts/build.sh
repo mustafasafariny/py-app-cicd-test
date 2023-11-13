@@ -1,24 +1,24 @@
+#!/bin/sh
 set -e
 
 # Create a virtual environment
-sh 'python3 -m venv venv'
-sh 'source venv/bin/activate'
-
-sh 'pip install Flask'
+python3 -m venv venv
+source venv/bin/activate
+pip install Flask
 
 # Install python pacakges and dependencies 
-sh 'pip install -r requirements.txt'
+pip install -r requirements.txt
 
 # Build a distribution package for a Python project that can be easily shared and installed by others.
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms.
 
-sh 'pip install setuptools'
-sh 'python setup.py sdist bdist_wheel'
+pip install setuptools
+python setup.py sdist bdist_wheel
 
 # Move the artifacts to a designated directory
-sh 'mkdir -p artifacts'
-sh 'mv dist/* artifacts/
+mkdir -p artifacts
+mv dist/* artifacts/
                     
 #Archive the generated artifacts
 archiveArtifacts artifacts: 'dist/*', fingerprint: true
