@@ -3,11 +3,11 @@ pipeline {
 
     stages {
         stage('Build') {
-            when {
-                expression {
-                    env.BRANCH_NAME == 'main'
-                }
-            }
+            //when {
+            //    expression {
+            //        env.BRANCH_NAME == 'main'
+            //    }
+            //}
             steps {
                 echo "Building....."
 
@@ -23,11 +23,11 @@ pipeline {
 
         stage('Test') {
             steps {
-                when {
-                    expression {
-                        env.BRANCH_NAME == 'main'
-                    }
-                }
+                //when {
+                //    expression {
+                //        env.BRANCH_NAME == 'main'
+                //    }
+                //}
                 echo 'Testing....'
                 // Run tests for Python app
                 script {
