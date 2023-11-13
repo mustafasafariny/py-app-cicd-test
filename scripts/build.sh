@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Create a virtual environment
-sh 'python -m venv venv'
-sh 'source venv/bin/activate'
+//sh 'python -m venv venv'
+//sh 'source venv/bin/activate'
 
-sh 'pip install Flask'
+//sh 'pip install Flask'
 
 // Install dependencies 
 sh 'pip install -r requirements.txt'
