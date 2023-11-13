@@ -11,7 +11,7 @@
 # Build a distribution package for a Python project that can be easily shared and installed by others.
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms. 
- 
+sh 'pip install --upgrade setuptools'
 sh 'python setup.py sdist bdist_wheel'
 
 # Move the artifacts to a designated directory
