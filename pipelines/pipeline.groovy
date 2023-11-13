@@ -8,6 +8,7 @@ pipeline {
                 expression {
                     BRANCH_NAME == 'main' && CODE_CHANGES == true
                 }
+            }
             steps {
                 echo "Building....."
 
@@ -61,6 +62,5 @@ pipeline {
                 echo 'Build failed! Not deploying...'
                 // Add failure handling steps here
             }
-        }
-    }      
+        }  
 }
