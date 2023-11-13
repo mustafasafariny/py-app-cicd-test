@@ -1,19 +1,13 @@
 #!/bin/bash
 
 # Create a virtual environment
-#sh 'python -m venv venv'
-#sh 'source venv/bin/activate'
+sh 'python -m venv venv'
+sh 'source venv/bin/activate'
 
-sh 'python3 -m venv venv'
-sh '. .venv/bin/activate'
 sh 'pip install Flask'
 
 // Install dependencies 
 sh 'pip install -r requirements.txt'
-
-// build Python app
-// Configuring and installing Python packages or libraries.
-    //sh 'python setup.py build'
 
 // Build a distribution package for a Python project that can be easily shared and installed by others.
     // Create source distribution and a compressed archive of the project's source code.
