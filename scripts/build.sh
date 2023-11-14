@@ -20,6 +20,3 @@ sudo -s python3 setup.py sdist bdist_wheel
 # Move the artifacts to a designated directory
 sudo -s mkdir -p artifacts
 sudo -s mv dist/* artifacts/
-                    
-#Archive the generated artifacts
-archiveArtifacts artifacts: 'dist/*', fingerprint: true

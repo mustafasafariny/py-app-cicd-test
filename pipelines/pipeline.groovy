@@ -26,7 +26,7 @@ pipeline {
 
                 script {
                     sh './scripts/build.sh'
-                }   
+                }      
             }
         }
 
@@ -67,8 +67,10 @@ pipeline {
                 }
             }
             success {
-                echo 'Build successful! Deploying...'
-                // Add deployment steps here
+                echo 'Build successful! Deploying...'                                 
+                //Archive the generated artifacts
+                    archiveArtifacts artifacts: 'dist/*', fingerprint: true
+                    //archiveArtifacts artifacts: '**/*.demo.*'
             }
             failure {
                 echo 'Build failed! Not deploying...'
