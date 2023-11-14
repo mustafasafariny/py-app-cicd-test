@@ -15,7 +15,7 @@ sudo pip install -r requirements.txt
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms.
 sudo -s pip install setuptools wheel
-sudo setup.py sdist bdist_wheel
+sudo -s python setup.py sdist bdist_wheel
 
 # Move the artifacts to a designated directory
 sudo -s mkdir -p artifacts
