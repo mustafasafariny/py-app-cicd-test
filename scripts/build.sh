@@ -15,8 +15,8 @@ sudo pip install -r requirements.txt
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms.
 
-sudo python3 -s pip install setuptools
-sudo python3 -s pip setup.py sdist bdist_wheel
+sudo python3 -s pip3 install setuptools
+sudo python3 -s pip3 setup.py sdist bdist_wheel
 
 # Move the artifacts to a designated directory
 sudo -s mkdir -p artifacts
