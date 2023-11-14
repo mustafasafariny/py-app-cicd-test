@@ -1,1 +1,4 @@
-sh 'python deploy.py'
+#!/bin/sh
+set -e
+
+sudo -s python deploy.py
