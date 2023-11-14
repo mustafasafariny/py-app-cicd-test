@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-sudo -s python3 demo_app.py
+sudo -s python3 src/demo_app.py
