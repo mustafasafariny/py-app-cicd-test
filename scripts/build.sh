@@ -4,16 +4,16 @@ set -e
 # Create a virtual environment
 sudo -s python3 -m venv venv
 sudo -s source venv/bin/activate
-sudo -s pip install Flask
+sudo -s pip3 install Flask
 
 # Install python pacakges and dependencies 
-sudo -s pip install -r requirements.txt
+sudo -s pip3 install -r requirements.txt
 
 # Build a distribution package for a Python project that can be easily shared and installed by others.
   #Create source distribution and a compressed archive of the project's source code.
   #Create a binary distribution of the project that can be installed on different platforms.
 
-sudo -s pip install setuptools
+sudo -s pip3 install setuptools
 sudo -s python setup.py sdist bdist_wheel
 
 # Move the artifacts to a designated directory
