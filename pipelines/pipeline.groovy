@@ -62,9 +62,9 @@ pipeline {
             always {
                 echo 'Send email...'
                 // Add deployment steps here
-                script {
-                    sh 'source ${VENV}/deactivate'
-                }
+                //script {
+                //    sh 'source ${VENV}/deactivate'
+                //}
             }
             success {
                 echo 'Build successful! Deploying...'                                 
