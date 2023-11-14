@@ -22,4 +22,4 @@ sudo -s mkdir -p artifacts
 sudo -s mv dist/* artifacts/
                     
 #Archive the generated artifacts
-sudo -s archiveArtifacts artifacts: 'dist/*', fingerprint: true
+archiveArtifacts artifacts: 'dist/*', fingerprint: true
