@@ -63,7 +63,7 @@ pipeline {
                 echo 'Send email...'
                 // Add deployment steps here
                 script {
-                    sh 'deactivate'
+                    sh 'source ${VENV}/deactivate'
                 }
             }
             success {
