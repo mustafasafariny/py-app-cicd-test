@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        BRANCH_ENV_VAR = 'default_value'
+   
     }
     stages {
         stage('Build') {
@@ -15,20 +15,23 @@ pipeline {
             //}
             steps {
                 sh 'printenv'
+                
                 echo "Building....."
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
-            //    def currentBranch = env.BRANCH_NAME
+                def currentBranch = env.GIT_BRANCH
 
                 // Set environment variable based on branch name
-            //    if (currentBranch == 'main') {
-            //            env.BRANCH_ENV_VAR = 'Prod'
-            //      } else if (currentBranch.startsWith('feature/')) {
-            //            env.BRANCH_ENV_VAR = 'Dev'
-            //    }
-
-                echo "I am in ${env.BRANCH_NAME} and it works!"
+                def environmentName = '';
+                if (currentBranch == 'main')  {
+                    environmentName = 'Prod'
+                } 
+                else {
+                    environmentName = 'Dev'
+                }
+   
+                echo "I am in ${environmentName} and it works!"
 
                 script {
                     sh 'chmod +x ./scripts/build.sh'
