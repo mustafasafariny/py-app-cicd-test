@@ -18,12 +18,12 @@ pipeline {
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
-                def currentBranch = env.GIT_BRANCH
+            //    def currentBranch = env.GIT_BRANCH
 
                 // Set environment variable based on branch name
-                def environmentName = currentBranch == 'main' ? 'Prod' : 'Dev'
+            //    def environmentName = currentBranch == 'main' ? 'Prod' : 'Dev'
 
-                echo "I am in ${environmentName} and it works!"
+                echo "I am in ${env.GIT_BRANCH} and it works!"
 
                 script {
                     sh './scripts/build.sh'
