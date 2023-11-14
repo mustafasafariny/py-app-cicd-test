@@ -1,9 +1,7 @@
 //CODE_CHANGES = getGitChanges()
 pipeline {
     agent any
-    environment {
-   
-    }
+
     stages {
         stage('Build') {
             
@@ -15,7 +13,7 @@ pipeline {
             //}
             steps {
                 sh 'printenv'
-                
+
                 echo "Building....."
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
@@ -23,14 +21,8 @@ pipeline {
                 def currentBranch = env.GIT_BRANCH
 
                 // Set environment variable based on branch name
-                def environmentName = '';
-                if (currentBranch == 'main')  {
-                    environmentName = 'Prod'
-                } 
-                else {
-                    environmentName = 'Dev'
-                }
-   
+                def environmentName = currentBranch == 'main' ? 'Prod' : 'Dev'
+
                 echo "I am in ${environmentName} and it works!"
 
                 script {
