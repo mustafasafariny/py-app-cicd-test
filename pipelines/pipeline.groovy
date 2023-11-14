@@ -69,9 +69,8 @@ pipeline {
             success {
                 echo 'Build successful! Deploying...'                                 
                 //Archive the generated artifacts
-                    archiveArtifacts artifacts: 'dist/*', fingerprint: true
-                    //archiveArtifacts artifacts: '**/*.demo.*'
-            }
+                    archiveArtifacts artifacts: '**/dist/*', fingerprint: true
+               }
             failure {
                 echo 'Build failed! Not deploying...'
                 // Add failure handling steps here
