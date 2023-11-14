@@ -26,7 +26,6 @@ pipeline {
                 echo "I am in ${environmentName} and it works!"
 
                 script {
-                    sh 'chmod +x ./scripts/build.sh'
                     sh './scripts/build.sh'
                 }   
             }
@@ -37,7 +36,6 @@ pipeline {
                 echo 'Testing....'
                 // Run tests for Python app
                 script {
-                    sh 'chmod +x ./scripts/test.sh'
                     sh './scripts/test.sh'
                 }   
 
@@ -55,7 +53,6 @@ pipeline {
                 echo 'Deploying...'
             // Deploy your Python app (e.g., to a server or a cloud platform)
                 script {
-                    sh 'chmod +x ./scripts/deploy.sh'
                     sh './scripts/deploy.sh'
                 }   
             }
