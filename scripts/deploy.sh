@@ -1,4 +1,4 @@
 #!/bin/sh
 set -e
 
-sudo -s python deploy.py
+sudo -s python3 deploy.py
