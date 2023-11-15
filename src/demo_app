@@ -7,5 +7,5 @@ app = Flask(__name__)
 def hello_world():
     return "I am in <dev|prod> and it works!</p>"
 
-#if __name__ == "__demo_app__":
-#    app.run(host="127.0.0.1", port=8080, debug=True)
+if __name__ == "__demo_app__":
+    app.run(host="127.0.0.1", port=8080, debug=True)
