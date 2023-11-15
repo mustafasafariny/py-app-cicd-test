@@ -67,11 +67,10 @@ pipeline {
                 //}
             }
             success {
-                echo 'Build successful! Deploying...'    
-                echo 'Saving Artifacts...'                                
+                echo 'Build successful! Deploying...'                           
                 //Archive the generated artifacts
-                //    archiveArtifacts artifacts: './dist/*demo_app.*', fingerprint: true
-                archiveArtifacts artifacts: '**/*demo_app.*', fingerprint: true
+                archiveArtifacts artifacts: './dist/*', fingerprint: true
+                //archiveArtifacts artifacts: '**/*demo_app.*', fingerprint: true
                 //archiveArtifacts artifacts: './dist/*.tar.gz, ./dist/*.whl', fingerprint: true
                }
             failure {
