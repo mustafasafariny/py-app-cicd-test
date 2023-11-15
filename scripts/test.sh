@@ -1,4 +1,5 @@
 #!/bin/sh
 set -e
 
-sudo -s python3 -m unittest discover
+flask --app hello run
+#sudo -s python3 -m unittest discover
