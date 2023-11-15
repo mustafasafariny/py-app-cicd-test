@@ -69,9 +69,8 @@ pipeline {
             success {
                 echo 'Build successful! Deploying...'                           
                 //Archive the generated artifacts
-                archiveArtifacts artifacts: './dist/*', fingerprint: true
-                //archiveArtifacts artifacts: '**/*demo_app.*', fingerprint: true
-                //archiveArtifacts artifacts: './dist/*.tar.gz, ./dist/*.whl', fingerprint: true
+                archiveArtifacts artifacts: 'dist/*', fingerprint: true
+                //archiveArtifacts artifacts: 'dist/*.tar.gz, dist/*.whl', fingerprint: true
                }
             failure {
                 echo 'Build failed! Not deploying...'
