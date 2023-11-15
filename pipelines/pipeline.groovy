@@ -68,10 +68,6 @@ pipeline {
             }
             success {
                 echo 'Build successful! Deploying...'                           
-                //Archive the generated artifacts
-                //archiveArtifacts artifacts: 'dist/*', fingerprint: true
-                //archiveArtifacts artifacts: 'dist/*.tar.gz, dist/*.whl', fingerprint: true
-                //archiveArtifacts artifacts: '**/*.tar.gz, **/*.whl', fingerprint: true
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
                }
             failure {
