@@ -89,7 +89,7 @@ pipeline {
     post {
             always {
                 echo 'Send email...'
-                // Add deployment steps here
+ 
                 //script {
                 //    sh 'source ${VENV}/deactivate'
                 //}
