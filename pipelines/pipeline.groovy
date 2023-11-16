@@ -18,6 +18,7 @@ pipeline {
     //    DISABLE_AUTH = 'true'
     //    SERVER_CREEDENTIALS = credentials('server-credentials')
     //    CURRENT_VERSION = '1.0.0'
+    //    CONNECTION_DB = ''
     //}
 
     stages {
@@ -50,7 +51,7 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-
+                //copyArtifacts(projectName: 'projectA', filter:'Debug.7z', optional: true);
                 script {
                     sh './scripts/test.sh'
                 }   
