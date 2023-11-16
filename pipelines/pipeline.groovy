@@ -28,7 +28,7 @@ pipeline {
                 echo "Building....."
                 sh 'printenv'
 
-                echo "Building version ${parms.VERSION}"
+                //echo "Building version ${parms.VERSION}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
