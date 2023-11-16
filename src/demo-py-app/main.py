@@ -23,7 +23,7 @@ def index():
 #It’ll be used only when you run the script locally (127.0.0.1 is the localhost for local testing)
 
 #if __name__ == "__main__":
-#    app.run(host="127.0.0.1", port=5000, debug=False)
+#    app.run(host="127.0.0.1", port=5000, debug=True)
 
 # To test on Flask server (using PowerSell Terminal)
 # Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app main.py run
