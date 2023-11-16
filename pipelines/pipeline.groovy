@@ -14,10 +14,6 @@ pipeline {
             )
     }
 
-    //tools{
-    //    maven 'Maven'
-    //}
-
     //environment {
     //    DISABLE_AUTH = 'true'
     //    SERVER_CREEDENTIALS = credentials('server-credentials')
@@ -26,13 +22,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            //when {
-            //    expression {
-            //        env.BRANCH_NAME == 'main'
-            //        // && CODE_CHANGES == true
-            //    }
-            //}
-
             steps {
                 echo "Building....."
                 sh 'printenv'
@@ -61,7 +50,7 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-                // Run tests for Python app
+
                 script {
                     sh './scripts/test.sh'
                 }   
