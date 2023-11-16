@@ -4,7 +4,7 @@ pipeline {
     parameters{
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParm(name: 'executeTests', defaultValue: true, description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
     //tools{
     //    maven 'Maven'
@@ -46,7 +46,7 @@ pipeline {
         stage('Test') {
             when {
                 expression {
-                    parms.executeTests
+                    params.executeTests
                 }
             }
             steps {
