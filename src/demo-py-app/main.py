@@ -9,9 +9,15 @@ app = Flask(__name__)
 
 #In other words, if a user types the base URL of your web app into their browser, then Flask runs index() 
 # and the user sees the returned text.
+
+##branch = env.GIT_BRANCH
+##@app.route("/<branch>")
+##def index():
+## return "I am in ${env.GIT_BRANCH} and it works!"
+
 @app.route("/")
 def index():
-    return "I am in ${env.GIT_BRANCH} and it works!"
+    return "Python Application Deployment to Host works!"
 
 #Tell Python to start Flask’s development server when the script is executed from the command line. 
 #It’ll be used only when you run the script locally (127.0.0.1 is the localhost for local testing)
