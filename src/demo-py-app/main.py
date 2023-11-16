@@ -4,14 +4,14 @@ from flask import Flask
 app = Flask(__name__)
 
 #Flask uses @app.route to connect URL endpoints with code contained in functions.
-#The argument to @app.route defines the URL’s path component, which is the root path ("/") in this case.
+#The argument @app.route defines the URL’s path component, which is the root path ("/") in this case.
 #function def index() defines what should be executed if the defined URL endpoint is requested by a user and when the  page is loaded
 
 #In other words, if a user types the base URL of your web app into their browser, then Flask runs index() 
 # and the user sees the returned text.
 @app.route("/")
 def index():
-    return "Congratulations, it's a Python web app!!"
+    return "I am in ${env.GIT_BRANCH} and it works!"
 
 #Tell Python to start Flask’s development server when the script is executed from the command line. 
 #It’ll be used only when you run the script locally (127.0.0.1 is the localhost for local testing)

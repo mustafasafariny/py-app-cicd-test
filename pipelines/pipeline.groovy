@@ -1,6 +1,20 @@
 pipeline {
     agent any
 
+    parameters{
+        string(name: 'VERSION', defaultValue: '', description: 'version to deploy')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        pooleanParm: 'executeTests', defaultValue: true, description: '')
+    }
+    //tools{
+    //    maven 'Maven'
+    //}
+    environment {
+        DISABLE_AUTH = 'true'
+        NEW_VERSION = '1.0.0'
+        SERVER_CREEDENTIALS = credentials('server-credentials')
+        CURRENT_BRANCH = env.GIT_BRANCH
+    }
     stages {
         stage('Build') {
             
@@ -10,19 +24,20 @@ pipeline {
             //        // && CODE_CHANGES == true
             //    }
             //}
+
             steps {
                 sh 'printenv'
 
                 echo "Building....."
+                echo "Building version ${NEW_VERSION}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
-            //    def currentBranch = env.GIT_BRANCH
-
                 // Set environment variable based on branch name
-            //    def environmentName = currentBranch == 'main' ? 'Prod' : 'Dev'
-
-                echo "I am in ${env.GIT_BRANCH} and it works!"
+   
+                //echo "I am in ${env.GIT_BRANCH} and it works!"
+                //echo "I am in ${env.BRANCH_NAME} and it works!"
+                echo "I am in ${CURRENT_BRANCH} and it works!"
 
                 script {
                     sh './scripts/build.sh'
@@ -31,6 +46,11 @@ pipeline {
         }
 
         stage('Test') {
+            when {
+                expression {
+                    parms.executeTests
+                }
+            }
             steps {
                 echo 'Testing....'
                 // Run tests for Python app
@@ -50,9 +70,20 @@ pipeline {
 
             steps {
                 echo 'Deploying...'
-            // Deploy your Python app (e.g., to a server or a cloud platform)
+                echo "Building version ${parms.VERSION}"
+            //  echo "deploying with ${SERVER_CREEDENTIALS}"
+
+                //withCredentials([
+                //    usrnamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PWD)
+                //]) {
+                //    sh "some script to deploy ${USER} ${PWD}"
+                //
+                //}
+
+                // Deploy your Python app (e.g., to a server or a cloud platform)
                 script {
                     sh './scripts/deploy.sh'
+                //    sh "${SERVER_CREEDENTIALS}"
                 }   
             }
         }
