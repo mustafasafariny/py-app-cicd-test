@@ -37,7 +37,7 @@ pipeline {
                 echo "Building....."
                 sh 'printenv'
 
-                echo " The environment is ${params.Env}"
+                echo " Building environment is ${params.Env}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
@@ -60,6 +60,7 @@ pipeline {
             }
             steps {
                 echo 'Testing....'
+                echo " Testing environment is ${params.Env}"
                 // Run tests for Python app
                 script {
                     sh './scripts/test.sh'
@@ -77,7 +78,7 @@ pipeline {
 
             steps {
                 echo 'Deploying...'
-                echo "Building version ${parms.VERSION}"
+                echo " Deployment environment is ${params.Env}"
             //  echo "deploying with ${SERVER_CREEDENTIALS}"
 
                 //withCredentials([
