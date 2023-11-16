@@ -4,7 +4,7 @@ pipeline {
     parameters{
         string(name: 'VERSION', defaultValue: '', description: 'version to deploy')
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        pooleanParm(name: 'executeTests', defaultValue: true, description: '')
+        booleanParm(name: 'executeTests', defaultValue: true, description: '')
     }
     //tools{
     //    maven 'Maven'
@@ -13,7 +13,6 @@ pipeline {
         DISABLE_AUTH = 'true'
         NEW_VERSION = '1.0.0'
         SERVER_CREEDENTIALS = credentials('server-credentials')
-        CURRENT_BRANCH = env.GIT_BRANCH
     }
     stages {
         stage('Build') {
@@ -35,9 +34,8 @@ pipeline {
                  
                 // Set environment variable based on branch name
    
-                //echo "I am in ${env.GIT_BRANCH} and it works!"
+                echo "I am in ${env.GIT_BRANCH} and it works!"
                 //echo "I am in ${env.BRANCH_NAME} and it works!"
-                echo "I am in ${CURRENT_BRANCH} and it works!"
 
                 script {
                     sh './scripts/build.sh'
