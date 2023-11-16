@@ -1,9 +1,17 @@
 pipeline {
     agent any
 
-    parameters{
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    parameters{       
+        choice(
+            name: 'Env',
+            choices: ['DEV', 'PROD'],
+            description: 'Passing the Environment'
+            )
+        booleanParam(
+            name: 'executeTests',
+            defaultValue: true,
+            description: ''
+            )
     }
 
     //tools{
@@ -13,6 +21,7 @@ pipeline {
     //environment {
     //    DISABLE_AUTH = 'true'
     //    SERVER_CREEDENTIALS = credentials('server-credentials')
+    //    CURRENT_VERSION = '1.0.0'
     //}
 
     stages {
@@ -28,7 +37,7 @@ pipeline {
                 echo "Building....."
                 sh 'printenv'
 
-                echo "Building version ${parms.VERSION}"
+                echo " The environment is ${params.Env}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
