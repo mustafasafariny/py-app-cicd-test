@@ -8,7 +8,7 @@ sudo -s source venv/bin/activate
 sudo -s pip3 install Flask
 
 # Install python pacakges and dependencies 
-sudo -s pip3 install -r src/demo-py-app/requirements.txt
+sudo -s pip3 install -r requirements.txt
 
 
 # Build a distribution package for a Python project that can be easily shared and installed by others.
