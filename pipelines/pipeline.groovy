@@ -6,7 +6,7 @@ pipeline {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description: '')
     }
-    
+
     //tools{
     //    maven 'Maven'
     //}
@@ -14,11 +14,11 @@ pipeline {
     environment {
         DISABLE_AUTH = 'true'
         NEW_VERSION = '1.0.0'
-        SERVER_CREEDENTIALS = credentials('server-credentials')
+    //    SERVER_CREEDENTIALS = credentials('server-credentials')
     }
     stages {
         stage('Build') {
-            
+            echo "Building....."
             //when {
             //    expression {
             //        env.BRANCH_NAME == 'main'
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh 'printenv'
 
-                echo "Building....."
+
                 echo "Building version ${NEW_VERSION}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
