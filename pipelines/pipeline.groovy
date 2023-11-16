@@ -1,21 +1,21 @@
 pipeline {
     agent any
 
-    parameters{
-        string(name: 'VERSION', defaultValue: '', description: 'version to deploy')
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
-    }
+    //parameters{
+    //    string(name: 'VERSION', defaultValue: '', description: 'version to deploy')
+    //    choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+    //    booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    //}
 
     //tools{
     //    maven 'Maven'
     //}
 
-    environment {
-        DISABLE_AUTH = 'true'
-        NEW_VERSION = '1.0.0'
+    //environment {
+    //    DISABLE_AUTH = 'true'
+    //    NEW_VERSION = '1.0.0'
     //    SERVER_CREEDENTIALS = credentials('server-credentials')
-    }
+    //}
     stages {
         stage('Build') {
             //when {
@@ -29,7 +29,7 @@ pipeline {
                 echo "Building....."
                 sh 'printenv'
 
-                echo "Building version ${NEW_VERSION}"
+            //    echo "Building version ${NEW_VERSION}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
                  
@@ -45,11 +45,11 @@ pipeline {
         }
 
         stage('Test') {
-            when {
-                expression {
-                    params.executeTests
-                }
-            }
+            //when {
+            //    expression {
+            //        params.executeTests
+            //    }
+            //}
             steps {
                 echo 'Testing....'
                 // Run tests for Python app
@@ -69,7 +69,7 @@ pipeline {
 
             steps {
                 echo 'Deploying...'
-                echo "Building version ${parms.VERSION}"
+            //    echo "Building version ${parms.VERSION}"
             //  echo "deploying with ${SERVER_CREEDENTIALS}"
 
                 //withCredentials([
