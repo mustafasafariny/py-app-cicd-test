@@ -14,12 +14,11 @@ pipeline {
             )
     }
 
-    //environment {
-    //    DISABLE_AUTH = 'true'
-    //    SERVER_CREEDENTIALS = credentials('server-credentials')
-    //    CURRENT_VERSION = '1.0.0'
-    //    CONNECTION_DB = ''
-    //}
+    environment {
+        AWS_REGION = 'ap-sountheaast-2'
+        AWS_S3_BUCKET 'your-s3-bucket-name'
+        ARTIFACTS_PATH = 'dist'
+    }
 
     stages {
         stage('Build') {
@@ -27,10 +26,10 @@ pipeline {
                 echo "Building....."
                 sh 'printenv'
 
-                echo " Building environment is ${params.Env}"
+                echo "Building environment is ${params.Env}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
-                 
+                  
                 // Set environment variable based on branch name
    
                 echo "I am in ${env.GIT_BRANCH} and it works!"
@@ -38,7 +37,32 @@ pipeline {
 
                 script {
                     sh './scripts/build.sh'
-                }      
+                }
+
+                // saving artifacts
+                archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
+
+                // building S3 bucket and tag it with the build tag
+                def BUILD_TAG_NAME = env.BUILD_TAG
+                echo "Build Tag: ${BUILD_TAG_NAME}"
+
+                // Deploying AWS S3 bucket
+                sh 'npm install'
+                sh 'npm install @aws-cdk/core @aws-cdk/aws-s3'
+                sh 'npm install aws-cdk-lib/aws-iam'
+'               sh 'npm install aws-cdk-lib/aws-iam'
+                sh 'cdk deploy'
+
+                // Upload artifacts to S3 bucket
+                withAWS(region:"${AWS_REGION}",
+                        credentials:'awscredentials',
+                    //  endpointUrl:'https://minio.mycompany.com'),
+                    //    profile:'~/.aws/credentials',
+                    //    roleAccount:'123456789012'
+                    {                  
+                        s3Upload(file:"${BUILD_TAG_NAME}", bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_PATH}/")
+
+                    }         
             }
         }
 
@@ -51,9 +75,10 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-                //copyArtifacts(projectName: 'projectA', filter:'Debug.7z', optional: true);
+
                 script {
                     sh './scripts/test.sh'
+
                 }   
 
             }
@@ -69,19 +94,9 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
-            //  echo "deploying with ${SERVER_CREEDENTIALS}"
 
-                //withCredentials([
-                //    usrnamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PWD)
-                //]) {
-                //    sh "some script to deploy ${USER} ${PWD}"
-                //
-                //}
-
-                // Deploy your Python app (e.g., to a server or a cloud platform)
                 script {
                     sh './scripts/deploy.sh'
-                //    sh "${SERVER_CREEDENTIALS}"
                 }   
             }
         }
@@ -90,18 +105,12 @@ pipeline {
     post {
             always {
                 echo 'Send email...'
- 
-                //script {
-                //    sh 'source ${VENV}/deactivate'
-                //}
             }
             success {
                 echo 'Build successful! Deploying...'                           
-                archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
                }
             failure {
                 echo 'Build failed! Not deploying...'
-                // Add failure handling steps here
             }
         }  
 }
