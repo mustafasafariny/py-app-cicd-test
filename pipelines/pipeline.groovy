@@ -53,7 +53,9 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                            {                  
+                            {
+                                sh './scripts/deploy.sh'
+                                                 
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
