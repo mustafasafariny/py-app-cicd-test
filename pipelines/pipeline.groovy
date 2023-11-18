@@ -52,13 +52,14 @@ pipeline {
                     //    role:'AWS-DevOps-Identity',
                     //    roleAccount:'144358027444'
                         )
+
                             {                  
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${BUILD_TAG_NAME}",
                                     bucket:"${AWS_S3_BUCKET}",
                                     path: "${AWS_S3_BUCKET_PATH}",
                                     workingDir:"${WORKING_DIR}",
-                                    includePathPattern:'**/*.gz,**/*.whl'
+                                    includePathPattern:'**/*.gz,**/*.whl')
 
                             }         
             }
