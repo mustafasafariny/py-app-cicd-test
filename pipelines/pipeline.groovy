@@ -47,7 +47,7 @@ pipeline {
 
                 // Upload artifacts to S3 bucket
                 withAWS(region:"${AWS_REGION}",
-                        credentials:'awscredentials',  //Use Jenkins AWS credentials information (AWS Access Key: AccessKeyId, AWS Secret Key: SecretAccessKey):
+                        credentials:'awscredentials'  //Use Jenkins AWS credentials information (AWS Access Key: AccessKeyId, AWS Secret Key: SecretAccessKey):
                     //    profile:'~/.aws/credentials',
                     //    role:'AWS-DevOps-Identity',
                     //    roleAccount:'144358027444'
