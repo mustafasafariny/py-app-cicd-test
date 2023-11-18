@@ -15,9 +15,11 @@ pipeline {
     }
 
     environment {
-        AWS_REGION = 'ap-sountheaast-2'
-        AWS_S3_BUCKET 'your-s3-bucket-name'
-        ARTIFACTS_PATH = 'dist'
+        AWS_REGION = 'ap-sountheast-2'
+        AWS_S3_BUCKET 'mustafa.py.app.demo.cdk.artifacts'      
+        AWS_S3_BUCKET_PATH = 'cicd-demo/'
+        ARTIFACTS_FILE = 'artifacts'
+        WORKING_DIR = 'dist'
     }
 
     stages {
@@ -29,12 +31,9 @@ pipeline {
                 echo "Building environment is ${params.Env}"
                 echo "Build Number: ${env.BUILD_NUMBER}"
                 echo "Build URL: ${env.BUILD_URL}"
-                  
-                // Set environment variable based on branch name
-   
+                   
                 echo "I am in ${env.GIT_BRANCH} and it works!"
-                //echo "I am in ${env.BRANCH_NAME} and it works!"
-
+ 
                 script {
                     sh './scripts/build.sh'
                 }
@@ -43,26 +42,25 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
 
                 // building S3 bucket and tag it with the build tag
-                def BUILD_TAG_NAME = env.BUILD_TAG
+                def BUILD_TAG_NAME = env.BUILD_TAG              
                 echo "Build Tag: ${BUILD_TAG_NAME}"
-
-                // Deploying AWS S3 bucket
-                sh 'npm install'
-                sh 'npm install @aws-cdk/core @aws-cdk/aws-s3'
-                sh 'npm install aws-cdk-lib/aws-iam'
-'               sh 'npm install aws-cdk-lib/aws-iam'
-                sh 'cdk deploy'
 
                 // Upload artifacts to S3 bucket
                 withAWS(region:"${AWS_REGION}",
-                        credentials:'awscredentials',
-                    //  endpointUrl:'https://minio.mycompany.com'),
+                        credentials:'awscredentials',  //Use Jenkins AWS credentials information (AWS Access Key: AccessKeyId, AWS Secret Key: SecretAccessKey):
                     //    profile:'~/.aws/credentials',
-                    //    roleAccount:'123456789012'
-                    {                  
-                        s3Upload(file:"${BUILD_TAG_NAME}", bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_PATH}/")
+                    //    role:'AWS-DevOps-Identity',
+                    //    roleAccount:'144358027444'
+                        )
+                            {                  
+                                s3Upload(file: "${ARTIFACTS_FILE}",
+                                    tags: "${BUILD_TAG_NAME}",
+                                    bucket:"${AWS_S3_BUCKET}",
+                                    path: "${AWS_S3_BUCKET_PATH}",
+                                    workingDir:"${WORKING_DIR}",
+                                    includePathPattern:'**/*.gz,**/*.whl'
 
-                    }         
+                            }         
             }
         }
 

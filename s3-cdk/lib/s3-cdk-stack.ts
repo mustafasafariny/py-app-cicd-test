@@ -8,9 +8,10 @@ export class S3CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const s3Bucket = new s3.Bucket(this, 'exampleBucket', {
+    const s3Bucket = new s3.Bucket(this, 'CicdDemoBucket', {
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      encryption: s3.BucketEncryption.S3_MANAGED,
       encryptionKey: new kms.Key(this, 's3BucketKMSKey'),
       enforceSSL: true,
       versioned: true,
