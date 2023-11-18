@@ -54,8 +54,11 @@ pipeline {
                         )
 
                             {
-                                sh './scripts/deploy.sh'
-                                                 
+                                dir('./s3-cdk/lib/') {
+                                // Synthesize the CDK stack
+                                        sh 'cdk synth'
+                                    }
+
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",

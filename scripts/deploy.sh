@@ -7,4 +7,4 @@ set -e
 //sh 'sudo npm install aws-cdk-lib/aws-iam'
 //sh 'sudo npm install aws-cdk-lib/aws-iam'
 
-sh 'cdk deploy'
+//sh 'cdk deploy'
