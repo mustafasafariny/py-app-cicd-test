@@ -55,7 +55,7 @@ pipeline {
 
                             {                  
                                 s3Upload(file: "${ARTIFACTS_FILE}",
-                                    tags: "${BUILD_TAG_NAME}",
+                                    tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
                                     path: "${AWS_S3_BUCKET_PATH}",
                                     workingDir:"${WORKING_DIR}",
