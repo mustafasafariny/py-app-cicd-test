@@ -16,7 +16,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-sountheast-2'
-        AWS_S3_BUCKET 'mustafa.py.app.demo.cdk.artifacts'      
+        AWS_S3_BUCKET = 'mustafa.py.app.demo.cdk.artifacts'      
         AWS_S3_BUCKET_PATH = 'cicd-demo/'
         ARTIFACTS_FILE = 'artifacts'
         WORKING_DIR = 'dist'
