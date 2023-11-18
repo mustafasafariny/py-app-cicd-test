@@ -42,8 +42,8 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
 
                 // building S3 bucket and tag it with the build tag
-                def BUILD_TAG_NAME = env.BUILD_TAG              
-                echo "Build Tag: ${BUILD_TAG_NAME}"
+                // def BUILD_TAG_NAME = env.BUILD_TAG              
+                echo "Build Tag: ${env.BUILD_TAG}"
 
                 // Upload artifacts to S3 bucket
                 withAWS(region:"${AWS_REGION}",
