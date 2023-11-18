@@ -1,3 +1,6 @@
+//The code is creating a new stack named "S3BucketCdkStack" using the S3CdkStack class.
+// This stack represents an AWS CloudFormation stack that will be deployed to create an S3 bucket.
+
 import * as cdk from 'aws-cdk-lib';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
