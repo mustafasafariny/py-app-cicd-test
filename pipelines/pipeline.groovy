@@ -45,7 +45,7 @@ pipeline {
                 // def BUILD_TAG_NAME = env.BUILD_TAG              
                 echo "Build Tag: ${env.BUILD_TAG}"
 
-                // Upload artifacts to S3 bucket
+                // create S3 Bucket and Upload artifacts into it
                 withAWS(region:"${AWS_REGION}",
                         credentials:'awscredentials'  //Use Jenkins AWS credentials information (AWS Access Key: AccessKeyId, AWS Secret Key: SecretAccessKey):
                     //    profile:'~/.aws/credentials',
@@ -53,15 +53,9 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                            {     
-                                // Run cdk infra to create S3 bucket                                                     
-                                //dir('./s3-cdk/cdk-scripts/') {
-                                //    sh 'cdkappbuild.sh'
-                                //    }
-                                
+                            {                                   
                                 sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'
 
-                                // Upload artifacts to S3 bucket
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
@@ -84,7 +78,7 @@ pipeline {
                 echo " Testing environment is ${params.Env}"
 
                 script {
-                    sh './scripts/test.sh'
+                    sh 'chmod +x ./scripts/test.sh'
 
                 }   
 
@@ -103,7 +97,7 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    sh './scripts/deploy.sh'
+                    sh 'chmod +x ./scripts/deploy.sh'
                 }   
             }
         }

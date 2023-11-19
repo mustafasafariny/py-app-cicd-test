@@ -1,6 +1,6 @@
 #!/bin/sh
 # Typescript dependencies installation (packages and lib/modules)
-
+sh 'echo cdk infra build script..'
 sh 'npm install -g typescript'
 sh 'npm install'
 sh 'npm install @aws-cdk/core @aws-cdk/aws-s3'
