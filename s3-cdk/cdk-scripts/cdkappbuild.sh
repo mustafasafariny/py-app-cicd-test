@@ -1,11 +1,11 @@
 #!/bin/sh
 # Typescript dependencies installation (packages and lib/modules)
-sudo npm install
-sudo npm install -g typescript
-sudo npm install @aws-cdk/core @aws-cdk/aws-s3
-sudo npm install aws-cdk-lib/aws-iam
-sudo npm install aws-cdk-lib/aws-iam
+npm install
+npm install -g typescript
+npm install @aws-cdk/core @aws-cdk/aws-s3
+npm install aws-cdk-lib/aws-iam
+npm install aws-cdk-lib/aws-iam
 #tsc
 #cdk synth
-sudo npm run build
-sudo npm run cdk synth
+npm run build
+npm run cdk synth
