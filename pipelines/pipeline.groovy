@@ -53,10 +53,9 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                            {
-                                dir('s3-cdk/lib/') {
-                                // Synthesize the CDK stack
-                                        sh 'cdk synth'
+                            {                                                          
+                                dir('./s3-cdk/lib/') {
+                                    sh './scripts/cdkappbuild.sh'
                                     }
 
                                 s3Upload(file: "${ARTIFACTS_FILE}",
