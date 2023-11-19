@@ -54,8 +54,8 @@ pipeline {
                         )
 
                             {                                                          
-                                dir('./s3-cdk/lib/') {
-                                    sh './scripts/cdkappbuild.sh'
+                                dir('./s3-cdk/cdk-scripts/') {
+                                    sh 'cdkappbuild.sh'
                                     }
 
                                 s3Upload(file: "${ARTIFACTS_FILE}",
