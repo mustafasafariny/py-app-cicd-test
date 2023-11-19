@@ -57,6 +57,7 @@ pipeline {
                             {   dir('./s3-cdk') {
                                     echo 'changed dir'
                                     sh 'sudo -s apt-get install npm -y'
+                                    sh 'sudo npm install -g typescript'
                             }                                
                                 sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
