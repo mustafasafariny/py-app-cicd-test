@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Typescript dependencies installation (packages and lib/modules)
 npm install
 npm install -g typescript
