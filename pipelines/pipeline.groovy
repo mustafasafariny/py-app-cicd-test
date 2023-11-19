@@ -54,10 +54,12 @@ pipeline {
                         )
 
                             {                                                          
-                                dir('./s3-cdk/cdk-scripts/') {
-                                    sh 'cdkappbuild.sh'
-                                    }
+                                //dir('./s3-cdk/cdk-scripts/') {
+                                //    sh 'cdkappbuild.sh'
+                                //    }
 
+                                sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
+                                
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
