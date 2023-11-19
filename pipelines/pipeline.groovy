@@ -57,9 +57,9 @@ pipeline {
                                 //dir('./s3-cdk/cdk-scripts/') {
                                 //    sh 'cdkappbuild.sh'
                                 //    }
-                                
+
                                 // Run cdk infra to create S3 bucket
-                                sh 'sudo ./s3-cdk/cdk-scripts/cdkappbuild.sh'
+                                sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
                                 // Upload artifacts to S3 bucket
                                 s3Upload(file: "${ARTIFACTS_FILE}",
