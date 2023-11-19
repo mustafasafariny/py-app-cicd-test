@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 # Typescript dependencies installation (packages and lib/modules)
 sh 'sudo apt update'
