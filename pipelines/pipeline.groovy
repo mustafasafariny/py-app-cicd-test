@@ -54,7 +54,7 @@ pipeline {
                         )
 
                             {
-                                dir('./s3-cdk/lib/') {
+                                dir('s3-cdk/lib/') {
                                 // Synthesize the CDK stack
                                         sh 'cdk synth'
                                     }
