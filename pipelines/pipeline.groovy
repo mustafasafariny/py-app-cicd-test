@@ -56,7 +56,7 @@ pipeline {
 
                             {   dir('./s3-cdk') {
                                     echo 'changed dir'
-                                    curl -sL https://deb.nodesource.com/setup | sudo bash -
+                                    sh 'curl -sL https://deb.nodesource.com/setup | sudo bash -'
                                     sh 'sudo apt-get install nodejs'
                                     //sh 'sudo -s apt-get install npm -y'
 
