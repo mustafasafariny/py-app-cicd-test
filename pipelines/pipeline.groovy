@@ -53,7 +53,9 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                            {                                   
+                            {   dir('./s3-cdk') {
+                                    echo 'changed dir'
+                            }                                
                                 sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'
                                 sh 'sudo npm install'
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
