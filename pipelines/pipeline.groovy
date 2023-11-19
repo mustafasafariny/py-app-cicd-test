@@ -56,9 +56,9 @@ pipeline {
 
                             {   dir('./s3-cdk') {
                                     echo 'changed dir'
+                                    sh 'sudo npm install'
                             }                                
-                                sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'
-                                sh 'sudo npm install'
+                                sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
