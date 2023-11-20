@@ -79,6 +79,7 @@ pipeline {
 
                                 sh 'sudo apt-get install nodejs -y'
                                 sh 'sudo apt-mark showhold'
+                                sh 'sudo npm uninstall npm -g'
                                 sh 'sudo apt-get install npm -y'
                                 
                                 sh 'sudo npm install -g typescript'
