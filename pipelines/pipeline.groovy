@@ -61,7 +61,7 @@ pipeline {
                                 sh 'sudo apt clean'
                                 sh 'sudo apt --fix-broken install'
                                 sh 'sudo apt update'
-                                sh 'sudo apt remove nodejs'
+                                sh 'sudo apt remove nodejs -y'
                                 sh 'sudo apt remove nodejs-doc -y'
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode-dev'
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
