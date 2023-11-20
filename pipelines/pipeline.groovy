@@ -69,8 +69,8 @@ pipeline {
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode-dev'
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
                                 //sh 'sudo npm ls -g --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm'
-                                sh 'sudo npm ls --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm rm'
-
+                                //sh 'sudo npm ls --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm rm'
+                                sh 'npm uninstall `ls -1 node_modules | tr '/\n' ' '`'
 
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
