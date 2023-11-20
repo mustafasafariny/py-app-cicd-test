@@ -2,7 +2,7 @@
 // This stack represents an AWS CloudFormation stack that will be deployed to create an S3 bucket.
 
 import * as cdk from 'aws-cdk-lib';
-import * as iam from 'aws-cdk-lib/aws-iam';
+//import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
@@ -20,7 +20,7 @@ export class S3CdkStack extends cdk.Stack {
       versioned: true,
     });
 
-    s3Bucket.grantRead(new iam.AccountRootPrincipal());
+    //s3Bucket.grantRead(new iam.AccountRootPrincipal());
   }
 }
 

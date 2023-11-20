@@ -8,10 +8,10 @@ npm install aws-cdk-lib/aws-kms
 #tsc
 #cdk synth
 echo 'cdk build start...'
-sudo -s npm run build
+npm run build
 
 echo 'cdk synth start...'
-sudo -s npm run cdk synth
+npm run cdk synth
 
 #sudo -s 'npm run build && cdk synth --all'
 #sudo -s 'cdk destroy'
