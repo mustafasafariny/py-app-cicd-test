@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 # Typescript dependencies installation (packages and lib/modules)
-npm install @aws-cdk/core @aws-cdk/aws-s3
+npm install aws-cdk-lib
+npm install aws-cdk-lib/aws-s3
 npm install aws-cdk-lib/aws-iam
 npm install aws-cdk-lib/aws-kms
 
