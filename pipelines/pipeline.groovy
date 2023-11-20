@@ -69,7 +69,7 @@ pipeline {
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode-dev'
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
                                 //sh 'sudo npm ls -g --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm'
-                                sh 'sudo npm ls --depth=0 | awk -F/ './s3-cdk/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm rm'
+                                sh 'sudo npm ls --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm rm'
 
 
                                 sh 'sudo apt install -y curl software-properties-common'
