@@ -60,7 +60,7 @@ pipeline {
                                 sh 'sudo apt update'
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-                                sh 'sudo apt install -y nodejs'
+                                //sh 'sudo apt install -y nodejs'
                                 sh 'sudo apt-get install -y Node.js '
                                 sh 'sudo apt install npm'
                                 sh 'sudo npm install -g typescript'
