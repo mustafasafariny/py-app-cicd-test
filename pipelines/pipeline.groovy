@@ -75,7 +75,9 @@ pipeline {
                                 //sh 'sudo apt dist-upgrade'
 
                                 sh 'sudo apt-get install nodejs -y'
+                                sh 'sudo apt-mark showhold'
                                 sh 'sudo apt-get install npm -y'
+                                
                                 sh 'sudo npm install -g typescript'
 
                                 echo 'Node.js -v && npm --version'
