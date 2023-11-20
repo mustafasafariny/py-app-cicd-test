@@ -78,8 +78,8 @@ pipeline {
                                                                 
                                 sh 'sudo npm install -g typescript'
 
-                                sh 'chmod +x ./cdkappbuild.sh'                              
-                                sh './cdkappbuild.sh'
+                                sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
+                                sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
                                 s3Upload(file: "${ARTIFACTS_FILE}",
