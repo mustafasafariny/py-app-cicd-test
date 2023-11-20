@@ -41,12 +41,13 @@ pipeline {
                 // saving artifacts
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
 
-                // building S3 bucket and tag it with the build tag
+                // building S3 tag
                 // def BUILD_TAG_NAME = env.BUILD_TAG              
                 echo "Build Tag: ${env.BUILD_TAG}"
 
                 // create S3 Bucket and Upload artifacts into it
                 // but first get authorization - security access credentials 
+
                 withAWS(region:"${AWS_REGION}",
                         credentials:'awscredentials'  //Use Jenkins AWS credentials information (AWS Access Key: AccessKeyId, AWS Secret Key: SecretAccessKey):
                     //    profile:'~/.aws/credentials',
@@ -54,9 +55,18 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                            {   dir('./s3-cdk') {
-                                    echo 'changed dir'
-                            }                                
+                        {   dir('./s3-cdk') {
+                                echo 'changed dir'
+                                sh 'sudo apt update'
+                                sh 'sudo apt install -y curl software-properties-common'
+                                sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+                                sh 'sudo apt install -y nodejs'
+                                sh 'sudo apt-get install -y Node.js '
+                                sh 'sudo apt install npm'
+                                sh 'sudo npm install -g typescript'
+
+                                echo 'Node.js -v && npm --version'
+                                                               
                                 sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
@@ -67,8 +77,8 @@ pipeline {
                                     path: "${AWS_S3_BUCKET_PATH}",
                                     workingDir:"${WORKING_DIR}",
                                     includePathPattern:'**/*.gz,**/*.whl')
-
-                            }         
+                            }
+                        }         
             }
         }
 
