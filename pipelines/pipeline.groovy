@@ -70,7 +70,7 @@ pipeline {
                                 sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
                                 //sh 'sudo npm ls -g --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm'
                                 //sh 'sudo npm ls --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm rm'
-                                sh 'sudo npm uninstall `ls -1 node_modules | tr '/\n' ' '`'
+                                //sh 'sudo npm uninstall `ls -1 node_modules | tr '/\n' ' '`'
 
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
@@ -80,10 +80,8 @@ pipeline {
                                 //sh 'sudo apt update'
                                 //sh 'sudo apt dist-upgrade'
 
-                                sh 'sudo apt-get install nodejs -y'
-                                sh 'sudo apt-mark showhold'
-                                //sh 'sudo npm uninstall npm -g'
-                                sh 'sudo apt-get install npm -y'
+                                //sh 'sudo apt-get install nodejs -y'
+                                //sh 'sudo apt-get install npm -y'
                                 
                                 sh 'sudo npm install -g typescript'
 
