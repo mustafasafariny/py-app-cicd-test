@@ -73,16 +73,14 @@ pipeline {
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
 
                                 sh 'sudo apt-get update'
-                                sh 'sudo apt-get install -y nodejs'
-                                echo 'Node.js -v && npm --version'
-                                                                
+                                sh 'sudo apt-get install -y nodejs'                                                              
                                 sh 'sudo npm install -g typescript'
 
                                 sh 'sudo chmod +x ./cdk-scripts/cdkappbuild.sh'                              
                                 sh './cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
-                                
+
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
