@@ -75,18 +75,12 @@ pipeline {
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
 
-                                //sh'sudo dpkg -i --force-overwrite /var/cache/apt/archives/nodejs_16.9.0-deb-1nodesource1_amd64.deb'
-                                //sh 'sudo apt -f install'
-                                //sh 'sudo apt update'
-                                //sh 'sudo apt dist-upgrade'
-
-                                //sh 'sudo apt-get install nodejs -y'
-                                //sh 'sudo apt-get install npm -y'
-                                
-                                sh 'sudo npm install -g typescript'
-
+                                sh 'sudo apt-get update'
+                                sh 'sudo apt-get install -y nodejs'
                                 echo 'Node.js -v && npm --version'
-                                                               
+                                                                
+                                sh 'sudo npm install -g typescript'
+                                                              
                                 sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
