@@ -57,11 +57,11 @@ pipeline {
 
                         {   dir('./s3-cdk') {
                                 echo 'changed dir'
-                                sh 'sudo apt -y update'
+                                sh 'sudo apt update -y'
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-                                sh 'sudo apt install -y nodejs.'
-                                sh 'sudo apt install -y npm'
+                                sh 'sudo apt install nodejs'
+                                sh 'sudo apt install npm -y'
                                 sh 'sudo npm install -g typescript'
 
                                 echo 'Node.js -v && npm --version'
