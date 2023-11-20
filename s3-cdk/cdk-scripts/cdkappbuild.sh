@@ -6,5 +6,8 @@ sudo -s npm install aws-cdk-lib/aws-iam
 sudo -s npm install aws-cdk-lib/aws-kms
 #tsc
 #cdk synth
+echo 'cdk build start...'
 sudo -s npm run build
+
+echo 'cdk synth start...'
 sudo -s npm run cdk synth
