@@ -78,7 +78,7 @@ pipeline {
                                                                 
                                 sh 'sudo npm install -g typescript'
 
-                                sh 'chmod +x ./s3-cdk/cdk-scripts/cdkappbuild.sh'                              
+                                sh 'chmod +x ./s3-cdk/cdk-scripts'                              
                                 sh './s3-cdk/cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
