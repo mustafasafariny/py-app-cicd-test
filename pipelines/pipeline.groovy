@@ -65,7 +65,7 @@ pipeline {
                                 sh 'sudo apt-get update'
                                 sh 'sudo apt-get install -y nodejs'
                                 //sh 'sudo npm install typescript'                                                              
-                                sh 'sudo npm install'
+                                //sh 'sudo npm install'
                       
                                 sh './cdk-scripts/cdkappbuild.sh'
 
