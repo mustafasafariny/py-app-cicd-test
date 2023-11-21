@@ -15,8 +15,8 @@ export class S3CdkStack extends cdk.Stack {
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
-      encryptionKey: new kms.Key(this, 's3BucketKMSKey'),
-      enforceSSL: true,
+      //encryptionKey: new kms.Key(this, 's3BucketKMSKey'),
+      //enforceSSL: true,
       versioned: true,
     });
 
