@@ -5,7 +5,7 @@ set -e
 echo 'cdk build start...'
 #npm run build
 
-//echo 'cdk bootstrap start...'
+echo 'cdk bootstrap start...'
 #cdk bootstrap
 
 echo 'cdk synth start...'
