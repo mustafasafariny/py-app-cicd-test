@@ -1,10 +1,7 @@
 #!/bin/bash
 set -e
 # Typescript dependencies installation (packages and lib/modules)
-npm install
 
-#tsc
-#cdk synth
 echo 'cdk build start...'
 npm run build
 
