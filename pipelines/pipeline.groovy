@@ -83,7 +83,9 @@ pipeline {
                                 sh './cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
-
+                                //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
+                                //sh "aws cloudformation deploy --template-file sample/pipeline-s3/cfn-s3.yaml  --stack-name sample-s3-stack --parameter-overrides BucketName=jenkins-zzz-demox-${BUILD_NUMBER}"
+        }
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
