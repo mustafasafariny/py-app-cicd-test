@@ -2,11 +2,11 @@
 set -e
 # Typescript dependencies installation (packages and lib/modules)
 
-//echo 'cdk build start...'
-//npm run build
+echo 'cdk build start...'
+#npm run build
 
 //echo 'cdk bootstrap start...'
-//cdk bootstrap
+#cdk bootstrap
 
 echo 'cdk synth start...'
 npm run cdk synth
