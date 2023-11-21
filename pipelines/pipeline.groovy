@@ -57,6 +57,17 @@ pipeline {
 
                         {   dir('./s3-cdk') {
                                 echo 'changed dir'
+                                sh 'sudo apt clean'
+                                sh 'sudo apt --fix-broken install'
+                                sh 'sudo apt-get update'
+                                sh 'sudo apt-get install -f'
+                                sh 'sudo apt-get autoclean -y'
+                                sh 'sudo apt-get autoremove -y'
+                                sh 'sudo apt remove nodejs -y'
+                                sh 'sudo apt remove nodejs-doc -y'
+                                sh 'sudo dpkg --remove --force-remove-reinstreq libnode-dev'
+                                sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
+
                                 sh 'sudo apt update -y'
 
                                 sh 'sudo apt install -y curl software-properties-common'
@@ -64,9 +75,10 @@ pipeline {
 
                                 sh 'sudo apt-get update'
                                 sh 'sudo apt-get install -y nodejs'
-                                //sh 'sudo npm install typescript'                                                              
-                                //sh 'sudo npm install'
+                                                                                            
+                                sh 'sudo npm install'
                       
+                                //sh 'sudo npm install typescript'  
                                 sh './cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
