@@ -63,7 +63,8 @@ pipeline {
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
 
                                 sh 'sudo apt-get update'
-                                sh 'sudo apt-get install -y nodejs'                                                              
+                                sh 'sudo apt-get install -y nodejs'
+                                //sh 'sudo npm install typescript'                                                              
                                 sh 'sudo npm install'
                       
                                 sh './cdk-scripts/cdkappbuild.sh'
