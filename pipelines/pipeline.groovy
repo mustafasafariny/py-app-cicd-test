@@ -64,9 +64,8 @@ pipeline {
 
                                 sh 'sudo apt-get update'
                                 sh 'sudo apt-get install -y nodejs'                                                              
-                                sh 'sudo npm install -g typescript'
-
-                                sh 'sudo chmod +x ./cdk-scripts/cdkappbuild.sh'                              
+                                sh 'sudo npm install'
+                      
                                 sh './cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
