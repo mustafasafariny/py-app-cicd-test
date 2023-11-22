@@ -10,7 +10,7 @@ import { Construct } from 'constructs';
 export class S3CdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
+    console.log('hello s3 bucket stack');
     const s3Bucket = new s3.Bucket(this, 'CicdDemoBucket', {
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
