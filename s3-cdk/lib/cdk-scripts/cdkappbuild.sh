@@ -14,6 +14,7 @@ npm run cdk synth
 #sudo -s 'npm run build && cdk synth --all'
 #sudo -s 'cdk destroy'
 echo 'cdk synth end...'
+
 #Bootstrap 
 #Bootstrapping is the process of provisioning resources for the AWS CDK before you can deploy AWS CDK apps into an AWS environment.
 #(An AWS environment is a combination of an AWS account and Region).

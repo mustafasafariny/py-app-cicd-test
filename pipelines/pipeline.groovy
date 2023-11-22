@@ -87,12 +87,21 @@ pipeline {
                                 //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
                                 //sh "aws cloudformation deploy --template-file sample/pipeline-s3/cfn-s3.yaml  --stack-name sample-s3-stack --parameter-overrides BucketName=jenkins-zzz-demox-${BUILD_NUMBER}"
                                 //    }
+
+                                echo "${ARTIFACTS_FILE}"
+                                echo "${env.BUILD_TAG}"
+                                echo "${AWS_S3_BUCKET}"
+                                echo "${AWS_S3_BUCKET_PATH}"
+                                echo "${WORKING_DIR}"
+
+                                /*
                                 s3Upload(file: "${ARTIFACTS_FILE}",
                                     tags: "${env.BUILD_TAG}",
                                     bucket:"${AWS_S3_BUCKET}",
                                     path: "${AWS_S3_BUCKET_PATH}",
                                     workingDir:"${WORKING_DIR}",
                                     includePathPattern:'**/*.gz,**/*.whl')
+                                */
                             }
                         }         
             }
