@@ -16,10 +16,10 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-sountheast-2'
-        AWS_S3_BUCKET = 'mustafa.py.app.demo.cdk.artifacts'      
-        AWS_S3_BUCKET_PATH = 'cicd-demo/'
+        AWS_S3_BUCKET = 'CicdDemoBucket'      
         ARTIFACTS_FILE = 'artifacts'
-        WORKING_DIR = 'dist'
+        //AWS_S3_BUCKET_PATH = 'cicd-demo/'
+        //WORKING_DIR = 'dist'
     }
 
     stages {
@@ -78,10 +78,9 @@ pipeline {
                                 sh 'sudo apt-get install -y nodejs'
                                                                                             
                                 //sh 'sudo npm install'                    
-                                //sh 'sudo npm install typescript'
 
                                 sh 'sudo npm install -g aws-cdk'
-                                //sh './s3-cdk/lib/cdk-scripts/cdkappbuild.sh'
+                                sh './s3-cdk/lib/cdk-scripts/cdks3bucket.sh'
 
                                 echo "before s3 upload...!"
                                 //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
@@ -91,13 +90,11 @@ pipeline {
                                 echo "${ARTIFACTS_FILE}"
                                 echo "${env.BUILD_TAG}"
                                 echo "${AWS_S3_BUCKET}"
-                                echo "${AWS_S3_BUCKET_PATH}"
-                                echo "${WORKING_DIR}"
 
                                 
-                                //s3Upload(file: "${ARTIFACTS_FILE}",
-                                //    tags: "${env.BUILD_TAG}",
-                                //    bucket:"${AWS_S3_BUCKET}",
+                                s3Upload(file: "${ARTIFACTS_FILE}",
+                                    tags: "${env.BUILD_TAG}",
+                                    bucket:"${AWS_S3_BUCKET}",
                                 //    path: "${AWS_S3_BUCKET_PATH}",
                                 //    workingDir:"${WORKING_DIR}",
                                 //    includePathPattern:'**/*.gz,**/*.whl')

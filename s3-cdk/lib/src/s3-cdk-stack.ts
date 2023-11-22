@@ -26,4 +26,4 @@ export class S3CdkStack extends cdk.Stack {
 
 const app = new cdk.App();
 new S3CdkStack(app, 'S3BucketCdkStack');
-app.synth();
+//app.synth();
