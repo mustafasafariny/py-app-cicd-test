@@ -55,7 +55,8 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                        {   dir('./s3-cdk') {
+                        {   dir('./s3-cdk')
+                             {
                                 echo 'changed dir'
                                 /*
                                 sh 'sudo apt clean'
@@ -93,11 +94,12 @@ pipeline {
 
                                 
                                 s3Upload(file: "${ARTIFACTS_FILE}",
-                                    tags: "${env.BUILD_TAG}",
-                                    bucket:"${AWS_S3_BUCKET}"
+                                         tags: "${env.BUILD_TAG}",
+                                         bucket:"${AWS_S3_BUCKET}",
                                 //    path: "${AWS_S3_BUCKET_PATH}",
                                 //    workingDir:"${WORKING_DIR}",
-                                //    includePathPattern:'**/*.gz,**/*.whl')
+                                //    includePathPattern:'**/*.gz,**/*.whl',
+                                        )
                                  
                             }
                         }         
