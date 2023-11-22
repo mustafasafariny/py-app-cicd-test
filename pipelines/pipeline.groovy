@@ -81,7 +81,7 @@ pipeline {
                                 //sh 'sudo npm install typescript'
 
                                 sh 'sudo npm install -g aws-cdk'
-                                sh './lib/cdk-scripts/cdkappbuild.sh'
+                                //sh './s3-cdk/lib/cdk-scripts/cdkappbuild.sh'
 
                                 echo "before s3 upload...!"
                                 //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
