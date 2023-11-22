@@ -94,14 +94,14 @@ pipeline {
                                 echo "${AWS_S3_BUCKET_PATH}"
                                 echo "${WORKING_DIR}"
 
-                                /*
-                                s3Upload(file: "${ARTIFACTS_FILE}",
-                                    tags: "${env.BUILD_TAG}",
-                                    bucket:"${AWS_S3_BUCKET}",
-                                    path: "${AWS_S3_BUCKET_PATH}",
-                                    workingDir:"${WORKING_DIR}",
-                                    includePathPattern:'**/*.gz,**/*.whl')
-                                */
+                                
+                                //s3Upload(file: "${ARTIFACTS_FILE}",
+                                //    tags: "${env.BUILD_TAG}",
+                                //    bucket:"${AWS_S3_BUCKET}",
+                                //    path: "${AWS_S3_BUCKET_PATH}",
+                                //    workingDir:"${WORKING_DIR}",
+                                //    includePathPattern:'**/*.gz,**/*.whl')
+                                 
                             }
                         }         
             }
