@@ -63,7 +63,9 @@ pipeline {
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
                                 sh 'sudo apt-get update'
-                                sh 'sudo apt-get install -y nodejs'                                                                                
+                                
+                                sh 'sudo apt-get install -y nodejs'
+
                                 sh 'sudo npm install'
                                 sh 'sudo npm update'                    
                                 sh 'sudo npm install aws-cdk-lib'
@@ -72,7 +74,7 @@ pipeline {
                                 sh 'tsc'
                                 sh 'cdk synth cdk-infra-stack'
                                 sh 'cdk deploy cdk-infra-stack'
-                                
+
                                 //sh './lib/cdk-scripts/cdks3bucket.sh'
 
                                 echo "before s3 upload...!"
