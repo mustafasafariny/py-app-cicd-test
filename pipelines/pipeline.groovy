@@ -55,7 +55,7 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                        {   dir('./s3-cdk')
+                        {   dir('./cdk-infra')
                              {
                                 echo 'changed dir'
                                 /*
