@@ -59,27 +59,21 @@ pipeline {
                              {
                                 echo 'changed dir'
 
-                                sh 'sudo apt clean'
-                                sh 'sudo apt --fix-broken install'
-                                sh 'sudo apt-get update'
-                                sh 'sudo apt-get install -f'
-                                sh'sudo apt-get autoclean -y'
-                                sh 'sudo sudo apt-get autoremove -y'
-                                sh 'sudo apt remove nodejs -y'
-                                sh 'sudo apt remove nodejs-doc -y'
-                                sh 'sudo dpkg --remove --force-remove-reinstreq libnode-dev'
-                                sh 'sudo dpkg --remove --force-remove-reinstreq libnode72:amd64'
-
                                 sh 'sudo apt update -y'
                                 sh 'sudo apt install -y curl software-properties-common'
                                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
                                 sh 'sudo apt-get update'
-                                sh 'sudo apt-get install -y nodejs'
-                                                                                 
-                                //sh 'sudo npm install'                    
+                                sh 'sudo apt-get install -y nodejs'                                                                                
+                                sh 'sudo npm install'
+                                sh 'sudo npm update'                    
                                 sh 'sudo npm install aws-cdk-lib'
+                                sh 'sudo npm install -g typescript aws-cdk'
 
-                                sh './lib/cdk-scripts/cdks3bucket.sh'
+                                sh 'tsc'
+                                sh 'cdk synth cdk-infra-stack'
+                                sh 'cdk deploy cdk-infra-stack'
+                                
+                                //sh './lib/cdk-scripts/cdks3bucket.sh'
 
                                 echo "before s3 upload...!"
 
