@@ -58,7 +58,7 @@ pipeline {
                         {   dir('./cdk-infra')
                              {
                                 echo 'changed dir'
-                                
+
                                 sh 'sudo apt clean'
                                 sh 'sudo apt --fix-broken install'
                                 sh 'sudo apt-get update'
