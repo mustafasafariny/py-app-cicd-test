@@ -68,7 +68,7 @@ pipeline {
 
                                 echo 'npm install'
                                 //sh 'sudo npm install'
-                                sh 'sudo npm update'                    
+                                //sh 'sudo npm update'                    
                                 sh 'sudo npm install aws-cdk-lib'
                                 sh 'sudo npm install -g typescript aws-cdk'
 
