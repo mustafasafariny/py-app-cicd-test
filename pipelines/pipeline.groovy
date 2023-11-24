@@ -66,7 +66,7 @@ pipeline {
                                 sh 'sudo apt-get install -y nodejs'
                                                                                             
                                 //sh 'sudo npm install'                    
-                                sh 'sudo npm install -g aws-cdk'
+                                sh 'sudo npm install aws-cdk-lib'
 
                                 sh './lib/cdk-scripts/cdks3bucket.sh'
 
