@@ -70,13 +70,14 @@ pipeline {
                                 //sh 'sudo npm install'
                                 //sh 'sudo npm update'                    
                                 //sh 'sudo npm install aws-cdk-lib'
+
                                 sh 'sudo npm install -g typescript aws-cdk'
 
                                 echo 'build & deploy stack'
                                 sh 'tsc'
-                                sh 'cdk synth
+                                sh 'cdk synth'
                                 //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-                                sh 'cdk deploy
+                                sh 'cdk deploy'
 
                                 //sh './lib/cdk-scripts/cdks3bucket.sh'
 
