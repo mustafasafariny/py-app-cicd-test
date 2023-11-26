@@ -75,6 +75,7 @@ pipeline {
                                 sh 'sudo npm install -g typescript aws-cdk'
 
                                 echo 'build & deploy stack'
+                                //sh 'tsc @args --sourceRoot src'
                                 sh 'tsc'
                                 sh 'cdk synth'
                                 //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
