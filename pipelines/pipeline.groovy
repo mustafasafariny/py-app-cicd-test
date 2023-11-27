@@ -76,7 +76,6 @@ pipeline {
 
                                 echo 'build & deploy stack'
                                 sh 'tsc --noEmit --diagnostics'
-'
                                 //sh 'tsc'
                                 sh 'cdk synth'
                                 //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
