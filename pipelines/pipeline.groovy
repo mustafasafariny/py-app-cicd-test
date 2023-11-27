@@ -75,7 +75,7 @@ pipeline {
                                 sh 'sudo npm install -g typescript aws-cdk'
 
                                 echo 'build & deploy stack'
-                                sh 'tsc  --verbose --diagnostics'
+                                sh 'tsc --noEmit --diagnostics cdk-infra-app-stack.ts'
                                 //sh 'tsc'
                                 sh 'cdk synth'
                                 //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
