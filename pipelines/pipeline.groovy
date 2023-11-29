@@ -151,7 +151,7 @@ pipeline {
     post {
             always {
                 echo 'Send email...'
-                sh 'cdk destroy --force'
+            //    sh 'cdk destroy --force'
             }
             success {
                 echo 'Build successful! Deploying...'                           
