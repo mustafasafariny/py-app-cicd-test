@@ -25,7 +25,7 @@
     ],
     "outDir": "build",
     "noEmitOnError": true,
-  //  "rootDir": "./src"
+    "rootDir": "./lib/src"
   },
   "exclude": [
     "build",
