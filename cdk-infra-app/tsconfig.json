@@ -3,7 +3,7 @@
     "target": "ES2020",
     "module": "commonjs",
     "lib": [
-      "es2020",
+      "ES6",
       "dom"
     ],
     "declaration": true,
@@ -12,8 +12,8 @@
     "strictNullChecks": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+//    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
     "inlineSourceMap": true,
@@ -23,10 +23,12 @@
     "typeRoots": [
       "./node_modules/@types"
     ],
-    "outDir": "dist", 
-    "rootDir": "lib/src/**/*"
+    "outDir": "build",
+    "noEmitOnError": true,
+  //  "rootDir": "./src"
   },
   "exclude": [
+    "build",
     "node_modules",
     "cdk.out"
   ]

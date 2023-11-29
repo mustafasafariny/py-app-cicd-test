@@ -76,11 +76,17 @@ pipeline {
 
                                 echo 'build & deploy stack'
                                 sh 'npm run build'                                
-                                //sh 'tsc'
                                 
+                                sh 'npm install --save-dev typescript'
+                                // compile TSC app
+                                sh 'tsc cdk-infra-app-stack.ts'
+
+                                // create cloudformation resources template from stack
                                 sh 'cdk synth'
                                
                                 //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
+
+                                // Deploy app stack
                                 sh 'cdk deploy'
 
                                 //sh './lib/cdk-scripts/cdks3bucket.sh'
