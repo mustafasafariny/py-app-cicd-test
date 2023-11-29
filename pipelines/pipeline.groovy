@@ -55,7 +55,7 @@ pipeline {
                     //    roleAccount:'144358027444'
                         )
 
-                        {   dir('./cdk-infra-app')
+                        {   dir('./cdk-infra-app-code')
                              {
                                 echo 'changed dir'
 
@@ -76,7 +76,7 @@ pipeline {
                                 
                                 sh 'npm install --save-dev typescript'
                                 // compile TSC app
-                                sh 'tsc cdk-infra-app-stack.ts'
+                                sh 'tsc cdk-infra-app-code-stack.ts'
 
                                 // create cloudformation resources template from stack
                                 sh 'cdk synth'

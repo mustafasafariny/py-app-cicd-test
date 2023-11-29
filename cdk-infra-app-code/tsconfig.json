@@ -22,7 +22,10 @@
     "strictPropertyInitialization": false,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "outDir": "build",
+    "noEmitOnError": true,
+    "rootDir": "./lib/src"
   },
   "exclude": [
     "node_modules",
