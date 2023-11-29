@@ -76,7 +76,7 @@ pipeline {
                                 
                                 sh 'npm install --save-dev typescript'
                                 // compile TSC app
-                                sh 'tsc cdk-infra-app-code-stack.ts'
+                                sh 'tsc ./lib/src/cdk-infra-app-code-stack.ts'
 
                                 // create cloudformation resources template from stack
                                 sh 'cdk synth'
