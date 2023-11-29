@@ -75,7 +75,7 @@ pipeline {
                                 sh 'sudo npm install -g typescript aws-cdk'
 
                                 echo 'build & deploy stack'
-                                sh 'npm run build'                                
+                                //sh 'npm run build'                                
                                 
                                 sh 'npm install --save-dev typescript'
                                 // compile TSC app
