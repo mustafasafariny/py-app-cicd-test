@@ -25,12 +25,13 @@
     ],
     "outDir": "bin",
     "noEmitOnError": true,
-    //"rootDir": "./cdk-infra-app-code/lib/src",
+    "rootDir": "./lib/src",
     "skipLibCheck": true,
   },
+  "include": [
+    "lib/src/**/*"],
   "exclude": [
     "node_modules",
-  //  "build",
     "cdk.out"
   ]
 }
