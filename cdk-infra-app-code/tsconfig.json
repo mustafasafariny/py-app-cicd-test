@@ -25,7 +25,7 @@
     ],
     "outDir": "bin",
     "noEmitOnError": true,
-    //"rootDir": "./lib/src",
+    //"rootDir": "./cdk-infra-app-code/lib/src",
     "skipLibCheck": true,
   },
   "exclude": [
