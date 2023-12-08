@@ -25,7 +25,8 @@
     ],
     "outDir": "bin",
     "noEmitOnError": true,
-    "rootDir": "./lib/src"
+    "rootDir": "./lib/src",
+    "skipLibCheck": true,
   },
   "exclude": [
     "node_modules",
