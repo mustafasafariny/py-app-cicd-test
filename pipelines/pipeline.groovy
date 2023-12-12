@@ -67,7 +67,8 @@ pipeline {
                                     sudo apt-get install -y nodejs
                                     npm install
                                     npx tsc
-                                    cdk synth ./lib/src/cdk-infra-app-code.ts                           
+                                    cd /bin
+                                    cdk synth                        
                                     #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
                                     cdk deploy
                                 """
