@@ -58,36 +58,20 @@ pipeline {
                         {   dir('./cdk-infra-app-code')
                              {
                                 echo 'changed dir'
+                                sh """
+                                    sudo apt update -y
+                                    sudo apt install -y curl software-properties-common
+                                    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+                                    sudo apt-get update
 
-                                sh 'sudo apt update -y'
-                                sh 'sudo apt install -y curl software-properties-common'
-                                sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
-                                sh 'sudo apt-get update'
-
-                                sh 'sudo apt-get install -y nodejs'
-
-                                //sh 'npm install'                                
-                                sh 'sudo npm install -g aws-cdk'                   
-                                sh 'sudo npm install aws-cdk-lib'
-                                sh 'sudo npm install -g typescript aws-cdk'
-
-                                echo 'build & deploy stack'
-                                //sh 'npm run build'                                
-                                
-                                sh 'npm install --save-dev typescript'
-                                // compile TSC app
-                                sh 'tsc'
-
-                                // create cloudformation resources template from stack
-                                sh 'cdk synth'
-                               
-                                //sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-
-                                // Deploy app stack
-                                sh 'cdk deploy'
-
+                                    sudo apt-get install -y nodejs
+                                    npm install
+                                    npx tsc
+                                    cdk synth                             
+                                    #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
+                                    cdk deploy
+                                """
                                 //sh './lib/cdk-scripts/cdks3bucket.sh'
-
                                 echo "before s3 upload...!"
 
                                 //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
