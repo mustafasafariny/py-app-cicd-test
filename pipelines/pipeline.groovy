@@ -65,6 +65,7 @@ pipeline {
                                 npm install
 
                                 cd /bin
+                                ls -l
                                 tsc                                
 
                                 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
