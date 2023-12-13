@@ -17,7 +17,7 @@ pipeline {
     environment {
         AWS_REGION = 'ap-sountheast-2'
         AWS_ACCOUNT = '144358027444'
-        AWS_ROLE = 'arn:aws:iam::144358027444:role/AWS-DevOps-Identity'
+        AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'CicdDemoBucket'      
         ARTIFACTS_FILE = 'artifacts'
         //AWS_S3_BUCKET_PATH = 'cicd-demo/'
@@ -53,7 +53,7 @@ pipeline {
                 withAWS(
                       region:"${AWS_REGION}"
                     , credentials:'awscredentials'
-                //    , role: "${AWS_ROLE}"
+                    , role: "${AWS_ROLE}"
                 //    , roleAccount: "${AWS_ACCOUNT}"
                     )
 
