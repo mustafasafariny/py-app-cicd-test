@@ -53,7 +53,8 @@ pipeline {
                 withAWS(role: "${AWS_ROLE}"
                       , roleAccount: "${AWS_ACCOUNT}"
                       , region:"${AWS_REGION}"
-                    //  ,credentials:'awscredentials')
+                    //  ,credentials:'awscredentials'
+                    )
                         {
 
                             sh """
