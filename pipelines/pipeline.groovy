@@ -55,23 +55,24 @@ pipeline {
                     //    role:'AWS-DevOps-Identity',
                     //    roleAccount:'144358027444'
                         )
-                        sh """
-                            sudo apt update -y
-                            sudo apt install -y curl software-properties-common
-                            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-                            sudo apt-get update
-                            sudo apt-get install -y nodejs
-                            npm install
+                        {
+                            sh """
+                                sudo apt update -y
+                                sudo apt install -y curl software-properties-common
+                                curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+                                sudo apt-get update
+                                sudo apt-get install -y nodejs
+                                npm install
 
-                            #npm run build
-                            npx tsc
-                            cd /bin                                
-                            ls -l
-                            sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
-                            #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-                            cdk deploy
-                        """                        
-                        {   dir('./cdk-infra-app-code')
+                                #npm run build
+                                npx tsc
+                                cd /bin                                
+                                ls -l
+                                sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
+                                #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
+                                cdk deploy
+                            """                        
+                            dir('./cdk-infra-app-code')
                              {
                                 echo 'changed dir'
 
