@@ -45,6 +45,7 @@ pipeline {
                 // def BUILD_TAG_NAME = env.BUILD_TAG              
                 echo "Build Tag: ${env.BUILD_TAG}"
 
+
                 // create AWS S3 Bucket and Upload artifacts into it
                 // but first get authorization - security access credentials 
 
@@ -54,27 +55,26 @@ pipeline {
                     //    role:'AWS-DevOps-Identity',
                     //    roleAccount:'144358027444'
                         )
+                        sh """
+                            sudo apt update -y
+                            sudo apt install -y curl software-properties-common
+                            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+                            sudo apt-get update
+                            sudo apt-get install -y nodejs
+                            npm install
 
+                            #npm run build
+                            npx tsc
+                            cd /bin                                
+                            ls -l
+                            sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
+                            #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
+                            cdk deploy
+                        """                        
                         {   dir('./cdk-infra-app-code')
                              {
                                 echo 'changed dir'
-                                sh """
-                                    sudo apt update -y
-                                    sudo apt install -y curl software-properties-common
-                                    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-                                    sudo apt-get update
 
-                                    sudo apt-get install -y nodejs
-                                    npm install
-
-                                    #npm run build
-                                    npx tsc
-                                    cd /bin                                
-                                    ls -l
-                                    sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
-                                    #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-                                    cdk deploy
-                                """
                                 //sh './lib/cdk-scripts/cdks3bucket.sh'
                                 echo "before s3 upload...!"
 
