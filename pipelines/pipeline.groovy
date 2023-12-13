@@ -65,11 +65,11 @@ pipeline {
                                 npm install
 
                                 cd /bin
-                                npx tsc                                
+                                tsc                                
 
                                 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
                                 #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-                                
+
                                 cdk deploy
                             """                        
                             dir('./cdk-infra-app-code')
