@@ -15,6 +15,7 @@ pipeline {
     }
 
     environment {
+        AWS_PROFILE = 'default'  // Use profile information from ~/.aws/config
         AWS_REGION = 'ap-sountheast-2'
         AWS_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
@@ -49,13 +50,16 @@ pipeline {
 
 
                 // create AWS S3 Bucket and Upload artifacts into it
-                // but first get authorization - security access credentials 
-                withAWS(
-                      region:"${AWS_REGION}"
-                    , credentials:'awscredentials'
-                    , role: "${AWS_ROLE}"
+                // but first get authorization - security access credentials
+
+                withAWS(profile:"${AWS_PROFILE}")
+
+                //withAWS(
+                //      region:"${AWS_REGION}"
+                //    , credentials:'awscredentials'
+                //    , role: "${AWS_ROLE}"
                 //    , roleAccount: "${AWS_ACCOUNT}"
-                    )
+                //    )
 
                         {
 

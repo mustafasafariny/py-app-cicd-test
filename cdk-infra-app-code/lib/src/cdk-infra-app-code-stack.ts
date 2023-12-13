@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-//import * as iam from 'aws-cdk-lib/aws-iam';
+import * as iam from 'aws-cdk-lib/aws-iam';
 import * as kms from 'aws-cdk-lib/aws-kms';
 
 export class CdkInfraAppCodeStack extends cdk.Stack {
@@ -13,12 +13,26 @@ export class CdkInfraAppCodeStack extends cdk.Stack {
       objectOwnership: s3.ObjectOwnership.BUCKET_OWNER_ENFORCED,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
-      //encryptionKey: new kms.Key(this, 's3BucketKMSKey'),
-      //enforceSSL: true,
       versioned: true,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
-
-    //s3Bucket.grantRead(new iam.AccountRootPrincipal());
-
+/*
+    // Create an IAM role for Jenkins
+    const jenkinsRole = new iam.Role(this, 'JenkinsRole', {
+        assumedBy: new iam.ServicePrincipal('jenkins.amazonaws.com'),
+      });
+  
+    // Attach the AmazonS3FullAccess policy to the Jenkins role
+    jenkinsRole.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'));
+  
+    // Output the bucket name and role ARN (for Jenkins configuration)
+    new cdk.CfnOutput(this, 'ArtifactBucketName', {
+        value: s3Bucket.bucketName,
+      });
+  
+    new cdk.CfnOutput(this, 'JenkinsRoleArn', {
+        value: jenkinsRole.roleArn,
+      });
+*/
   }
 }
