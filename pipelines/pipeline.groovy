@@ -17,7 +17,7 @@ pipeline {
     environment {
         AWS_REGION = 'ap-sountheast-2'
         AWS_ACCOUNT = '144358027444'
-        AWS_ROLE = 'AWS-DevOps-Identity'
+        AWS_ROLE = 'arn:aws:iam::144358027444:role/AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'CicdDemoBucket'      
         ARTIFACTS_FILE = 'artifacts'
         //AWS_S3_BUCKET_PATH = 'cicd-demo/'
@@ -50,11 +50,13 @@ pipeline {
 
                 // create AWS S3 Bucket and Upload artifacts into it
                 // but first get authorization - security access credentials 
-                withAWS(role: "${AWS_ROLE}"
+                withAWS(
+                        role: "${AWS_ROLE}"
                       , roleAccount: "${AWS_ACCOUNT}"
                       , region:"${AWS_REGION}"
-                    //  ,credentials:'awscredentials'
-                    )
+                      ,credentials:'awscredentials'
+                        )
+                        
                         {
 
                             sh """
