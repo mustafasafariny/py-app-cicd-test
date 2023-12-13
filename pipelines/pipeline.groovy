@@ -63,15 +63,16 @@ pipeline {
                                 sudo apt-get update
                                 sudo apt-get install -y nodejs
                                 npm install
-
-                                cd /bin
+                                
+                                cd /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
+                                pwd
                                 ls -l
-                                tsc                                
+                                sudo tsc                               
+                                sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
+                                                       
+                                #sudo cdk bootstrap aws://144358027444/'ap-sountheast-2'
 
-                                sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
-                                #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
-
-                                cdk deploy
+                                sudo cdk deploy
                             """                        
                             dir('./cdk-infra-app-code')
                              {
