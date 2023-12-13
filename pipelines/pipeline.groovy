@@ -64,12 +64,12 @@ pipeline {
                                 sudo apt-get install -y nodejs
                                 npm install
 
-                                npm run build
-                                #npx tsc
-                                cd /bin                                
-                                ls -l
+                                cd /bin
+                                npx tsc                                
+
                                 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                       
                                 #sh 'cdk bootstrap aws://144358027444/'ap-sountheast-2'
+                                
                                 cdk deploy
                             """                        
                             dir('./cdk-infra-app-code')
