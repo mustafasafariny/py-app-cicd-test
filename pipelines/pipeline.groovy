@@ -64,41 +64,29 @@ pipeline {
                                 sudo apt-get install -y nodejs
                                 npm install
                                 
-                                cd /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
-                                pwd
-                                ls -l
+                                cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
                                 sudo tsc                               
                                 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-                                                       
-                                #sudo cdk bootstrap aws://144358027444/'ap-sountheast-2'
+                                #sudo cdk deploy
+                            """
+                            //sh './lib/cdk-scripts/cdks3bucket.sh'
 
-                                sudo cdk deploy
-                            """                        
-                            dir('./cdk-infra-app-code')
-                             {
-                                echo 'changed dir'
+                            sh 'cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/artifacts'
+                            echo "before s3 upload...!"
 
-                                //sh './lib/cdk-scripts/cdks3bucket.sh'
-                                echo "before s3 upload...!"
-
-                                //withAWS(roleAccount:"${DEFAULT_ACCOUNT}", role:"${DEFAULT_ACCOUNT_JENKINS_ROLE}") {
-                                //sh "aws cloudformation deploy --template-file sample/pipeline-s3/cfn-s3.yaml  --stack-name sample-s3-stack --parameter-overrides BucketName=jenkins-zzz-demox-${BUILD_NUMBER}"
-                                //    }
-
-                                echo "${ARTIFACTS_FILE}"
-                                echo "${env.BUILD_TAG}"
-                                echo "${AWS_S3_BUCKET}"
+                            echo "${ARTIFACTS_FILE}"
+                            echo "${env.BUILD_TAG}"
+                            echo "${AWS_S3_BUCKET}"
 
                                 
-                                s3Upload(file: "${ARTIFACTS_FILE}",
-                                         tags: "${env.BUILD_TAG}",
-                                         bucket:"${AWS_S3_BUCKET}",
-                                //    path: "${AWS_S3_BUCKET_PATH}",
-                                //    workingDir:"${WORKING_DIR}",
-                                //    includePathPattern:'**/*.gz,**/*.whl',
-                                        )
+                            s3Upload(file: "${ARTIFACTS_FILE}",
+                                    tags: "${env.BUILD_TAG}",
+                                    bucket:"${AWS_S3_BUCKET}",
+                                //  path: "${AWS_S3_BUCKET_PATH}",
+                                //  workingDir:"${WORKING_DIR}",
+                                //  includePathPattern:'**/*.gz,**/*.whl',
+                                    )
                                  
-                            }
                         }         
             }
         }
