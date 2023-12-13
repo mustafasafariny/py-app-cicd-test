@@ -51,12 +51,12 @@ pipeline {
                 // create AWS S3 Bucket and Upload artifacts into it
                 // but first get authorization - security access credentials 
                 withAWS(
-                        role: "${AWS_ROLE}"
-                      , roleAccount: "${AWS_ACCOUNT}"
-                      , region:"${AWS_REGION}"
-                      ,credentials:'awscredentials'
-                        )
-                        
+                      region:"${AWS_REGION}"
+                    , credentials:'awscredentials'
+                    , role: "${AWS_ROLE}"
+                    , roleAccount: "${AWS_ACCOUNT}"
+                    )
+
                         {
 
                             sh """
