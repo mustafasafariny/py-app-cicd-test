@@ -16,23 +16,5 @@ export class CdkInfraAppCodeStack extends cdk.Stack {
       versioned: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
-/*
-    // Create an IAM role for Jenkins
-    const jenkinsRole = new iam.Role(this, 'JenkinsRole', {
-        assumedBy: new iam.ServicePrincipal('jenkins.amazonaws.com'),
-      });
-  
-    // Attach the AmazonS3FullAccess policy to the Jenkins role
-    jenkinsRole.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'));
-  
-    // Output the bucket name and role ARN (for Jenkins configuration)
-    new cdk.CfnOutput(this, 'ArtifactBucketName', {
-        value: s3Bucket.bucketName,
-      });
-  
-    new cdk.CfnOutput(this, 'JenkinsRoleArn', {
-        value: jenkinsRole.roleArn,
-      });
-*/
   }
 }
