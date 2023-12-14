@@ -88,10 +88,9 @@ pipeline {
                             echo "${AWS_S3_BUCKET}"
 
                             s3Upload(
-                                    file: "${TAG_NAME}",
+                                    file: 'artifacts',
                                     bucket:'CicdDemoBucket',
                                     includePathPattern:'**/*.gz,**/*.whl',
-                                    workingDir:'artifacts',
                                     tags: 'mustafacdkbucket'
                                     )         
                         //    s3Upload(
