@@ -80,7 +80,7 @@ pipeline {
                             //sh './lib/cdk-scripts/cdks3bucket.sh'
 
                             sh 'cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/artifacts'
-                            pwd
+                            sh 'pwd'
 
                             echo "before s3 upload...!"
 
