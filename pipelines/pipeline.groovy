@@ -20,9 +20,8 @@ pipeline {
         AWS_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'CicdDemoBucket'      
-        ARTIFACTS_FILE = 'artifacts'
-        //AWS_S3_BUCKET_PATH = 'cicd-demo/'
-        //WORKING_DIR = 'dist'
+        ARTIFACTS_DIR = 'artifacts'
+
     }
 
     stages {
@@ -81,16 +80,18 @@ pipeline {
                             //sh './lib/cdk-scripts/cdks3bucket.sh'
 
                             sh 'cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/artifacts'
+                            pwd
+
                             echo "before s3 upload...!"
 
-                            echo "${ARTIFACTS_FILE}"
+                            echo "${ARTIFACTS_DIR}"
                             echo "${env.BUILD_TAG}"
                             echo "${AWS_S3_BUCKET}"
 
                             s3Upload(
                                     bucket:"${AWS_S3_BUCKET}",
                                     includePathPattern:'**/*.gz,**/*.whl',
-                                    workingDir:'artifacts',
+                                    workingDir:"${ARTIFACTS_DIR}",
                                     tags: "${env.BUILD_TAG}"
                                     )                            
 
