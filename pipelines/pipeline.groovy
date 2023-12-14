@@ -74,6 +74,8 @@ pipeline {
                                 cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
                                 sudo npx tsc                               
                                 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
+                                 
+                                sudo cdk bootstrap aws://144358027444/ap-sountheast-2
                                 sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
                             """
                             //sh './lib/cdk-scripts/cdks3bucket.sh'
