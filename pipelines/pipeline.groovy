@@ -88,11 +88,17 @@ pipeline {
                             echo "${AWS_S3_BUCKET}"
 
                             s3Upload(
-                                    bucket:"${AWS_S3_BUCKET}",
+                                    bucket:'CicdDemoBucket',
                                     includePathPattern:'**/*.gz,**/*.whl',
-                                    workingDir:"${ARTIFACTS_DIR}",
-                                    tags: "${env.BUILD_TAG}"
-                                    )                            
+                                    workingDir:'artifacts',
+                                    tags: 'mustafacdkbucket'
+                                    )         
+                        //    s3Upload(
+                        //            bucket:"${AWS_S3_BUCKET}",
+                        //            includePathPattern:'**/*.gz,**/*.whl',
+                        //            workingDir:"${ARTIFACTS_DIR}",
+                        //            tags: ["${env.BUILD_TAG}"]
+                        //            )                            
 
                         }         
             }
