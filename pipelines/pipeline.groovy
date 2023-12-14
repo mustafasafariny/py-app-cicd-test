@@ -87,11 +87,11 @@ pipeline {
                             echo "${env.BUILD_TAG}"
                             echo "${AWS_S3_BUCKET}"
 
-                            s3Upload(bucket:"CicdDemoBucket", includePathPattern:'**/*.gz,**/*.whl', workingDir:'artifacts', tags: '[tag1:value1, tag2:value2]')
+                            s3Upload(bucket:"CicdDemoBucket", includePathPattern:'**/*.gz,**/*.whl', workingDir:'artifacts', tags: "${env.BUILD_TAG}")
                             
-                            def tags=[:]
-                            tags["tag1"]="${env.BUILD_TAG}"
-                            tags["tag2"]=""
+                            //def tags=[:]
+                            //tags["tag1"]="${env.BUILD_TAG}"
+                            //tags["tag2"]=""
 
                             //s3Upload(file: "${ARTIFACTS_FILE}",
                             //      tags: "${env.BUILD_TAG}",
