@@ -14,8 +14,8 @@ popd
 
 pushd  ./deployment/bin                                 
     cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-    
-    withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'awscredentials')]) {
+
+    withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'sshcrd')]) {
         cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
     }
 popd
