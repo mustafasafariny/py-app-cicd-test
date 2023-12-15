@@ -7,9 +7,9 @@ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get update
 sudo apt-get install -y nodejs
 npm install
-                                
-pushd  ./deployment/bin
-    sudo tsc                               
-    sudo cdk synth --app "npx ts-node deployment.js" CdkInfraAppCodeStack
-    sudo cdk deploy --app "npx ts-node deployment.js" CdkInfraAppCodeStack
+npm run build
+
+pushd  ./deployment/bin                                 
+    cdk synth --app "npx ts-node deployment.js" CdkInfraAppCodeStack
+    cdk deploy --app "npx ts-node deployment.js" CdkInfraAppCodeStack
 popd
