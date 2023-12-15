@@ -11,4 +11,7 @@ npm install
 cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
 sudo tsc                               
 sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-#sudo cdk deploy
+sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
+cd                                
+cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/artifacts
+pwd
