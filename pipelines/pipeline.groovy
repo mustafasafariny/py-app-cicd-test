@@ -46,7 +46,9 @@ pipeline {
  
                 // create AWS S3 Bucket 
                 script {
-                    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                    withAWS(profile:"${AWS_PROFILE}") {
+                        sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                    }
                 }
 
 
