@@ -8,7 +8,7 @@ set -e
 # sudo apt-get install -y nodejs
 npm install
 #npm run build
-tsc
+npx tsc
 pushd  ./deployment/bin                                 
     cdk synth --app "npx ts-node deployment.js" CdkInfraAppCodeStack
     cdk deploy --app "npx ts-node deployment.js" CdkInfraAppCodeStack
