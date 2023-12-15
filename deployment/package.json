@@ -1,5 +1,5 @@
 {
-  "name": "cdk-infra-app-code",
+  "name": "deployment",
   "version": "0.1.0",
   "bin": {
     "app-deployment": "bin/deployment.js"
