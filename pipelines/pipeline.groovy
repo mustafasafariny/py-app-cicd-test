@@ -46,7 +46,7 @@ pipeline {
  
                 // create AWS S3 Bucket 
                 script {
-                    sh './lib/cdk-scripts/cdks3bucket.sh'
+                    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
                 }
 
 
