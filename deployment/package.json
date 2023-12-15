@@ -2,7 +2,7 @@
   "name": "cdk-infra-app-code",
   "version": "0.1.0",
   "bin": {
-    "cdk-infra-app-code": "bin/cdk-infra-app-code.js"
+    "app-deployment": "bin/deployment.js"
   },
   "scripts": {
     "build": "tsc",

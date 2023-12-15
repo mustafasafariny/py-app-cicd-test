@@ -46,23 +46,7 @@ pipeline {
  
                 // create AWS S3 Bucket 
                 script {
-                    sh """
-                    sudo apt update -y
-                    sudo apt install -y curl software-properties-common
-                    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-                    sudo apt-get update
-                    sudo apt-get install -y nodejs
-                    npm install
-                              
-                    cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/cdk-infra-app-code/bin
-                    sudo npx tsc                               
-                    sudo cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack                               
-                    sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-                    cd                                
-                    cd  /var/lib/jenkins/workspace/pyapp-test-pipeline/artifacts
-                    pwd
-                    """
-                    //sh './lib/cdk-scripts/cdks3bucket.sh'
+                    sh './lib/cdk-scripts/cdks3bucket.sh'
                 }
 
 
