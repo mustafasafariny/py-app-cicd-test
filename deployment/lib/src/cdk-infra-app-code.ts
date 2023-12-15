@@ -15,7 +15,7 @@ new CdkInfraAppCodeStack(app, 'CdkInfraAppCodeStack', {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  //env: { account: '144358027444', region: 'ap-sountheast-2' },
+  env: { account: '144358027444', region: 'ap-sountheast-2' },
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });

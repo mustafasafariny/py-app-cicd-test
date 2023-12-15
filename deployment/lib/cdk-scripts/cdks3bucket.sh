@@ -14,6 +14,6 @@ popd
 
 pushd  ./deployment/bin                                 
     cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-    cdk bootstrap aws://144358027444/ap-southeast-2 --profile cdk-sandpit
+#    cdk bootstrap aws://144358027444/ap-southeast-2 --profile cdk-sandpit
     cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack --profile cdk-sandpit -v
 popd
