@@ -47,9 +47,10 @@ pipeline {
  
                 // create AWS S3 Bucket 
                 script {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'sshcrd')]) {
                         sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                    }
                 }
-
 
                 echo "${ARTIFACTS_DIR}"
                 echo "${env.BUILD_TAG}"
@@ -57,22 +58,6 @@ pipeline {
 
                 // Upload artifacts into the created S3 bucket
                 // but first get authorization - security access credentials
-
-                //withAWS(
-                //      region:"${AWS_REGION}"
-                //    , credentials:'awscredentials'
-                //    , role: "${AWS_ROLE}"
-                //    , roleAccount: "${AWS_ACCOUNT}"
-                //    )
-                //    {
-                        //    s3Upload(
-                        //            file:"${TAG_NAME}",
-                        //            bucket:"${AWS_S3_BUCKET}",
-                        //            includePathPattern:'**/*.gz,**/*.whl',
-                        //            workingDir:"${ARTIFACTS_DIR}",
-                        //            tags: ["${env.BUILD_TAG}"]
-                        //            )
-                //    }
 
                 echo "before s3 upload...!"
 
@@ -84,10 +69,7 @@ pipeline {
                                     includePathPattern:'**/*.gz,**/*.whl',
                                     workingDir: '/var/lib/jenkins/workspace',
                                     tags: '[tag1:mustafacdkbucket]'
-                                    )         
-
-                            
-
+                                    )                            
                         }         
             }
         }
