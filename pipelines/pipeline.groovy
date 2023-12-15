@@ -21,6 +21,7 @@ pipeline {
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'CicdDemoBucket'      
         ARTIFACTS_DIR = 'artifacts'
+        AWS_CREDENTIALS ='awssshcredentials'
 
     }
 
