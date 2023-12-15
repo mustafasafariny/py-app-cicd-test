@@ -94,7 +94,7 @@ pipeline {
                 withAWS(profile:"${AWS_PROFILE}")
                           {  
                             s3Upload(
-                                    file: 'artifacts',
+                                //    file: 'artifacts',
                                     bucket:'CicdDemoBucket',
                                     includePathPattern:'**/*.gz,**/*.whl',
                                     workingDir: '/var/lib/jenkins/workspace',
