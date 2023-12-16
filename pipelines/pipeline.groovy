@@ -46,7 +46,7 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
 
                 script {
-                    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                    sh './deployment/lib/cdk-scripts/builds3stack.sh'
                 }
   
             }
@@ -83,7 +83,7 @@ pipeline {
 
                 script {
                     sh 'pwd'
-                    sh 'chmod +x ./scripts/deploy.sh'                     
+                    sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                     }       
                 }   
             }
