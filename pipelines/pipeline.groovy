@@ -82,6 +82,7 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
+                    sh 'pwd'
                     sh 'chmod +x ./scripts/deploy.sh'                     
                     }       
                 }   
