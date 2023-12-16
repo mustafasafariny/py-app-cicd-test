@@ -80,17 +80,17 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
-
+            /*
                 sh '''
                     pwd
                     cd deployment/bin
                     pwd
                     sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-                '''
+            */    '''
 
-                //script {
-                    //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
-                //    }       
+                script {
+                    sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
+                    }       
                 }   
             }
 
