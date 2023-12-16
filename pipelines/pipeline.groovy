@@ -83,8 +83,7 @@ pipeline {
 
                 script {
                     sh 'pwd'
-                    sh 'cd'
-                    sh 'cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin'
+                    sh 'cd deployment/bin'
                     sh 'pwd'
                     sh 'sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack'
                     //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
