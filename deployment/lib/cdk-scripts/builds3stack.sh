@@ -5,7 +5,7 @@ set -e
 # sudo apt install -y curl software-properties-common
 # curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 # sudo apt-get update
-# sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs
 
 pushd  ./deployment
     npm install
