@@ -45,38 +45,10 @@ pipeline {
 
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
 
-                //script {
-                //    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
-                //}
-
-                // create AWS S3 Bucket 
-                //withCredentials([
-                //    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
-                //    ])  {
-                //        sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
-                //        }
-
-                echo "${ARTIFACTS_DIR}"
-                echo "${env.BUILD_TAG}"
-                echo "${AWS_S3_BUCKET}"
-
-                // Upload artifacts into the created S3 bucket
-                // but first get authorization - security access credentials
-
-                echo "before s3 upload...!"
-
-                withAWS(profile:"${AWS_PROFILE}")
-                          { 
-                            sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
-
-                            s3Upload(
-                                //    file: 'artifacts',
-                                    bucket:'CicdDemoBucket',
-                                    includePathPattern:'**/*.gz,**/*.whl',
-                                    workingDir: '/var/lib/jenkins/workspace',
-                                    tags: '[tag1:mustafacdkbucket]'
-                                    )                            
-                        }         
+                script {
+                    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                }
+  
             }
         }
 
@@ -110,7 +82,33 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    sh 'chmod +x ./scripts/deploy.sh'
+                    sh 'chmod +x ./scripts/deploy.sh'                     
+                    }       
+                }   
+            }
+
+        stage('Upload') {
+            steps {
+                echo 'Uploading S3 Bucket...'
+                script {
+                    // Upload artifacts into the created S3 bucket
+                    // but first get authorization - security access credentials
+                    
+                    echo "before s3 upload...!"
+                    echo "${ARTIFACTS_DIR}"
+                    echo "${env.BUILD_TAG}"
+                    echo "${AWS_S3_BUCKET}"
+
+                    withAWS(profile:"${AWS_PROFILE}")
+                        { 
+                            s3Upload(
+                                //    file: 'artifacts',
+                                    bucket:'CicdDemoBucket',
+                                    includePathPattern:'**/*.gz,**/*.whl',
+                                    workingDir: '/var/lib/jenkins/workspace',
+                                    tags: '[tag1:mustafacdkbucket]'
+                                    )                            
+                        }       
                 }   
             }
         }
@@ -122,7 +120,8 @@ pipeline {
             //    sh 'cdk destroy --force'
             }
             success {
-                echo 'Build successful! Deploying...'                           
+                echo 'Build successful! Deploying...'
+
                }
             failure {
                 echo 'Build failed! Not deploying...'

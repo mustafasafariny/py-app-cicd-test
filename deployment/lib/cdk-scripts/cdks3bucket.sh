@@ -14,6 +14,4 @@ popd
 
 pushd  ./deployment/bin                                 
     cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-    cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-
 popd
