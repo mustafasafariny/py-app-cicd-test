@@ -47,7 +47,7 @@ pipeline {
  
                 // create AWS S3 Bucket 
                 withCredentials([
-                    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'sshcrd')
+                    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
                     ])  {
                         sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
                         }
