@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
-
-pushd  ./deployment/bin 
+echo 'deploy.sh start'
+pushd  ./deployment/bin
+    pwd 
     cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-popd    
+popd
+echo 'deploy.sh end'    
