@@ -86,8 +86,8 @@ pipeline {
                     cd deployment/bin
                     pwd
                     sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-            */    '''
-
+                '''
+            */
                 script {
                     sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                     }       
