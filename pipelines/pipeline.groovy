@@ -83,7 +83,9 @@ pipeline {
 
                 script {
                     sh 'pwd'
-                    sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
+                    sh 'cd ./deployment/bin'
+                    sh 'cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack'
+                    //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                     }       
                 }   
             }
