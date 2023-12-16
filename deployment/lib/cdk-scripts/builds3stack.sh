@@ -8,7 +8,7 @@ set -e
 # sudo apt-get install -y nodejs
 
 pushd  ./deployment
-    npm install n npm
+    npm install n stable
     npm run build
 popd
 
