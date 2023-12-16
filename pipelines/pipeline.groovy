@@ -15,7 +15,7 @@ pipeline {
     }
 
     environment {
-        AWS_PROFILE = 'ids-devops-sandpit'  // Use profile information from ~/.aws/config
+        AWS_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
         AWS_REGION = 'ap-sountheast-2'
         AWS_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
@@ -44,13 +44,17 @@ pipeline {
                 }
 
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
- 
+
+                //script {
+                //    sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                //}
+
                 // create AWS S3 Bucket 
-                withCredentials([
-                    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
-                    ])  {
-                        sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
-                        }
+                //withCredentials([
+                //    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
+                //    ])  {
+                //        sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+                //        }
 
                 echo "${ARTIFACTS_DIR}"
                 echo "${env.BUILD_TAG}"
@@ -62,7 +66,9 @@ pipeline {
                 echo "before s3 upload...!"
 
                 withAWS(profile:"${AWS_PROFILE}")
-                          {  
+                          { 
+                            sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
+
                             s3Upload(
                                 //    file: 'artifacts',
                                     bucket:'CicdDemoBucket',
