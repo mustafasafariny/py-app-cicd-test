@@ -46,11 +46,11 @@ pipeline {
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
  
                 // create AWS S3 Bucket 
-                //script {
-                    withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'sshcrd')]) {
+                withCredentials([
+                    sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'sshcrd')
+                    ])  {
                         sh './deployment/lib/cdk-scripts/cdks3bucket.sh'
-                    }
-                //}
+                        }
 
                 echo "${ARTIFACTS_DIR}"
                 echo "${env.BUILD_TAG}"
