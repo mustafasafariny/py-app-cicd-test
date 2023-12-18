@@ -82,10 +82,12 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    withCredentials([
-                     sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
-                     ])
+                    // withCredentials([
+                    //  sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
+                    //  ])
+                    withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444') {
                        {
+                        def identity = awsIdentity()
                         sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
                     } 
