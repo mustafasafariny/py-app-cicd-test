@@ -91,7 +91,9 @@ pipeline {
                          echo 'deploy sh end'
                          '''
                     */
-                        sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
+                        echo 'deploy sh start'
+                        sh './deployment/lib/cdk-scripts/deploys3stack.sh'
+                        echo 'deploy sh end'                     
                         }
                     } 
                 }
