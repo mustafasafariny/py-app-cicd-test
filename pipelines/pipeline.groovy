@@ -82,11 +82,7 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    // withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')])
-                    // withAWS(credentials:'awscrd', , region: 'ap-sountheast-2')
                     /*
-                    withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
-                       {
                          sh'''
                          echo 'deploy sh start'
                          cd
@@ -98,8 +94,7 @@ pipeline {
                         sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
                     } 
-                }  
-            }
+                }
 
         stage('Upload') {
             steps {
@@ -112,6 +107,9 @@ pipeline {
                     echo "${ARTIFACTS_DIR}"
                     echo "${env.BUILD_TAG}"
                     echo "${AWS_S3_BUCKET}"
+
+                    //withAWS(credentials:'awscrd', , region: 'ap-sountheast-2')
+                    //withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
 
                     withAWS(profile:"${AWS_PROFILE}")
                         { 
