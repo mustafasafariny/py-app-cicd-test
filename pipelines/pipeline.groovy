@@ -84,7 +84,7 @@ pipeline {
                 script {
                     // withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')])
                     // withAWS(credentials:'awscrd', , region: 'ap-sountheast-2')
-
+                    /*
                     withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
                        {
                          sh'''
@@ -94,7 +94,8 @@ pipeline {
                          sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack --profile cdk-sandpit -v
                          echo 'deploy sh end'
                          '''
-                        // sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
+                    */
+                        sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
                     } 
                 }  
