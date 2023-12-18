@@ -89,6 +89,7 @@ pipeline {
                     //    def identity = awsIdentity()
                         sh 'pwd'
                         sh 'cd'
+                        sh 'pwd'
                         sh 'cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin'
                         sh 'pwd'
                         sh' sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack -v'
