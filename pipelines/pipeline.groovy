@@ -85,7 +85,7 @@ pipeline {
                     // withCredentials([
                     //  sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
                     //  ])
-                    withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444') {
+                    withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')  
                        {
                         def identity = awsIdentity()
                         sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
