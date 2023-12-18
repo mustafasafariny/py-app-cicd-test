@@ -83,13 +83,15 @@ pipeline {
 
                 script {
                     // withCredentials([sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')])
-                    // withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
-                    withAWS(credentials:'awscrd') 
+                    // withAWS(credentials:'awscrd', , region: 'ap-sountheast-2')
+                    
+                    withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
                        {
                         sh'''
                         cd
                         cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin
-                        sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
+                        sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack --profile cdk-sandpit -v
+
                         '''
                         //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
