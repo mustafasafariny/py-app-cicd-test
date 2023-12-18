@@ -87,11 +87,8 @@ pipeline {
                     withAWS(credentials:'awscrd') 
                        {
                         sh'''
-                        pwd
                         cd
-                        pwd
                         cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin
-                        pwd
                         sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack -v
                         '''
                         //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
