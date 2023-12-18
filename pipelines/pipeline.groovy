@@ -82,9 +82,13 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
-                    }
-                  
+                    withCredentials([
+                     sshUserPrivateKey(credentialsId: 'awssshcredentials', keyFileVariable: 'SSH_KEY')
+                     ])
+                       {
+                        sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
+                        }
+                    } 
                 }  
             }
 
