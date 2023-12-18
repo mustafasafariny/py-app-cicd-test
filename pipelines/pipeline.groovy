@@ -80,7 +80,7 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
-                sudo cdk deploy /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin/cdk-infra-app-code.js
+                sh 'sudo cdk deploy /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin/cdk-infra-app-code.js'
             /*
                 sh '''
                     pwd
