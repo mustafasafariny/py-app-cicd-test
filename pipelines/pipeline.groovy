@@ -87,7 +87,7 @@ pipeline {
                     //  ])
                     withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')  
                        {
-                        def identity = awsIdentity()
+                        //def identity = awsIdentity()
                         sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
                     } 
