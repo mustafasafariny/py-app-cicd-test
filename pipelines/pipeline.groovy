@@ -89,7 +89,7 @@ pipeline {
                         sh'''
                         cd
                         cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin
-                        sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack -v
+                        sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack --profile cdk-sandpit -v
                         '''
                         //sh './deployment/lib/cdk-scripts/deploys3stack.sh'                     
                         }
