@@ -88,7 +88,7 @@ pipeline {
                         { 
                         s3Upload(
                         //  file: 'artifacts',
-                            bucket:'CicdDemoBucket',
+                            bucket:'CicdDemoBucketBB0B9B20',
                             includePathPattern:'**/*.gz,**/*.whl',
                             workingDir: '/var/lib/jenkins/workspace',
                             tags: '[tag1:mustafacdkbucket]'
