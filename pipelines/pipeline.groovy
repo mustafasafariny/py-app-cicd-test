@@ -84,7 +84,7 @@ pipeline {
                 echo 'Uploading S3 Bucket...'
                 withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS}")
                 {
-                    s3Upload(file:'artifacts', bucket:'CicdDemoBucketBB0B9B20')
+                    s3Upload(file:'artifacts', bucket:'CicdDemoBucket')
                 }
                  
                 //withAWS(profile:"${AWS_PROFILE}")
