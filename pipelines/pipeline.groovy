@@ -21,7 +21,7 @@ pipeline {
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'CicdDemoBucket'      
         ARTIFACTS_DIR = 'artifacts'
-        AWS_CREDENTIALS ='awssshcredentials'
+        AWS_CREDENTIALS ='awscrd'
 
     }
 
@@ -70,8 +70,7 @@ pipeline {
               expression {
                    currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
-            }
-
+            }  
             steps {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
@@ -83,17 +82,22 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                
-                withAWS(profile:"${AWS_PROFILE}")
-                        { 
-                        s3Upload(
-                        //  file: 'artifacts',
-                            bucket:'CicdDemoBucketBB0B9B20',
-                            includePathPattern:'**/*.gz,**/*.whl',
-                            workingDir: '/var/lib/jenkins/workspace',
-                            tags: '[tag1:mustafacdkbucket]'
-                            )                            
-                        }       
+                withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS}")
+                {
+                    s3Upload(file:'artifacts', bucket:'CicdDemoBucketBB0B9B20')
+                }
+                 
+                //withAWS(profile:"${AWS_PROFILE}")
+                //        { 
+                //        s3Upload(
+                //        //  file: 'artifacts',
+                //            bucket:'CicdDemoBucketBB0B9B20',
+                //            includePathPattern:'**/*.gz,**/*.whl',
+                //            workingDir: '/var/lib/jenkins/workspace',
+                //            tags: '[tag1:mustafacdkbucket]'
+                //            )                            
+                //        }
+                      
                 }
         }
     }
