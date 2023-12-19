@@ -81,7 +81,6 @@ pipeline {
                         sh 'chmod +x ./scripts/deploy.sh'
                         echo 'deploy sh end'                     
                         }
-                    }
 
                 echo 'Uploading S3 Bucket...'
                 
