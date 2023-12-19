@@ -20,3 +20,12 @@ sudo -s python3 setup.py sdist bdist_wheel
 # Move the artifacts to a designated directory
 sudo -s mkdir -p artifacts
 sudo -s mv dist/* artifacts/
+
+#pushd  ./deployment
+#    npm install
+#    npm run build
+#popd
+
+#pushd  ./deployment/bin                                 
+#    cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
+#popd

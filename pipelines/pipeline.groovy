@@ -44,11 +44,6 @@ pipeline {
                 }
 
                 archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
-
-                script {
-                    sh './deployment/lib/cdk-scripts/builds3stack.sh'
-                }
-  
             }
         }
 
@@ -82,49 +77,25 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                    /*
-                         sh'''
-                         echo 'deploy sh start'
-                         cd
-                         cd /var/lib/jenkins/workspace/pyapp-test-pipeline/deployment/bin
-                         sudo cdk deploy --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack --profile cdk-sandpit -v
-                         echo 'deploy sh end'
-                         '''
-                    */
                         echo 'deploy sh start'
-                        sh './deployment/lib/cdk-scripts/deploys3stack.sh'
+                        sh 'chmod +x ./scripts/deploy.sh'
                         echo 'deploy sh end'                     
                         }
-                    } 
-                }
+                    }
 
-        stage('Upload') {
-            steps {
                 echo 'Uploading S3 Bucket...'
-                script {
-                    // Upload artifacts into the created S3 bucket
-                    // but first get authorization - security access credentials
-                    
-                    echo "before s3 upload...!"
-                    echo "${ARTIFACTS_DIR}"
-                    echo "${env.BUILD_TAG}"
-                    echo "${AWS_S3_BUCKET}"
-
-                    //withAWS(credentials:'awscrd', , region: 'ap-sountheast-2')
-                    //withAWS(role:'AWS-DevOps-Identity', roleAccount:'144358027444')
-
-                    withAWS(profile:"${AWS_PROFILE}")
+                
+                withAWS(profile:"${AWS_PROFILE}")
                         { 
-                            s3Upload(
-                                //    file: 'artifacts',
-                                    bucket:'CicdDemoBucket',
-                                    includePathPattern:'**/*.gz,**/*.whl',
-                                    workingDir: '/var/lib/jenkins/workspace',
-                                    tags: '[tag1:mustafacdkbucket]'
-                                    )                            
+                        s3Upload(
+                        //  file: 'artifacts',
+                            bucket:'CicdDemoBucket',
+                            includePathPattern:'**/*.gz,**/*.whl',
+                            workingDir: '/var/lib/jenkins/workspace',
+                            tags: '[tag1:mustafacdkbucket]'
+                            )                            
                         }       
-                }   
-            }
+                }
         }
     }
 
