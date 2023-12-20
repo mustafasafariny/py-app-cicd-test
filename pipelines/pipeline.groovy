@@ -82,7 +82,7 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                withAWS(region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444')
+                withAWS(profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444')
                 //withAWS(credentials: 'awscrd', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444')
                 //withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS}")
                 {
