@@ -82,7 +82,8 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                withAWS(profile:'cdk-sandpit')
+                
+                withAWS(credentials: 'awscrd', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identit', roleAccount: '144358027444')
                 //withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS}")
                 {
                     s3Upload(file:'artifacts', bucket:'mus.cicd.cdk.demo')
