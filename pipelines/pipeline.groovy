@@ -19,7 +19,7 @@ pipeline {
         AWS_REGION = 'ap-southeast-2'
         AWS_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
-        AWS_S3_BUCKET = 'CicdDemoBucket'      
+        AWS_S3_BUCKET = 'mus.cicd.cdk.demo'      
         ARTIFACTS_DIR = 'artifacts'
         AWS_CREDENTIALS ='awscrd'
 
