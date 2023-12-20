@@ -82,23 +82,11 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                
-                withAWS(credentials: 'awscrd', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444')
-                //withAWS(region:"${AWS_REGION}", credentials:"${AWS_CREDENTIALS}")
-                {
+                awsIdentity()
+                withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
+                    {
                     s3Upload(file:'artifacts', bucket:'mus.cicd.cdk.demo')
-                }
-                 
-                //withAWS(profile:"${AWS_PROFILE}")
-                //        { 
-                //        s3Upload(
-                //        //  file: 'artifacts',
-                //            bucket:'CicdDemoBucketBB0B9B20',
-                //            includePathPattern:'**/*.gz,**/*.whl',
-                //            workingDir: '/var/lib/jenkins/workspace',
-                //            tags: '[tag1:mustafacdkbucket]'
-                //            )                            
-                //        }
+                    }
                       
                 }
         }
