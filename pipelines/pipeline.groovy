@@ -38,6 +38,7 @@ pipeline {
                 echo "I am in ${env.GIT_BRANCH} and it works!"
  
                 script {
+                    sh 'pwd'
                     sh './scripts/build.sh'
                     // def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 

@@ -2,9 +2,15 @@
 set -e
 
 # Create a virtual environment
-sudo -s apt-get install python3-venv
-sudo -s python3 -m venv venv
+sudo -s rm -rf venv
+sudo -s apt install python3.10-venv
+sudo -s python3.10 -m venv venv
+
+#sudo -s apt-get install python3-venv
+#sudo -s python3 -m venv venv
+
 sudo -s source venv/bin/activate
+#sudo source /var/lib/jenkins/workspace/myapp-test-pipeline/venv/bin/activate
 sudo -s pip3 install Flask
 
 # Install python pacakges and dependencies 
