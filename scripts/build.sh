@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+echo 'build start...'
 # Create a virtual environment
 sudo -s rm -rf venv
 sudo -s apt install python3.10-venv
