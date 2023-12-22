@@ -41,6 +41,8 @@ pipeline {
                     sh 'pwd'
                     sh '''
                         #rm -rf venv
+                        sudo su
+                        apt-get update
                         apt install python3-venv
                         python3 -m venv venv
                         source venv/bin/activate
