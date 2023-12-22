@@ -40,7 +40,7 @@ pipeline {
                 script {
                     sh 'pwd'
                     sh '''
-                        sudo -s rm -rf venv
+                        #sudo rm -rf venv
                         sudo apt install python3.10-venv
                         sudo python3.10 -m venv venv
                         sudo source venv/bin/activate
