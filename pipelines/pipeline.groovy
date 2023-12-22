@@ -42,7 +42,7 @@ pipeline {
                     sh '''
                         #rm -rf venv
                         apt install python3.10-venv
-                        python3.10 -m venv venv
+                        python3 -m venv venv
                         source venv/bin/activate
 
                         pip3 install Flask
