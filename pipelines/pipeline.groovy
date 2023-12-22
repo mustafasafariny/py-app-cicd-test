@@ -40,7 +40,7 @@ pipeline {
                 script {
                     sh 'pwd'
                     sh '''
-                        sudo su
+                        sudo -s su
                         sudo apt-get update
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
