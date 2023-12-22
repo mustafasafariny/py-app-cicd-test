@@ -39,8 +39,20 @@ pipeline {
  
                 script {
                     sh 'pwd'
-                    sh './scripts/build.sh'
-                    // def BUILD_TAG_NAME = env.BUILD_TAG
+                    sh '''
+                        sudo rm -rf venv
+                        sudo apt install python3.10-venv
+                        sudo python3.10 -m venv venv
+                        sudo source venv/bin/activate
+                        sudo pip3 install Flask
+                        sudo pip3 install -r ./src/demo-py-app/requirements.txt
+                        sudo pip3 install setuptools wheel
+                        sudo python3 setup.py sdist bdist_wheel
+                        sudo mkdir -p artifacts
+                        sudo mv dist/* artifacts/
+                    '''
+                    //sh './scripts/build.sh'
+                    //def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 
                 }
 
