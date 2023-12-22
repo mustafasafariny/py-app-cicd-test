@@ -40,16 +40,18 @@ pipeline {
                 script {
                     sh 'pwd'
                     sh '''
-                        #sudo rm -rf venv
-                        sudo -s apt install python3.10-venv
-                        sudo python3.10 -m venv venv
-                        sudo source venv/bin/activate
-                        sudo pip3 install Flask
-                        sudo pip3 install -r ./src/demo-py-app/requirements.txt
-                        sudo pip3 install setuptools wheel
-                        sudo python3 setup.py sdist bdist_wheel
-                        sudo mkdir -p artifacts
-                        sudo mv dist/* artifacts/
+                        #rm -rf venv
+                        apt install python3.10-venv
+                        python3.10 -m venv venv
+                        source venv/bin/activate
+
+                        pip3 install Flask
+                        pip3 install -r ./src/demo-py-app/requirements.txt
+
+                        pip3 install setuptools wheel
+                        python3 setup.py sdist bdist_wheel
+                        mkdir -p artifacts
+                        mv dist/* artifacts/
                     '''
                     //sh './scripts/build.sh'
                     //def BUILD_TAG_NAME = env.BUILD_TAG
