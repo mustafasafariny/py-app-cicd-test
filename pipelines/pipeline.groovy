@@ -41,7 +41,7 @@ pipeline {
                     sh 'pwd'
                     sh '''
                         #sudo rm -rf venv
-                        sudo apt install python3.10-venv
+                        sudo -s apt install python3.10-venv
                         sudo python3.10 -m venv venv
                         sudo source venv/bin/activate
                         sudo pip3 install Flask
