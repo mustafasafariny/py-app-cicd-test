@@ -40,18 +40,17 @@ pipeline {
                 script {
                     sh 'pwd'
                     sh '''
-                        #rm -rf venv
                         sudo su
-                        apt-get update
-                        apt install python3-venv
-                        python3 -m venv venv
+                        sudo apt-get update
+                        sudo apt install python3-venv
+                        sudo python3 -m venv venv
                         source venv/bin/activate
 
-                        pip3 install Flask
-                        pip3 install -r ./src/demo-py-app/requirements.txt
+                        sudo pip3 install Flask
+                        sudo pip3 install -r ./src/demo-py-app/requirements.txt
 
-                        pip3 install setuptools wheel
-                        python3 setup.py sdist bdist_wheel
+                        sudo pip3 install setuptools wheel
+                        sudo python3 setup.py sdist bdist_wheel
                         mkdir -p artifacts
                         mv dist/* artifacts/
                     '''
