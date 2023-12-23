@@ -39,9 +39,8 @@ pipeline {
  
                 script {
                     sh 'pwd'
+
                     sh '''
-                        sudo -s
-                        sudo apt-get update
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
                         source venv/bin/activate
@@ -72,7 +71,7 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-
+                
                 script {
                     sh 'chmod +x ./scripts/test.sh'
 

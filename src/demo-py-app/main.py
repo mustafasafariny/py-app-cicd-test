@@ -9,21 +9,14 @@ app = Flask(__name__)
 
 #In other words, if a user types the base URL of your web app into their browser, then Flask runs index() 
 # and the user sees the returned text.
-
-##branch = env.GIT_BRANCH
-##@app.route("/<branch>")
-##def index():
-## return "I am in ${env.GIT_BRANCH} and it works!"
-
 @app.route("/")
 def index():
     return "Python Application Deployment to Host works!"
 
-#Tell Python to start Flask’s development server when the script is executed from the command line. 
-#It’ll be used only when you run the script locally (127.0.0.1 is the localhost for local testing)
-
-#if __name__ == "__main__":
-#    app.run(host="127.0.0.1", port=5000, debug=True)
+#It tells the application to run and listen for incoming requests on the specified host (127.0.0.1, Flask’s development server) and port (5000). 
+if __name__ == "__main__":
+    #app.run(debug=True,host='0.0.0.0')
+    app.run(host="127.0.0.1", port=5000, debug=True)
 
 # To test on Flask server (using PowerSell Terminal)
 # Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app main.py run
