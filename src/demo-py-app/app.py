@@ -23,7 +23,6 @@ def index():
 
 #It tells the application to run and listen for incoming requests on the specified host (127.0.0.1, Flask’s development server) and port (5000). 
 if __name__ == "__main__":
-    #app.run(debug=True,host='0.0.0.0')
     app.run(host="127.0.0.1", port=5000, debug=True)
 
 # To test on Flask server (using PowerSell Terminal)
