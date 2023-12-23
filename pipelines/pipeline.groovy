@@ -54,6 +54,7 @@ pipeline {
                         mv dist/* artifacts/
                     '''
                     //sh './scripts/build.sh'
+                    
                     //def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 
                 }
@@ -71,11 +72,11 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-                
+                 
                 script {
                     sh 'chmod +x ./scripts/test.sh'
 
-                }   
+                }
 
             }
         }
