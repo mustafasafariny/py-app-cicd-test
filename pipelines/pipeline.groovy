@@ -39,22 +39,32 @@ pipeline {
  
                 script {
                     sh 'pwd'
+                    sh 'whoami'
+                    sh 'sudo su'
+                    sh 'whoami'
+                    echo $USER
 
                     sh '''
+                        cd
+                        cd /var/lib/jenkins/workspace/pyapp-test-pipeline/src/demo-py-app
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
-                        source venv/bin/activate
+                        //source venv/bin/activate
+                        . venv/bin/activate
+                        pip install Flask
 
-                        sudo pip3 install Flask
-                        sudo pip3 install -r ./src/demo-py-app/requirements.txt
+                        //source venv/bin/deactivate
+                        . venv/bin/deactivate
+                        #sudo -i
+                        pip install -r requirements.txt
 
-                        sudo pip3 install setuptools wheel
-                        sudo python3 setup.py sdist bdist_wheel
+                        pip3 install setuptools wheel
+                        python3 setup.py sdist bdist_wheel
                         mkdir -p artifacts
                         mv dist/* artifacts/
                     '''
                     //sh './scripts/build.sh'
-                    
+
                     //def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 
                 }
