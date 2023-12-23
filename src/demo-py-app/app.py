@@ -2,6 +2,13 @@
 
 from flask import Flask
 
+#By passing __name__ as an argument to the Flask constructor,
+#you are telling Flask to set up the application with the appropriate configurations based on the location of the script.
+# This is important for Flask to know where to look for templates, static files, and other resources associated with the application.
+
+#Putting it all together, the line app = Flask(__name__) creates a Flask application object named app based on the script's name.
+#This object is then used to define routes, handle HTTP requests, and configure various aspects of the web application.
+# In a Flask application, you would typically go on to define routes, add functionality, and finally, run the application using the app.run() method
 app = Flask(__name__)
 
 #Flask uses @app.route to connect URL endpoints with code contained in functions.
