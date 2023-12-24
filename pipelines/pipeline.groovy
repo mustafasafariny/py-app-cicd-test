@@ -49,11 +49,11 @@ pipeline {
                         sudo rm -rf venv
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
-                        //source venv/bin/activate
+                        #source venv/bin/activate
                         . venv/bin/activate
                         pip install Flask
 
-                        //source venv/bin/deactivate
+                        #source venv/bin/deactivate
                         deactivate
                         #sudo -i
                         pip install -r requirements.txt
