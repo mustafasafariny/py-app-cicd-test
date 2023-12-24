@@ -46,23 +46,25 @@ pipeline {
                     sh '''
                         cd ./src/demo-py-app
                         pwd
+                        whoami
                         sudo su
+                        whoami
+
                         #sudo rm -rf venv
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
                         #source venv/bin/activate
                         . venv/bin/activate
-                        whoami
-                        sudo su
-                        whoami
-                        pip install Flask
 
-                        deactivate
-                        #sudo -i
-                        pip install -r requirements.txt
+                        sudo apt-get install python3-pip
+                        #deactivate
 
-                        pip3 install setuptools wheel
-                        python3 setup.py sdist bdist_wheel
+                        #install Python dependencies
+                        sudo pip install -r requirements.txt
+
+                        sudo pip3 install setuptools wheel
+                        /var/lib/jenkins/workspace/pyapp-test-pipeline/src/demo-py-app/
+                        sudo python3 ./setup.py sdist bdist_wheel
                         mkdir -p artifacts
                         mv dist/* artifacts/
                     '''
