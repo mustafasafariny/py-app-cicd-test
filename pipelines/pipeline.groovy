@@ -65,9 +65,9 @@ pipeline {
                         sudo pip3 install setuptools wheel
                         sudo python3 setup.py sdist bdist_wheel
                         mkdir -p artifacts
-                        mv dist/* artifacts/
+                        sudo mv dist/* artifacts/
                     '''
-                    
+
                     //sh './scripts/build.sh'
 
                     //def BUILD_TAG_NAME = env.BUILD_TAG
