@@ -76,13 +76,11 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                        echo 'deploy sh start'
-                        sh 'chmod +x ./src/scripts/deploy.sh'
-                        echo 'deploy sh end'                     
+                        sh 'chmod +x ./src/scripts/deploy.sh'              
                         }
 
                 echo 'Uploading S3 Bucket...'
-                //awsIdentity()
+                 
                 withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
                     {
                     s3Upload(file:'artifacts', bucket:'mus.cicd.cdk.demo')
