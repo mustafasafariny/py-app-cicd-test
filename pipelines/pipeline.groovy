@@ -38,44 +38,11 @@ pipeline {
                 echo "I am in ${env.GIT_BRANCH} and it works!"
  
                 script {
-                    sh 'pwd'
-                    sh 'whoami'
-                    sh 'sudo su'
-                    sh 'whoami'
-
-                    sh '''
-                        cd ./src/demo-py-app
-                        pwd
-                        whoami
-                        sudo su
-                        whoami
-
-                        sudo rm -rf venv
-                        sudo apt install python3-venv
-                        sudo python3 -m venv venv
-                        #source venv/bin/activate
-                        . venv/bin/activate
-
-                        sudo apt-get install python3-pip
-                        #deactivate
-
-                        #install Python dependencies
-                        sudo pip install -r requirements.txt
-
-                        sudo pip3 install setuptools wheel
-                        sudo python3 setup.py sdist bdist_wheel
-                        pwd
-                        mkdir -p artifacts
-                        pwd
-                        sudo mv dist/* artifacts/
-                    '''
-
-                    //sh './scripts/build.sh'
-
+                    sh './scripts/build.sh'
                     //def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 
                 }
-                sh 'pwd'
+
                 archiveArtifacts artifacts: 'src/demo-py-app/artifacts/*.tar.gz, src/demo-py-app/artifacts/*.whl', fingerprint: true
             }
         }
@@ -115,7 +82,7 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                awsIdentity()
+                //awsIdentity()
                 withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
                     {
                     s3Upload(file:'artifacts', bucket:'mus.cicd.cdk.demo')

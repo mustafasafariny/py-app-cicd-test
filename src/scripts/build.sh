@@ -1,37 +1,25 @@
 #!/bin/bash
 set -e
 echo 'build start...'
-# Create a virtual environment
-#sudo rm -rf venv
-sudo apt install python3.10-venv
-sudo python3.10 -m venv venv
 
-#sudo apt-get install python3-venv
-#sudo python3 -m venv venv
+cd ./src/demo-py-app
+sudo su
 
-sudo source venv/bin/activate
-#sudo source /var/lib/jenkins/workspace/myapp-test-pipeline/venv/bin/activate
-sudo pip3 install Flask
+#Create Virtual Environment
+sudo rm -rf venv
+sudo apt install python3-venv
+sudo python3 -m venv venv
+#source venv/bin/activate
+. venv/bin/activate
 
-# Install python pacakges and dependencies 
-sudo pip3 install -r ./src/demo-py-app/requirements.txt
+#Install Python dependencies
+sudo apt-get install python3-pip
+sudo pip install -r requirements.txt
 
-
-# Build a distribution package for a Python project that can be easily shared and installed by others.
-  #Create source distribution and a compressed archive of the project's source code.
-  #Create a binary distribution of the project that can be installed on different platforms.
+#Create Artifacts
 sudo pip3 install setuptools wheel
 sudo python3 setup.py sdist bdist_wheel
-
-# Move the artifacts to a designated directory
-sudo mkdir -p artifacts
+pwd
+mkdir -p artifacts
+pwd
 sudo mv dist/* artifacts/
-
-#pushd  ./deployment
-#    npm install
-#    npm run build
-#popd
-
-#pushd  ./deployment/bin                                 
-#    cdk synth --app "npx ts-node cdk-infra-app-code.js" CdkInfraAppCodeStack
-#popd
