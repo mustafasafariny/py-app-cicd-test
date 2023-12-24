@@ -42,7 +42,6 @@ pipeline {
                     sh 'whoami'
                     sh 'sudo su'
                     sh 'whoami'
-                    echo $USER
 
                     sh '''
                         cd
