@@ -52,6 +52,8 @@ pipeline {
                         #source venv/bin/activate
                         . venv/bin/activate
                         whoami
+                        sudo su
+                        whoami
                         pip install Flask
 
                         deactivate
