@@ -91,7 +91,7 @@ pipeline {
                 echo " Testing environment is ${params.Env}"
                  
                 script {
-                    sh 'chmod +x ./scripts/test.sh'
+                    sh 'chmod +x ./src/scripts/test.sh'
 
                 }
 
@@ -110,7 +110,7 @@ pipeline {
 
                 script {
                         echo 'deploy sh start'
-                        sh 'chmod +x ./scripts/deploy.sh'
+                        sh 'chmod +x ./src/scripts/deploy.sh'
                         echo 'deploy sh end'                     
                         }
 
