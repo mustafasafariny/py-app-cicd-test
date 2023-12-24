@@ -64,8 +64,10 @@ pipeline {
 
                         sudo pip3 install setuptools wheel
                         sudo python3 setup.py sdist bdist_wheel
+                        pwd
                         mkdir -p artifacts
-                        sudo mv dist/* /src/demo-py-app/artifacts/
+                        pwd
+                        sudo mv dist/* artifacts/
                     '''
 
                     //sh './scripts/build.sh'
