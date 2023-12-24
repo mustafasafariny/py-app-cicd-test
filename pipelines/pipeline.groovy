@@ -51,9 +51,9 @@ pipeline {
                         sudo python3 -m venv venv
                         #source venv/bin/activate
                         . venv/bin/activate
+                        whoami
                         pip install Flask
 
-                        #source venv/bin/deactivate
                         deactivate
                         #sudo -i
                         pip install -r requirements.txt
