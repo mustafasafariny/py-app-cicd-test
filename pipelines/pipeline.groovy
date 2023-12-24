@@ -47,6 +47,7 @@ pipeline {
                         #cd
                         #cd /var/lib/jenkins/workspace/pyapp-test-pipeline/src/demo-py-app
                         cd ./src/demo-py-app
+                        pwd
                         sudo rm -rf venv
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
