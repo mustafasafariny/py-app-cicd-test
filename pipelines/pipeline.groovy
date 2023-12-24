@@ -54,7 +54,7 @@ pipeline {
                         pip install Flask
 
                         //source venv/bin/deactivate
-                        . venv/bin/deactivate
+                        deactivate
                         #sudo -i
                         pip install -r requirements.txt
 
