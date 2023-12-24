@@ -50,7 +50,7 @@ pipeline {
                         sudo su
                         whoami
 
-                        #sudo rm -rf venv
+                        sudo rm -rf venv
                         sudo apt install python3-venv
                         sudo python3 -m venv venv
                         #source venv/bin/activate
@@ -63,11 +63,11 @@ pipeline {
                         sudo pip install -r requirements.txt
 
                         sudo pip3 install setuptools wheel
-                        /var/lib/jenkins/workspace/pyapp-test-pipeline/src/demo-py-app/
-                        sudo python3 ./setup.py sdist bdist_wheel
+                        sudo python3 setup.py sdist bdist_wheel
                         mkdir -p artifacts
                         mv dist/* artifacts/
                     '''
+                    
                     //sh './scripts/build.sh'
 
                     //def BUILD_TAG_NAME = env.BUILD_TAG
