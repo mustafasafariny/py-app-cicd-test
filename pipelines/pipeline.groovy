@@ -75,8 +75,8 @@ pipeline {
                     //def BUILD_TAG_NAME = env.BUILD_TAG
                     echo "Build Tag: ${env.BUILD_TAG}" 
                 }
-
-                archiveArtifacts artifacts: 'artifacts/*.tar.gz, artifacts/*.whl', fingerprint: true
+                sh 'pwd'
+                archiveArtifacts artifacts: 'src/demo-py-app/artifacts/*.tar.gz, src/demo-py-app/artifacts/*.whl', fingerprint: true
             }
         }
 
