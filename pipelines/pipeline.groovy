@@ -21,7 +21,7 @@ pipeline {
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'mus.cicd.cdk.demo'      
         ARTIFACTS_DIR = 'artifacts'
-        MUS_AWS_CREDENTIALS =credentials('mustafa-aws-creds')
+        MUS_AWS_CREDENTIALS =credentials('mustafa-aws-cli-creds')
 
     }
 
