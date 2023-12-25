@@ -81,7 +81,7 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
                  
-                withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
+                withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
                                     secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
                     {
                     sh '''
