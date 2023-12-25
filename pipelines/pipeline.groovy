@@ -80,9 +80,9 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>])
-                //withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
-                //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
+                 
+                withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
+                                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
                     {
                     sh '''
                         aws --version
