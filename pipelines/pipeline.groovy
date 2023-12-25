@@ -17,11 +17,11 @@ pipeline {
     environment {
         AWS_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
         AWS_DEFAULT_REGION = 'ap-southeast-2'
-        AWS_ACCOUNT = '144358027444'
+        AWS_DEFAULT_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'mus.cicd.cdk.demo'      
         ARTIFACTS_DIR = 'artifacts'
-        MUS_AWS_CREDENTIALS =credentials('mustafa-aws-cli-creds')
+    //  MUS_AWS_CREDENTIALS =credentials('mustafa-aws-cli-creds')
 
     }
 
