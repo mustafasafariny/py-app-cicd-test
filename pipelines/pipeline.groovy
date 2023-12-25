@@ -81,15 +81,15 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
                  
-                withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
-                                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
-                    {
+                //withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
+                //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
+                //    {
                     sh '''
                         aws --version
                         aws ec2 describe-instances
-                        #aws s3 cp --sse AES256 file.txt s3://AWS_S3_BUCKET/
+                        #aws s3 cp --sse AES256 file.txt s3://mus.cicd.cdk.demo/
                     '''
-                    }
+                //    }
 
                 //withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
                 //    {
