@@ -85,7 +85,7 @@ pipeline {
                 //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 sh '''
                     aws ec2 describe-instances
-                    aws s3 cp --sse AES256 file.txt s3://my-bucket/
+                    #aws s3 cp --sse AES256 file.txt s3://AWS_S3_BUCKET/
                 '''
                 //}
 
