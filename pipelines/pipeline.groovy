@@ -81,9 +81,10 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
 
-                //withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
+                //withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
                 //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 sh '''
+                    aws --version
                     aws ec2 describe-instances
                     #aws s3 cp --sse AES256 file.txt s3://AWS_S3_BUCKET/
                 '''
