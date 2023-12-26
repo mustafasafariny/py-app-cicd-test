@@ -15,7 +15,7 @@ pipeline {
     }
 
     environment {
-        AWS_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
+        AWS_PROFILE = 'ids'  // Use profile information from ~/.aws/config
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         AWS_DEFAULT_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
