@@ -82,6 +82,11 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
+                echo "Build Tag: ${AWS_DEFAULT_REGION}"
+                echo "Build Tag: ${AWS_DEFAULT_ACCOUBT}"
+                echo "Build Tag: ${AWS_ACCESS_KEY_ID}"
+                echo "Build Tag: ${AWS_SECRET_ACCESS_KEY}"
+
                 //withCredentials([string(credentialsId: 'mustafa-aws-creds', variable: 'AWS_SESSION_TOKEN')])
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
                                     secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
