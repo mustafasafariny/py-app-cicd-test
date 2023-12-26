@@ -84,8 +84,8 @@ pipeline {
                 echo 'Uploading S3 Bucket...'
                 echo "Region: ${AWS_DEFAULT_REGION}"
                 echo "Account: ${AWS_DEFAULT_ACCOUNT}"
-                echo "Access Key ID: ${AWS_ACCESS_KEY_ID}"
-                echo "Access Key Secret: ${AWS_SECRET_ACCESS_KEY}"
+                echo "Access Key ID: ${env.AWS_ACCESS_KEY_ID}"
+                echo "Access Key Secret: ${env.AWS_SECRET_ACCESS_KEY}"
 
                 //withCredentials([string(credentialsId: 'mustafa-aws-creds', variable: 'AWS_SESSION_TOKEN')])
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
