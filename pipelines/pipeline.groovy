@@ -83,7 +83,7 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
                 echo "Build Tag: ${AWS_DEFAULT_REGION}"
-                echo "Build Tag: ${AWS_DEFAULT_ACCOUBT}"
+                echo "Build Tag: ${AWS_DEFAULT_ACCOUNT}"
                 echo "Build Tag: ${AWS_ACCESS_KEY_ID}"
                 echo "Build Tag: ${AWS_SECRET_ACCESS_KEY}"
 
