@@ -84,7 +84,7 @@ pipeline {
                 echo 'Uploading S3 Bucket...'
                 echo "Region: ${AWS_DEFAULT_REGION}"
                 echo "Account: ${AWS_DEFAULT_ACCOUNT}"
-                echo "Account: ${AWS_DEFAULT_PROFILE}"
+                //echo "Account: ${AWS_DEFAULT_PROFILE}"
                 echo "Access Key ID: ${env.AWS_ACCESS_KEY_ID}"
                 echo "Access Key Secret: ${env.AWS_SECRET_ACCESS_KEY}"
 
