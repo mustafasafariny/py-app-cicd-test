@@ -15,7 +15,7 @@ pipeline {
     }
 
     environment {
-    //    AWS_DEAFULT_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
+        AWS_DEAFULT_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         AWS_DEFAULT_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
@@ -92,7 +92,7 @@ pipeline {
                 //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
                 //    {
                     sh '''
-                        export AWS_DEFAULT_PROFILE=cdk-sandpit
+                        #export AWS_DEFAULT_PROFILE=cdk-sandpit
                         aws --version
                         aws sts get-caller-identity
                         aws ec2 describe-instances
