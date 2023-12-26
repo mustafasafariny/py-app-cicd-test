@@ -21,7 +21,9 @@ pipeline {
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'mus.cicd.cdk.demo'      
         ARTIFACTS_DIR = 'artifacts'
-    //  MUS_AWS_CREDENTIALS =credentials('mustafa-aws-cli-creds')
+    //  AWS_S3_AUTH_TOKEN =credentials('mustafa-aws-creds')
+
+
 
     }
 
@@ -80,12 +82,13 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                 
+                //withCredentials([string(credentialsId: 'mustafa-aws-creds', variable: 'AWS_SESSION_TOKEN')])
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-creds', 
                                     secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
                     {
                     sh '''
                         aws --version
+                        aws sts get-caller-identity
                         aws ec2 describe-instances
                         #aws s3 cp --sse AES256 file.txt s3://mus.cicd.cdk.demo/
                     '''
