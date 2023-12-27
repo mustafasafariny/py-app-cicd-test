@@ -93,6 +93,7 @@ pipeline {
                         #aws ec2 describe-instances
                         #aws s3 ls
                         #aws s3 cp artifacts/*.* s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        sudo -i
                         aws s3 cp /root/s3/mustest.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
                     '''
                     }
