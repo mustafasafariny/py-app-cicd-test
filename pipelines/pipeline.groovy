@@ -87,7 +87,7 @@ pipeline {
                         aws sts get-caller-identity
                         #aws ec2 describe-instances
 
-                        #aws s3 cp --sse AES256 file.txt s3://mus.cicd.cdk.demo/
+                        aws s3 cp artifacts.txt s3://mus.cicd.cdk.demo/musdemo.txt
                     '''
                     }
 
