@@ -88,7 +88,11 @@ pipeline {
                         aws --version
                         aws sts get-caller-identity
                         #aws ec2 describe-instances
-                        aws s3 ls --profile cdk-sandpit
+
+                        #aws s3 ls --profile cdk-sandpit
+                        aws configure set role_arn arn:aws:iam::144358027444:role/MusCdkTypescriptStackStac-MusCdkInstanceRole1AF4F1B-QgED4yClCjKH
+
+                        aws s3 ls 
                         aws s3 cp artifacts/*.* s3://mus.cicd.cdk.demo/
                     '''
                     }
