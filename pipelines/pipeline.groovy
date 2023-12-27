@@ -94,7 +94,7 @@ pipeline {
                         #aws s3 ls
 
                         cd artifacts
-                        aws s3 cp *.* s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
                     }
