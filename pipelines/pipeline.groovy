@@ -88,8 +88,7 @@ pipeline {
                         #aws ec2 describe-instances
                         pwd
                         cd ./src/demo-py-app
-                        pwd
-                        aws s3 artifacts.txt s3://mus.cicd.cdk.demo/musdemo.txt
+                        aws s3 cp artifacts.txt s3://mus.cicd.cdk.demo/musdemo.txt
                     '''
                     }
 
