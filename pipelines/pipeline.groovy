@@ -94,7 +94,7 @@ pipeline {
                         #aws s3 ls
                         #aws s3 cp artifacts/*.* s3://mus.cicd.cdk.demo/py-app-artifacts/
                         pwd
-                        sudo -i
+                        sudo su
                         pwd
                         aws s3 cp ./s3/mustest.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
                     '''
