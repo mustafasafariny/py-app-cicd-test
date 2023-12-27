@@ -92,10 +92,10 @@ pipeline {
                         #aws configure set role_arn arn:aws:iam::144358027444:role/MusCdkTypescriptStackStac-MusCdkInstanceRole1AF4F1B-QgED4yClCjKH
                         #aws ec2 describe-instances
                         #aws s3 ls
+
                         cd artifacts
-                        pwd
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.* s3://mus.cicd.cdk.demo/py-app-artifacts/
+
                     '''
                     }
 
