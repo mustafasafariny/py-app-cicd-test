@@ -93,9 +93,9 @@ pipeline {
                         #aws ec2 describe-instances
                         #aws s3 ls
 
-                        #cd artifacts
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        cd artifacts
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
                     }
