@@ -87,7 +87,7 @@ pipeline {
                         aws sts get-caller-identity
                         #aws ec2 describe-instances
                         pwd
-                        #aws s3 ls
+                        aws s3 ls
 
                         cd ./src/demo-py-app
                         aws s3 cp artifacts/*.* s3://mus.cicd.cdk.demo/
