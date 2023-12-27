@@ -88,10 +88,8 @@ pipeline {
                 echo "Access Key ID: ${env.AWS_ACCESS_KEY_ID}"
                 echo "Access Key Secret: ${env.AWS_SECRET_ACCESS_KEY}"
 
-                //withCredentials([string(credentialsId: 'mustafa-aws-cli-creds', variable: 'AWS_SESSION_TOKEN')])
-                //withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID', credentialsid:'mustafa-aws-cli-creds', 
-                //                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY')])
-                //    {
+                withCredentials([aws(credentialsId: 'mus-jenkins-cicd-demo', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+                    {
                     sh '''
                         #export AWS_DEFAULT_PROFILE=cdk-sandpit
                         aws --version
@@ -100,7 +98,7 @@ pipeline {
                         #aws ec2 describe-instances --profile cdk-sandpit
                         #aws s3 cp --sse AES256 file.txt s3://mus.cicd.cdk.demo/
                     '''
-                //    }
+                    }
 
                 //withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
                 //    {
