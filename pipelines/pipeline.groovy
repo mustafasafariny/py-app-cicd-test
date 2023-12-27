@@ -21,9 +21,6 @@ pipeline {
         AWS_ROLE = 'AWS-DevOps-Identity'
         AWS_S3_BUCKET = 'mus.cicd.cdk.demo'      
         ARTIFACTS_DIR = 'artifacts'
-    //  AWS_S3_AUTH_TOKEN =credentials('mustafa-aws-creds')
-
-
 
     }
 
@@ -82,20 +79,14 @@ pipeline {
                         }
 
                 echo 'Uploading S3 Bucket...'
-                echo "Region: ${AWS_DEFAULT_REGION}"
-                echo "Account: ${AWS_DEFAULT_ACCOUNT}"
-                //echo "Account: ${AWS_DEFAULT_PROFILE}"
-                echo "Access Key ID: ${env.AWS_ACCESS_KEY_ID}"
-                echo "Access Key Secret: ${env.AWS_SECRET_ACCESS_KEY}"
 
                 withCredentials([aws(credentialsId: 'mus-jenkins-cicd-demo', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
                     {
                     sh '''
-                        #export AWS_DEFAULT_PROFILE=cdk-sandpit
                         aws --version
                         aws sts get-caller-identity
                         aws ec2 describe-instances
-                        #aws ec2 describe-instances --profile cdk-sandpit
+
                         #aws s3 cp --sse AES256 file.txt s3://mus.cicd.cdk.demo/
                     '''
                     }
