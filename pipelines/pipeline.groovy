@@ -87,9 +87,12 @@ pipeline {
                         aws sts get-caller-identity
                         #aws ec2 describe-instances
                         pwd
-                        #aws s3 ls
+
+                        aws configure set aws_iam_role <arn:aws:iam::144358027444:role/MusCdkTypescriptStackStac-MusCdkInstanceRole1AF4F1B-QgED4yClCjKH>
+                        aws s3 ls
 
                         cd ./src/demo-py-app
+                        #aws s3 cp my_copied_file.ext s3://my_bucket/my_folder/my_file.ext
                         aws s3 cp artifacts/*.* s3://mus.cicd.cdk.demo/
                     '''
                     }
