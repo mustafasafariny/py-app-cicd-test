@@ -87,7 +87,9 @@ pipeline {
                         aws sts get-caller-identity
                         #aws ec2 describe-instances
                         pwd
-                        aws s3 cp /var/lib/jenkins/workspace/pyapp-test-pipeline/src/demo-py-app/artifacts.txt s3://mus.cicd.cdk.demo/musdemo.txt
+                        cd ./src/demo-py-app
+                        pwd
+                        aws s3 artifacts.txt s3://mus.cicd.cdk.demo/musdemo.txt
                     '''
                     }
 
