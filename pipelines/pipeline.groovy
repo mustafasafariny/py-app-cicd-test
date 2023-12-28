@@ -96,8 +96,8 @@ pipeline {
                         whoami
                         cd artifacts
                         pwd
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
