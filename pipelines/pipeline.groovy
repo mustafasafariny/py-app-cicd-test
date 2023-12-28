@@ -80,28 +80,24 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
 
-                //withCredentials([aws(credentialsId: 'mus-jenkins-cicd-demo', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
-                //    {
+                withCredentials([aws(credentialsId: 'mus-jenkins-cicd-demo', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+                    {
                     sh '''
                         cd ./src/demo-py-app
                         pwd
                         aws --version
-                        #aws sts get-caller-identity
-
-                        #aws configure set role_arn arn:aws:iam::144358027444:role/MusCdkTypescriptStackStac-MusCdkInstanceRole1AF4F1B-QgED4yClCjKH
+                        aws sts get-caller-identity
                         #aws ec2 describe-instances
-
-                        #aws s3 ls
-                        #aws s3 ls --profile cdk-sandpit
-                        whoami
+                        aws s3 ls
+                        
                         cd artifacts
-                        pwd
+                        
                         aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
-                //    }
+                    }
 
                 //withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
                 //    {
