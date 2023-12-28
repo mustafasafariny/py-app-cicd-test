@@ -80,7 +80,11 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
 
-                withCredentials([aws(credentialsId: 'mus-jenkins-cicd-demo', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+                withCredentials([aws(
+                        credentialsId: 'mus-jenkins-cicd-demo',
+                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                        roleArn: 'arn:aws:iam::144358027444:role/AWS-DevOps-Identity')])
                     {
                     sh '''
                         cd ./src/demo-py-app
