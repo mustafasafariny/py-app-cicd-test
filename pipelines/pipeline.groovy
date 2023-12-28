@@ -86,7 +86,7 @@ pipeline {
                         cd ./src/demo-py-app
                         pwd
                         aws --version
-                        aws sts get-caller-identity
+                        #aws sts get-caller-identity
 
                         #aws configure set role_arn arn:aws:iam::144358027444:role/MusCdkTypescriptStackStac-MusCdkInstanceRole1AF4F1B-QgED4yClCjKH
                         #aws ec2 describe-instances
@@ -95,8 +95,9 @@ pipeline {
                         #aws s3 ls --profile cdk-sandpit
                         whoami
                         cd artifacts
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
+                        pwd
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
