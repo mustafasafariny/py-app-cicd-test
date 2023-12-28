@@ -93,7 +93,7 @@ pipeline {
 
                         #aws s3 ls
                         #aws s3 ls --profile cdk-sandpit
-
+                        whoami
                         cd artifacts
                         aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
