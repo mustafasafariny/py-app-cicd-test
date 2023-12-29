@@ -89,15 +89,17 @@ pipeline {
                     {
                     sh '''
                         cd ./src/demo-py-app
-                        pwd
+                        whoami
+                        sudo su
+                        whoami
                         aws --version
                         aws sts get-caller-identity
                         aws ec2 describe-instances --region=ap-southeast-2
                         aws s3 ls
                         
-                        cd artifacts
-                        
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #cd artifacts
+                        aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/ --recursive
+                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
