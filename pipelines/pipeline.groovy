@@ -85,7 +85,6 @@ pipeline {
                         (credentialsId: 'mus-jenkins-cicd-demo',
                         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')
-                        //roleArn: 'arn:aws:iam::144358027444:role/AWS-DevOps-Identity')
                         ])
                     {
                     sh '''
@@ -93,7 +92,7 @@ pipeline {
                         pwd
                         aws --version
                         aws sts get-caller-identity
-                        #aws ec2 describe-instances
+                        aws ec2 describe-instances --region=ap-southeast-2
                         aws s3 ls
                         
                         cd artifacts
