@@ -99,8 +99,8 @@ pipeline {
                         #aws s3 ls
                         
                         #cd artifacts
-                        aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
