@@ -98,7 +98,7 @@ pipeline {
                     '''
                     echo 'before upload...'
 
-                    s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'artifacts', includePathPattern:'**/*')
+                    s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'./src/demo-py-app/artifacts', includePathPattern:'**/*')
                     
                     //s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
                     //def tags=[:]
