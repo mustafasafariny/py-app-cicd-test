@@ -98,9 +98,9 @@ pipeline {
                         #aws ec2 describe-instances --region=ap-southeast-2
                         #aws s3 ls
                         
-                        #cd artifacts
+                        cd artifacts
                         #aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp /artifacts/*.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
