@@ -80,11 +80,13 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
 
-                withCredentials([aws
-                        (credentialsId: 'mus-jenkins-cicd-demo',
-                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')
-                        ])
+                withAWS(roleAccount:'144358027444', role:'AWS-DevOps-Identity')
+                //withCredentials([aws
+                //        (credentialsId: 'mus-jenkins-cicd-demo',
+                //        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                //        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'),
+
+                //        ])
                     {
                     sh '''
                         cd ./src/demo-py-app
@@ -97,7 +99,7 @@ pipeline {
                         #aws s3 ls
                         
                         #cd artifacts
-                        aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/ --recursive
+                        aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
