@@ -86,10 +86,11 @@ pipeline {
                     sh '''
                         cd ./src/demo-py-app/artifacts
                         aws --version
-                        aws sts get-caller-identity
+                        #aws sts get-caller-identity
                         #aws ec2 describe-instances --region=ap-southeast-2
                         #aws s3 ls
 
+                        echo 'before upload...'
                         s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'artifacts', includePathPattern:'**/*')
 
                         #s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
@@ -102,6 +103,7 @@ pipeline {
 
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        echo 'after upload...'
                     '''
                     }                     
                 }
