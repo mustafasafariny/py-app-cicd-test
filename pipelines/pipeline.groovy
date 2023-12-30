@@ -106,7 +106,7 @@ pipeline {
                     //    tags["tag2"]=""
 
                     s3Upload(
-                        file: "artifacts/",
+                        file: "./src/demo-py-app/artifacts/",
                         bucket: 'mus.cicd.cdk.demo',
                         path: 'py-app-artifacts/',
                         metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
