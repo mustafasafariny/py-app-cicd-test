@@ -91,13 +91,19 @@ pipeline {
                         #aws s3 ls
 
                         echo 'before upload...'
-                        s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'artifacts', includePathPattern:'**/*')
-
+                        #s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'artifacts', includePathPattern:'**/*')
                         #s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
 
                         #def tags=[:]
                         #tags["tag1"]="${env.BUILD_TAG}"
                         #tags["tag2"]=""
+
+                        s3Upload(
+                            file: "artifacts/",
+                            bucket: 'mus.cicd.cdk.demo',
+                            path: 'py-app-artifacts/',
+                            metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
+                        )
 
                         #s3Upload(file:${env.BUILD_TAG}, bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_DIR}/")
 
