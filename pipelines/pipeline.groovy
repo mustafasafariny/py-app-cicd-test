@@ -100,9 +100,13 @@ pipeline {
                     
                     //s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
 
+                    //def tags=[:]
+                    //     tags["tag1"]="${env.BUILD_TAG}"
+                    //     tags["tag2"]=""
+
                     def tags=[:]
-                         tags["tag1"]="${env.BUILD_TAG}"
-                         tags["tag2"]=""
+                        tags["tag1"]="${env.BUILD_TAG}"
+                        tags["tag2"]="mustafa"
 
                     s3Upload(
                         file: "./src/demo-py-app/artifacts/",
