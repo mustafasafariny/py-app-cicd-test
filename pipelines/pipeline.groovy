@@ -75,7 +75,11 @@ pipeline {
                 echo " Deployment environment is ${params.Env}"
 
                 script {
-                        sh 'chmod +x ./src/scripts/deploy.sh'              
+                        sh 'chmod +x ./src/scripts/deploy.sh'
+                        
+                        def tags=[:]
+                            tags["tag1"]="${env.BUILD_TAG}"
+                            tags["tag2"]="mustafa"          
                         }
 
                 echo 'Uploading S3 Bucket...'
@@ -103,10 +107,6 @@ pipeline {
                     //def tags=[:]
                     //     tags["tag1"]="${env.BUILD_TAG}"
                     //     tags["tag2"]=""
-
-                    def tags=[:]
-                        tags["tag1"]="${env.BUILD_TAG}"
-                        tags["tag2"]="mustafa"
 
                     s3Upload(
                         file: "./src/demo-py-app/artifacts/",
