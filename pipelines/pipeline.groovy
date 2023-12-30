@@ -90,10 +90,8 @@ pipeline {
                         #aws ec2 describe-instances --region=ap-southeast-2
                         #aws s3 ls
 
-                        #s3Upload(file:${env.BUILD_TAG}, bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_DIR}/")
-
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
                         
                     '''
                     echo 'before upload...'
@@ -101,14 +99,16 @@ pipeline {
                     s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'./src/demo-py-app/artifacts', includePathPattern:'**/*')
                     
                     //s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
-                    //def tags=[:]
-                    //    tags["tag1"]="${env.BUILD_TAG}"
-                    //    tags["tag2"]=""
+
+                    def tags=[:]
+                         tags["tag1"]="${env.BUILD_TAG}"
+                         tags["tag2"]=""
 
                     s3Upload(
                         file: "./src/demo-py-app/artifacts/",
                         bucket: 'mus.cicd.cdk.demo',
                         path: 'py-app-artifacts/',
+                        tags: '[tag1:value1, tag2:value2]'
                         metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
                         )
 
