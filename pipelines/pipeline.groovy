@@ -77,9 +77,9 @@ pipeline {
                 script {
                         sh 'chmod +x ./src/scripts/deploy.sh'
                         
-                        def tags=[:]
-                            tags["tag1"]="${env.BUILD_TAG}"
-                            tags["tag2"]="mustafa"          
+                        //def tags=[:]
+                        //    tags["tag1"]="${env.BUILD_TAG}"
+                        //    tags["tag2"]="mustafa"          
                         }
 
                 echo 'Uploading S3 Bucket...'
@@ -104,15 +104,11 @@ pipeline {
                     
                     //s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
 
-                    //def tags=[:]
-                    //     tags["tag1"]="${env.BUILD_TAG}"
-                    //     tags["tag2"]=""
-
                     s3Upload(
                         file: "./src/demo-py-app/artifacts/",
                         bucket: 'mus.cicd.cdk.demo',
                         path: 'py-app-artifacts/',
-                        tags: tags.toString(),
+                        tags: '[tag1:${env.BUILD_TAG}, tag2:'mustafa']',
                         metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
                         )
 
