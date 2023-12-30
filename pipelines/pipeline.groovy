@@ -80,13 +80,8 @@ pipeline {
 
                 echo 'Uploading S3 Bucket...'
 
-                withAWS(roleAccount:'144358027444', role:'AWS-DevOps-Identity')
-                //withCredentials([aws
-                //        (credentialsId: 'mus-jenkins-cicd-demo',
-                //        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                //        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'),
-
-                //        ])
+                //withAWS(roleAccount:'144358027444', role:'AWS-DevOps-Identity')
+                withAWS(roleAccount:"${AWS_DEFAULT_ACCOUNT}", role:"${AWS_ROLE}", region: "${AWS_DEFAULT_REGION}" )
                     {
                     sh '''
                         cd ./src/demo-py-app/artifacts
@@ -102,13 +97,7 @@ pipeline {
                         #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
 
                     '''
-                    }
-
-                //withAWS(credentials: 'awscredentials', profile: 'cdk-sandpit', region: 'ap-southeast-2', role: 'AWS-DevOps-Identity', roleAccount: '144358027444') 
-                //    {
-                //    s3Upload(file:'artifacts', bucket:'mus.cicd.cdk.demo')
-                //    }
-                      
+                    }                     
                 }
         }
     }
