@@ -98,17 +98,17 @@ pipeline {
                         #tags["tag1"]="${env.BUILD_TAG}"
                         #tags["tag2"]=""
 
-                        s3Upload(
-                            file: "artifacts/",
-                            bucket: 'mus.cicd.cdk.demo',
-                            path: 'py-app-artifacts/',
-                            metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
-                        )
+                        #s3Upload(
+                        #    file: "artifacts/",
+                        #    bucket: 'mus.cicd.cdk.demo',
+                        #    path: 'py-app-artifacts/',
+                        #    metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
+                        #)
 
                         #s3Upload(file:${env.BUILD_TAG}, bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_DIR}/")
 
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        #aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
                         echo 'after upload...'
                     '''
                     }                     
