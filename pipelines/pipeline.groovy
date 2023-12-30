@@ -90,7 +90,8 @@ pipeline {
                         #aws ec2 describe-instances --region=ap-southeast-2
                         #aws s3 ls
 
-                        s3Upload(bucket:"mus.cicd.cdk.demo", workingDir:'artifacts', includePathPattern:'**/*')
+                        s3Upload(bucket:'mus.cicd.cdk.demo', workingDir:'artifacts', includePathPattern:'**/*')
+
                         #s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
 
                         #def tags=[:]
