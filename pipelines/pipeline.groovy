@@ -93,8 +93,8 @@ pipeline {
                         whoami
                         aws --version
                         aws sts get-caller-identity
-                        aws ec2 describe-instances --region=ap-southeast-2
-                        aws s3 ls
+                        #aws ec2 describe-instances --region=ap-southeast-2
+                        #aws s3 ls
                         
                         #cd artifacts
                         aws s3 cp ./artifacts/ s3://mus.cicd.cdk.demo/py-app-artifacts/ --recursive
