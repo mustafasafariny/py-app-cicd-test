@@ -90,12 +90,17 @@ pipeline {
                         aws ec2 describe-instances --region=ap-southeast-2
                         aws s3 ls
 
-                        #aws s3 cp artifacts/* s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
-                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/  --profile cdk-sandpit
-                        #aws s3 cp mustest1.txt s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        s3Upload(bucket:"mus.cicd.cdk.demo", workingDir:'artifacts', includePathPattern:'**/*');
+                        #s3Upload(file: 'file.txt', bucket: 'my-bucket', tags: '[tag1:value1, tag2:value2]')
 
+                        #def tags=[:]
+                        #tags["tag1"]="${env.BUILD_TAG}"
+                        #tags["tag2"]=""
+
+                        #s3Upload(file:${env.BUILD_TAG}, bucket:"${AWS_S3_BUCKET}", path:"${ARTIFACTS_DIR}/")
+
+                        #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
+                        #aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
                     '''
                     }                     
                 }
