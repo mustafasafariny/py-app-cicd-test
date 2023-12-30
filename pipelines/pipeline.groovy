@@ -108,7 +108,7 @@ pipeline {
                         file: "./src/demo-py-app/artifacts/",
                         bucket: 'mus.cicd.cdk.demo',
                         path: 'py-app-artifacts/',
-                        tags: '[tag1:${env.BUILD_TAG}, tag2:'mustafa']',
+                        tags: '[tag1:${env.BUILD_TAG}, tag2:${env.GIT_BRANCH}]',
                         metadatas: ["repo:${env.JOB_NAME}", "branch:${env.BRANCH}", "commit:${env.GIT_COMMIT}"]
                         )
 
