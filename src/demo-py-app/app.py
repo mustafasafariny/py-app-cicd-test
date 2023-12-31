@@ -17,13 +17,23 @@ app = Flask(__name__)
 
 #In other words, if a user types the base URL of your web app into their browser, then Flask runs index() 
 # and the user sees the returned text.
+
+#@app.route('/post/<int:post_id>') #add variable sections to a URL
 @app.route("/")
+
 def index():
     return "Python Application Deployment to Host works!"
 
 #It tells the application to run and listen for incoming requests on the specified host (127.0.0.1, Flask’s development server) and port (5000). 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)   # Flask Integration Server Port 5000
+    #app.run(debug=True,host='0.0.0.0') # listen on all public IPs
 
 # To test on Flask server (using PowerSell Terminal)
-# Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app main.py run
+# Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app app.py run
+# To run the application, use the flask command or python -m flask. You need to tell the Flask where your application is with the --app option.
+#Now head over to http://127.0.0.1:5000/, and you should see your hello world greeting.
+    
+#$ flask --app hello run
+# * Serving Flask app 'hello'
+# * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
