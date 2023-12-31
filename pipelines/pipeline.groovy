@@ -93,15 +93,14 @@ pipeline {
                         #aws sts get-caller-identity
                         #aws ec2 describe-instances --region=ap-southeast-2
                         #aws s3 ls
-
+                        #Option 1 - using AWS CLI cp api to copy artifacts to 3 Bucket
                         #aws s3 cp *.whl s3://mus.cicd.cdk.demo/py-app-artifacts/
                         #aws s3 cp *.gz s3://mus.cicd.cdk.demo/py-app-artifacts/
                         
                     '''
                     echo 'before upload...'
 
-                    //s3Upload(bucket:"mus.cicd.cdk.demo", path:'py-app-artifacts/', workingDir:'./src/demo-py-app/artifacts', includePathPattern:'**/*')
-
+                    // Option 2 - using Jenkins Pipeline: AWS Steps Plugin
                     s3Upload(
                         file: "./src/demo-py-app/artifacts/",
                         bucket: 'mus.cicd.cdk.demo',
