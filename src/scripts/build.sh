@@ -19,7 +19,5 @@ sudo pip install -r requirements.txt
 #Create Artifacts
 sudo pip3 install setuptools wheel
 sudo python3 setup.py sdist bdist_wheel
-pwd
 mkdir -p artifacts
-pwd
 sudo mv dist/* artifacts/
