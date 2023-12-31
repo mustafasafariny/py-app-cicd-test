@@ -19,5 +19,9 @@ sudo pip install -r requirements.txt
 #Create Artifacts
 sudo pip3 install setuptools wheel
 sudo python3 setup.py sdist bdist_wheel
+
+## Clean up virtual environment
+deactivate
+
 mkdir -p artifacts
 sudo mv dist/* artifacts/

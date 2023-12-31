@@ -15,7 +15,6 @@ pipeline {
     }
 
     environment {
-        //AWS_DEFAULT_PROFILE = 'cdk-sandpit'  // Use profile information from ~/.aws/config
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         AWS_DEFAULT_ACCOUNT = '144358027444'
         AWS_ROLE = 'AWS-DevOps-Identity'
@@ -28,20 +27,16 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building....."
-                sh 'printenv'
-
-                echo "Building environment is ${params.Env}"
-                echo "Build Number: ${env.BUILD_NUMBER}"
-                echo "Build URL: ${env.BUILD_URL}"
-                   
+                sh 'printenv'                  
                 echo "I am in ${env.GIT_BRANCH} and it works!"
  
                 script {
                     sh 'chmod +x ./src/scripts/build.sh'
-                    //def BUILD_TAG_NAME = env.BUILD_TAG
-                    echo "Build Tag: ${env.BUILD_TAG}" 
                 }
-
+                
+                // Create Aritcats files in different formats
+                //while tar.gz is often used for distributing source code that needs to be built, 
+                //the wheel format is used for distributing pre-built binary packages that can be installed more quickly. 
                 archiveArtifacts artifacts: 'src/demo-py-app/artifacts/*.tar.gz, src/demo-py-app/artifacts/*.whl', fingerprint: true
             }
         }

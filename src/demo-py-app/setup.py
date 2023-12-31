@@ -1,3 +1,5 @@
+#configuration for the setup of a Python package using the setuptools library.
+
 from setuptools import setup, find_packages
 
 setup(
@@ -6,7 +8,7 @@ setup(
     packages=find_packages(),
     author="Mustafa",
     author_email="mustafa.mustafa@domain.com.au",
-    description="package for python application",
+    description="package for flask python application",
     url="https://github.com/mustafasafariny/py-app-cicd-test",
     install_requires=[
         # List your project dependencies here
