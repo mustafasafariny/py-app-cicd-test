@@ -42,11 +42,11 @@ pipeline {
         }
 
         stage('Test') {
-            when {
-                expression {
-                    params.executeTests
-                }
-            }
+            //when {
+            //    expression {
+            //        params.executeTests
+            //    }
+            //}
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
