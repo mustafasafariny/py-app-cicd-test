@@ -50,7 +50,6 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-                pwd
                 script {
                     sh '''                  
                     cd ./src/demo-py-app
