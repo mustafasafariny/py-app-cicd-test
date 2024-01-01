@@ -36,6 +36,6 @@ if __name__ == "__main__":
 # To run the application, use the flask command or python -m flask. You need to tell the Flask where your application is with the --app option.
 # Now head over to http://127.0.0.1:5000/, or http://192.168.0.29:5000 and you should see "Python Application Deployment to Host works!"
     
-#$ flask --app hello run
-# * Serving Flask app 'hello'
+#$ flask --app flaskapp run -h 192.168.0.29 -p 5000
+# * Serving Flask app 'flaskapp'
 # * Running on http://192.168.0.29:5000 (Press CTRL+C to quit)
