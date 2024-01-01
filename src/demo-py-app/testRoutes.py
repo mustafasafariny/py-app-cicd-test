@@ -6,7 +6,6 @@ import pytest
 
 from flask import *
 
-
 def test_home_route():
     client = app.test_client()
     response = client.get('/')
