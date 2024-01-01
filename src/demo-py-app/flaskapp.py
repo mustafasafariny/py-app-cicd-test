@@ -34,7 +34,7 @@ if __name__ == "__main__":
 # To test on Flask server (using PowerSell Terminal)
 # Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app app.py run
 # To run the application, use the flask command or python -m flask. You need to tell the Flask where your application is with the --app option.
-# Now head over to http://127.0.0.1:5000/, and you should see your hello world greeting.
+# Now head over to http://127.0.0.1:5000/, and you should see "Python Application Deployment to Host works!"
     
 #$ flask --app hello run
 # * Serving Flask app 'hello'
