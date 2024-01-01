@@ -51,11 +51,11 @@ pipeline {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
                 script {
-                    //sh '''                  
-                    //cd ./src/demo-py-app
-                    //pytest flaskapp.py
-                    sh 'chmod +x ./src/scripts/test.sh'
-                    //'''
+                    sh '''                  
+                    cd ./src/demo-py-app
+                    pytest flaskapp.py
+                    '''
+                    //sh 'chmod +x ./src/scripts/test.sh'
                 }
 
             }
