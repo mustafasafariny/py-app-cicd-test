@@ -4,7 +4,7 @@
 
 import pytest
 
-from flask import app
+from flask import *
 
 
 def test_home_route():

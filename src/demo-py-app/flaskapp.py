@@ -1,6 +1,6 @@
-# app.py
+# flaskapp.py
 
-from flask import Flask
+from flask import *
 
 #By passing __name__ as an argument to the Flask constructor,
 #you are telling Flask to set up the application with the appropriate configurations based on the location of the script.
