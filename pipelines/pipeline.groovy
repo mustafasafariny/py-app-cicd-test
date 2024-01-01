@@ -62,11 +62,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-              expression {
-                   currentBuild.result == null || currentBuild.result == 'SUCCESS' 
-              }
-            }  
+            //when {
+            //  expression {
+            //       currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+            //  }
+            //}  
             steps {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
