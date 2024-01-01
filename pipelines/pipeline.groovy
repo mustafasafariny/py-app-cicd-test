@@ -53,7 +53,6 @@ pipeline {
                  
                 script {
                     sh 'chmod +x ./src/scripts/test.sh'
-
                 }
 
             }

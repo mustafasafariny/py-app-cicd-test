@@ -22,11 +22,9 @@ sudo pip install -r requirements.txt
 #creating both a source distribution and a binary distribution of your Python package.
 #This allows users to choose whether they want to install from the source or from a pre-built binary, depending on their preference or system compatibility.
 #These files can be uploaded to the Python Package Index (PyPI) for distribution or shared directly with others.
+
 sudo pip3 install setuptools wheel
 sudo python3 setup.py sdist bdist_wheel
-
-## Clean up virtual environment
-deactivate
 
 mkdir -p artifacts
 sudo mv dist/* artifacts/
