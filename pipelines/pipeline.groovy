@@ -53,8 +53,10 @@ pipeline {
                  
                 script {
                     pwd
+                    cd ./src/demo-py-app
+                    pwd
                     sh 'pytest flaskapp.py'
-                    sh 'chmod +x ./src/scripts/test.sh'
+                    #sh 'chmod +x ./src/scripts/test.sh'
                 }
 
             }
