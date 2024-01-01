@@ -69,19 +69,16 @@ pipeline {
                 echo 'Deploying...'
                 echo " Deployment environment is ${params.Env}"
 
-                script {
-                        sh 'chmod +x ./src/scripts/deploy.sh'      
-                        }
-
                 echo 'Uploading S3 Bucket...'
 
-                //Option 1 - using AWS CLI cp api to copy both artifacts to the S3 Bucket
-                //Option 2 - using Jenkins Pipeline: AWS Steps Plugin (preffered)
+                //Option 1 - using AWS CLI cp api to copy both artifacts to the S3 Bucket (copy articats files separately)
+                //Option 2 - using Jenkins Pipeline: AWS Steps Plugin (preffered because i can copy articats dir not files separately)
 
                 withAWS(roleAccount:"${AWS_DEFAULT_ACCOUNT}", role:"${AWS_ROLE}", region: "${AWS_DEFAULT_REGION}" )
                     {
                         //sh 'chmod +x ./src/scripts/deploy.sh'   // option 1                   
-                    
+                        
+                        // option 2
                         s3Upload(
                             file: "./src/demo-py-app/artifacts/",
                             bucket: 'mus.cicd.cdk.demo',
