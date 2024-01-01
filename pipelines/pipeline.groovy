@@ -50,9 +50,8 @@ pipeline {
             steps {
                 echo 'Testing....'
                 echo " Testing environment is ${params.Env}"
-                 
-                script {
-                    pwd
+                pwd
+                script {                   
                     sh 'cd ./src/demo-py-app'
                     pwd
                     sh 'pytest flaskapp.py'
