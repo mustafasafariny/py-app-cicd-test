@@ -19,7 +19,8 @@ app = Flask(__name__)
 # and the user sees the returned text.
 
 #@app.route('/post/<int:post_id>') #add variable sections to a URL
-@app.route("/")
+#@app.route('/projects/') or @app.route('/about') or @app.route('/login', methods=['GET', 'POST'])
+@app.route("/")  #root URL ("/") of the web application.
 
 def index():
     return "Python Application Deployment to Host works!"
