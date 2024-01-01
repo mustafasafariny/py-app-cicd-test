@@ -28,14 +28,14 @@ def index():
 
 #It tells the application to run and listen for incoming requests on the specified host (127.0.0.1, Flask’s development server) and port (5000). 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)   # Flask Integration Server Port 5000
+    app.run(host="192.168.0.29", port=5000, debug=True)   # Flask Integration Server Port 5000
     #app.run(debug=True,host='0.0.0.0') # listen on all public IPs
 
 # To test on Flask server (using PowerSell Terminal)
 # Within the created virtual env (.venv) Navigate to src lib aapplication folder and $ flask --app app.py run
 # To run the application, use the flask command or python -m flask. You need to tell the Flask where your application is with the --app option.
-# Now head over to http://127.0.0.1:5000/, and you should see "Python Application Deployment to Host works!"
+# Now head over to http://127.0.0.1:5000/, or http://192.168.0.29:5000 and you should see "Python Application Deployment to Host works!"
     
 #$ flask --app hello run
 # * Serving Flask app 'hello'
-# * Running on http://127.0.0.1:5000 (Press CTRL+C to quit)
+# * Running on http://192.168.0.29:5000 (Press CTRL+C to quit)
