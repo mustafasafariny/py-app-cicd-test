@@ -52,6 +52,8 @@ pipeline {
                 echo " Testing environment is ${params.Env}"
                  
                 script {
+                    pwd
+                    sh 'pytest flaskapp.py'
                     sh 'chmod +x ./src/scripts/test.sh'
                 }
 
